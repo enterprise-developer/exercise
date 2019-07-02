@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{94B0F3AF-0AFE-4976-B3E0-D43F4545280F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TinyERP.Common</RootNamespace>
+    <AssemblyName>TinyERP.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.5.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Attribute\ResponseWrapper.cs" />
+    <Compile Include="Common\Data\ResponseData.cs" />
+    <Compile Include="Common\Helper\AssemblyHelper.cs" />
+    <Compile Include="Common\Helper\JsonHelper.cs" />
+    <Compile Include="Common\Helper\NumberHelper.cs" />
+    <Compile Include="Common\IoC\CastleContainer\BaseContainer.cs" />
+    <Compile Include="Common\IoC\IBaseContainer.cs" />
+    <Compile Include="Common\IoC\IoC.cs" />
+    <Compile Include="Common\IoC\IoCContainer.cs" />
+    <Compile Include="Common\IPaging.cs" />
+    <Compile Include="Common\Paging.cs" />
+    <Compile Include="Common\PagingInfo.cs" />
+    <Compile Include="Common\Task\IApplicationEnd.cs" />
+    <Compile Include="Common\Task\IApplicationReady.cs" />
+    <Compile Include="Common\Task\IApplicationStarted.cs" />
+    <Compile Include="Common\Task\IBaseTask.cs" />
+    <Compile Include="Common\Task\IBootStrapper.cs" />
+    <Compile Include="Common\Validation\Attr\Required.cs" />
+    <Compile Include="Common\Validation\BaseValidationAttribute.cs" />
+    <Compile Include="Common\Validation\ValidationError.cs" />
+    <Compile Include="Common\Validation\ValidationException.cs" />
+    <Compile Include="Common\Validation\ValidationHelper.cs" />
+    <Compile Include="Config\Configuration.cs" />
+    <Compile Include="Config\UserManagementElement.cs" />
+    <Compile Include="Connector\ConnectorContentType.cs" />
+    <Compile Include="Connector\JsonContent.cs" />
+    <Compile Include="Data\DbContextFactory.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <Content Include="Config\Configuration.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /S /Y /r "$(ProjectDir)Config\Configuration.config" "$(SolutionDir)TinyERP.Course.Api\Config\" 
+xcopy /S /Y /r "$(ProjectDir)Config\Configuration.config" "$(SolutionDir)TinyERP.UserManagement.Api\Config\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
