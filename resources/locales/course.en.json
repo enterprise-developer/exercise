@@ -1,0 +1,17 @@
+{
+    "courses": {
+        "title": "Courses",
+        "name": "Name",
+        "description": "Description"
+    },
+    "addNewCourse": {
+        "title": "Add New Course",
+        "name": "Name",
+        "description": "Description",
+        "author": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "userName": "User Name"
+        }
+    }
+}

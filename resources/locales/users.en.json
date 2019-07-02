@@ -1,0 +1,17 @@
+{
+    "title":"Manage Users",
+    "firstName":"First name",
+    "lastName":"Last name",
+    "userName":"User name",
+    "status":"Status",
+    "actions":"Actions",
+    "edit":"Edit",
+    "delete":"Delete",
+    "inactive":"In-Active",
+    "active":"Active",
+    "userStatus":{
+        "active":"Active",
+        "inActive":"In-Active"
+
+    }
+}

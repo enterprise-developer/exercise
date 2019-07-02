@@ -1,0 +1,9 @@
+{
+    "title":"Add new user",
+    "firstName":"First name",
+    "lastName":"Last name",
+    "userName":"User name",
+    "firstNameWasRequired":"First name was required",
+    "lastNameWasRequired":"Last name was required",
+    "userNameWasUsed": "{{user_name}} was used" 
+}

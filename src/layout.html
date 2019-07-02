@@ -28,8 +28,10 @@
 						<div class="menu_section">
 							<h3>General</h3>
 							<ul class="nav side-menu">
-								<li><a routerLink='/users' title="Users"><i class="fa fa-user"></i> Users</a></li>
-                                <li><a routerLink='/addNewUser' title="Add new user"><i class="fa fa-plus"></i> Add new User</a></li>
+								<li><a routerLink='/userManagement/users' title="Users"><i class="fa fa-user"></i> Users</a></li>
+								<li><a routerLink='/userManagement/addNewUser' title="Add new user"><i class="fa fa-plus"></i> Add new User</a></li>
+								<li><a routerLink='/userManagement/usergroups' title="User Group"><i class="fa fa-user"></i> User Group</a></li>
+								<li><a routerLink='/course/courses' title="Courses"><i class="fa fa-user"></i> Courses</a></li>
 							</ul>
 							<div style="height:500px">&nbsp;</div>
 						</div>
@@ -63,7 +65,7 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-					Hello world
+					<router-outlet></router-outlet>
 				<br/>
 				<br/>
 			</div>

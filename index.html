@@ -10,11 +10,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>tranthanhtu.vn - Angular2</title>
-
+        <script src="resources/libs/jquery/jquery-1.12.4.js"></script>
         <script src="node_modules/core-js/client/shim.min.js"></script>
         <script src="node_modules/zone.js/dist/zone.js"></script>
         <script src="node_modules/reflect-metadata/reflect.js"></script>
         <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <script src="resources/js/extension.js"></script>
+        
         <script>window.autoBootstrap = false; </script>
         <script src="systemjs.config.js"></script>
         <!-- Bootstrap -->
@@ -30,13 +32,27 @@
 
         <!-- Custom Theme Style -->
         <link href="/resources/theme/gentallela/css/custom.css" rel="stylesheet">
+        <link href="/resources/theme/gentallela/css/style.css" rel="stylesheet">
     </head>
     <body>
         <div>
             <layout>default page will be here.</layout>
         </div>
+        
         <script>
             System.import("src/main").catch(function(error){console.log(error);});
         </script>
+       <script src="resources/theme/gentallela/vendors/datatables.net/js/jquery.dataTables.min.js"></script> 
+        <!-- <script src="src/themes/default/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        <script src="src/themes/default/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script> -->
     <body>
 </html>
