@@ -1,5 +1,9 @@
-﻿namespace TinyERP.Course.Entity
+﻿using TinyERP.Common.Attribute;
+using TinyERP.Course.Context;
+
+namespace TinyERP.Course.Entity
 {
+    [DbContext(Use=typeof(ICourseDbContext))]
     public class Course
     {
         public int Id { get; set; }

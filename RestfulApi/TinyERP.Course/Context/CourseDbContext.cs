@@ -1,8 +1,9 @@
 ﻿using System.Data.Entity;
+using TinyERP.Common.Common.Data;
 
 namespace TinyERP.Course.Context
 {
-    public class CourseDbContext : DbContext, ICourseDbContext
+    public class CourseDbContext : BaseDbContext, ICourseDbContext
     {
         public CourseDbContext() : base("CourseDbConnectionString")
         {
@@ -10,5 +11,6 @@ namespace TinyERP.Course.Context
         }
 
         public IDbSet<Entity.Course> Courses { get; set; }
+
     }
 }

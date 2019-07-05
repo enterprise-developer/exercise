@@ -36,10 +36,17 @@
     <Reference Include="Castle.Windsor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.5.0.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting">
@@ -58,11 +65,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\DbContextAttribute.cs" />
     <Compile Include="Common\Attribute\ResponseWrapper.cs" />
+    <Compile Include="Common\Data\BaseDbContext.cs" />
+    <Compile Include="Common\Data\IDbContext.cs" />
     <Compile Include="Common\Data\ResponseData.cs" />
     <Compile Include="Common\Helper\AssemblyHelper.cs" />
     <Compile Include="Common\Helper\JsonHelper.cs" />
     <Compile Include="Common\Helper\NumberHelper.cs" />
+    <Compile Include="Common\Helper\ObjectHelper.cs" />
     <Compile Include="Common\IoC\CastleContainer\BaseContainer.cs" />
     <Compile Include="Common\IoC\IBaseContainer.cs" />
     <Compile Include="Common\IoC\IoC.cs" />
@@ -84,6 +95,7 @@
     <Compile Include="Config\UserManagementElement.cs" />
     <Compile Include="Connector\ConnectorContentType.cs" />
     <Compile Include="Connector\JsonContent.cs" />
+    <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\DbContextFactory.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -56,6 +56,8 @@
     <Compile Include="Api\CoursesController.cs" />
     <Compile Include="Context\CourseDbContext.cs" />
     <Compile Include="Context\ICourseDbContext.cs" />
+    <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\ICourseRepository.cs" />
     <Compile Include="Dto\CreateCourseRequest.cs" />
     <Compile Include="Entity\Course.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

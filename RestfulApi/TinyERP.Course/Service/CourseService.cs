@@ -5,6 +5,7 @@
     using TinyERP.Common.Common.IoC;
     using TinyERP.Common.Data;
     using TinyERP.Course.Context;
+    using TinyERP.Course.Data.Repositories;
     using TinyERP.Course.Dto;
     using TinyERP.UserManagement.Share.Dto;
     using TinyERP.UserManagement.Share.Facade;
@@ -13,8 +14,9 @@
     {
         public IList<Entity.Course> GetCourses()
         {
-            ICourseDbContext context = DbContextFactory.Create<ICourseDbContext>();//new CourseDbContext();
-            return context.Courses.ToList();
+            ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>();
+            return courseRepository.GetCourses();
+
         }
 
         public void CreateCourse(CreateCourseRequest request)
