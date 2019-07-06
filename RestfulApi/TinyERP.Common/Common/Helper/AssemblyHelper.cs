@@ -39,6 +39,11 @@
             return GetTypes<IType>().FirstOrDefault();
         }
 
+        internal static IList<Type> GetInterfaces(object arg)
+        {
+            return arg.GetType().GetInterfaces().Where(item => item.FullName.StartsWith("TinyERP.")).ToList();
+        }
+
         public static IType CreateInstance<IType>(Type type)
         {
             object result = Activator.CreateInstance(type, new object[] { });

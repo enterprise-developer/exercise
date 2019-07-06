@@ -14,7 +14,7 @@ namespace TinyERP.Common.Data
             return AssemblyHelper.CreateInstance<TDbContext>(dbType);
         }
 
-        internal static IDbContext CreateContext<TEntity>()
+        public static IDbContext CreateContext<TEntity>()
         {
             DbContextAttribute dbContextAttribute = ObjectHelper.GetAttribute<DbContextAttribute>(typeof(TEntity));
             if (dbContextAttribute == null || dbContextAttribute.Use == null)

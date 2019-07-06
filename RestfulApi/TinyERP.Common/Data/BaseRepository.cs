@@ -3,20 +3,26 @@
     using System.Data.Entity;
     using TinyERP.Common.Common.Data;
 
-    public abstract class BaseRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         protected IDbSet<TEntity> DbSet { get; private set; }
-        public BaseRepository()
+        public BaseRepository() : this(DbContextFactory.CreateContext<TEntity>())
         {
+        }
 
-            // IDbContext  dbContext = this.Create
-            IDbContext dbContext = DbContextFactory.CreateContext<TEntity>();
+        public BaseRepository(IDbContext dbContext)
+        {
             this.DbSet = dbContext.GetDbSet<TEntity>();
         }
 
         private static IDbContext CreateDbContext<IDbContextType>() where IDbContextType : IDbContext
         {
             return DbContextFactory.Create<IDbContextType>();
+        }
+
+        public void Add(TEntity entity)
+        {
+            this.DbSet.Add(entity);
         }
     }
 }

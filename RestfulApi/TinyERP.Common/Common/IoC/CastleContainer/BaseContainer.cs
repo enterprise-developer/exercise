@@ -1,5 +1,10 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using System;
+using System.Collections.Generic;
+using TinyERP.Common.Common.Data;
+using TinyERP.Common.Common.Helper;
 
 namespace TinyERP.Common.Common.IoC.CastleContainer
 {
@@ -16,9 +21,27 @@ namespace TinyERP.Common.Common.IoC.CastleContainer
             this.container.Register(Component.For<IInterface>().ImplementedBy<Impl>());
         }
 
-        public TResult Resolve<TResult>() where TResult : class
+        public TResult Resolve<TResult>(object[] args = null) where TResult : class
         {
-            return this.container.Resolve<TResult>();
+            //Arguments winsorArg = Arguments.FromTyped(args);
+            if (args == null || args.Length == 0)
+            {
+                return this.container.Resolve<TResult>();
+            }
+            Arguments winsorArg = new Arguments();
+            for (int index = 0; index < args.Length; index++)
+            {
+                if (args[index] == null)
+                {
+                    continue;
+                }
+                IList<Type> types = AssemblyHelper.GetInterfaces(args[index]);
+                foreach (Type item in types)
+                {
+                    winsorArg.AddTyped(item, args[index]);
+                }
+            }
+            return this.container.Resolve<TResult>(winsorArg);
         }
     }
 }

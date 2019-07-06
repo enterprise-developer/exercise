@@ -97,6 +97,7 @@
     <Compile Include="Connector\JsonContent.cs" />
     <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\DbContextFactory.cs" />
+    <Compile Include="Data\IBaseRepository.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

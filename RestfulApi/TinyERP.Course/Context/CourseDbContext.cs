@@ -11,6 +11,6 @@ namespace TinyERP.Course.Context
         }
 
         public IDbSet<Entity.Course> Courses { get; set; }
-
+        public IDbSet<Entity.Student> Students { get; set; }
     }
 }
