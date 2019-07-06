@@ -5,6 +5,7 @@ namespace TinyERP.Course.Repositories
     using System.Linq;
     using TinyERP.Common.Common.Data;
     using TinyERP.Common.Data;
+    using TinyERP.Common.Data.UoW;
     using TinyERP.Course.Data.Repositories;
 
     internal class CourseRepository : BaseRepository<Entity.Course>, ICourseRepository
@@ -14,7 +15,7 @@ namespace TinyERP.Course.Repositories
 
         }
 
-        public CourseRepository(IDbContext dbContext) : base(dbContext)
+        public CourseRepository(IUnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
 
         }

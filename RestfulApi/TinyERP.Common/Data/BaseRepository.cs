@@ -5,6 +5,7 @@
 
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
+        private IDbContext dbContext; 
         protected IDbSet<TEntity> DbSet { get; private set; }
         public BaseRepository() : this(DbContextFactory.CreateContext<TEntity>())
         {
@@ -13,6 +14,7 @@
         public BaseRepository(IDbContext dbContext)
         {
             this.DbSet = dbContext.GetDbSet<TEntity>();
+            this.dbContext = dbContext;
         }
 
         private static IDbContext CreateDbContext<IDbContextType>() where IDbContextType : IDbContext
