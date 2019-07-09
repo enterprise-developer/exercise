@@ -1,11 +1,7 @@
 ﻿namespace TinyERP.UserMangement.Context
 {
-    using System.Data.Entity;
-    using TinyERP.UserMangement.Aggregate;
-    public interface IUserDbContext
+    using TinyERP.Common.Common.Data;
+    public interface IUserDbContext : IDbContext
     {
-        IDbSet<User> Users { get; }
-        IDbSet<UserGroup> UserGroups { get; }
-        int SaveChanges();
     }
 }

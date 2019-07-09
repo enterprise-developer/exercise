@@ -1,5 +1,6 @@
 ﻿namespace TinyERP.Common.Common.IoC
 {
+    using System;
     using TinyERP.Common.Common.IoC.CastleContainer;
     public class IoC
     {
@@ -17,6 +18,12 @@
             where IInterface : class where Impl : IInterface
         {
             IoC.container.RegisterAsSingleton<IInterface, Impl>();
+        }
+
+        public static void RegisterAsTransient<IInterface, Impl>()
+            where IInterface : class where Impl : IInterface
+        {
+            IoC.container.RegisterAsTransient<IInterface, Impl>();
         }
     }
 }

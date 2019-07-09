@@ -5,6 +5,7 @@
     using TinyERP.Common.Common.IoC;
     using TinyERP.Common.Common.Task;
     using TinyERP.UserManagement.Share.Facade;
+    using TinyERP.UserMangement.Repository;
     using TinyERP.UserMangement.Service;
     using TinyERP.UserMangement.Share.Facade;
 
@@ -13,7 +14,7 @@
         public void Execute()
         {
             IoC.RegisterAsSingleton<IUserService, UserService>();
-
+            IoC.RegisterAsTransient<IUserRepository, UserRepository>();
 
             IntegrationModeType mode = TinyERP.Common.Config.Configuration.Instance.UserManagement.IntegrationMode;
             if (mode != IntegrationModeType.Remote)
