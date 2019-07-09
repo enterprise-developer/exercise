@@ -1,32 +1,26 @@
 ﻿namespace TinyERP.UserMangement.Service
 {
     using System.Collections.Generic;
-    using System.Linq;
     using TinyERP.Common.Common.IoC;
     using TinyERP.Common.Common.Validation;
-    using TinyERP.Common.Data;
     using TinyERP.Common.Data.UoW;
     using TinyERP.Common.Service;
     using TinyERP.UserManagement.Share.Dto;
     using TinyERP.UserMangement.Aggregate;
-    using TinyERP.UserMangement.Context;
     using TinyERP.UserMangement.Repository;
 
     public class UserService : BaseService, IUserService
     {
-        private IUserRepository userRepository;
-        public UserService()
-        {
-            this.userRepository = IoC.Resolve<IUserRepository>();
-        }
         public IList<User> GetUsers()
         {
+            IUserRepository userRepository = IoC.Resolve<IUserRepository>();
             return userRepository.GetUsers();
         }
 
         public User GetUser(int userId)
         {
-            return this.userRepository.GetUserDetail(userId);
+            IUserRepository userRepository = IoC.Resolve<IUserRepository>();
+            return userRepository.GetUserDetail(userId);
         }
 
         public User CreateUser(CreateUserRequest request)
@@ -50,7 +44,8 @@
         private void Validate(CreateUserRequest request)
         {
             ValidationException validator = ValidationHelper.Validate(request, "common.invalid.request");
-            if (this.userRepository.GetUserByUserName(request.UserName) != null)
+            IUserRepository userRepository = IoC.Resolve<IUserRepository>();
+            if (userRepository.GetUserByUserName(request.UserName) != null)
             {
                 validator.Add(new ValidationError("addNewUser.userNameWasUsed", "user_name", request.UserName));
             }
@@ -61,11 +56,11 @@
         {
             using (IUnitOfWork unitOfWork = this.CreateUnitOfWork<User>())
             {
-                User user = this.userRepository.GetUserDetail(request.UserId);
+                IUserRepository userRepository = IoC.Resolve<IUserRepository>(unitOfWork);
+                User user = userRepository.GetUserDetail(request.UserId);
                 user.FirstName = request.FirstName;
                 user.LastName = request.LastName;
-                user.UserName = request.UserName;
-                IUserRepository userRepository = IoC.Resolve<IUserRepository>();
+                user.UserName = request.UserName;               
                 userRepository.Update(user);
                 unitOfWork.Commit();
             }
@@ -73,7 +68,8 @@
 
         public User GetUserByUserName(string userName)
         {
-            return this.userRepository.GetUserByUserName(userName);
+            IUserRepository userRepository = IoC.Resolve<IUserRepository>();
+            return userRepository.GetUserByUserName(userName);
         }
     }
 }

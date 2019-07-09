@@ -21,17 +21,17 @@ namespace TinyERP.UserMangement.Repository
 
         public User GetUserByUserName(string userName)
         {
-            return this.DbSet.FirstOrDefault(user => user.UserName.Equals(userName));
+            return this.DbSet.AsQueryable().FirstOrDefault(user => user.UserName.Equals(userName));
         }
 
         public User GetUserDetail(int userId)
         {
-            return this.DbSet.FirstOrDefault(user => user.Id == userId);
+            return this.DbSet.AsQueryable().FirstOrDefault(user => user.Id == userId);
         }
 
         public IList<User> GetUsers()
         {
-            return this.DbSet.ToList();
+            return this.DbSet.AsQueryable().ToList();
         }
     }
 }

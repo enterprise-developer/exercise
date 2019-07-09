@@ -19,7 +19,7 @@ namespace TinyERP.Common.Data
             DbContextAttribute dbContextAttribute = ObjectHelper.GetAttribute<DbContextAttribute>(typeof(TEntity));
             if (dbContextAttribute == null || dbContextAttribute.Use == null)
             {
-                throw new Exception("DbContext not exist!!!");
+                throw new System.Exception("DbContext not exist!!!");
             }
             MethodInfo createMethod = typeof(DbContextFactory).GetMethod("Create", BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public);
             MethodInfo genericMethod = createMethod.MakeGenericMethod(new[] { dbContextAttribute.Use });

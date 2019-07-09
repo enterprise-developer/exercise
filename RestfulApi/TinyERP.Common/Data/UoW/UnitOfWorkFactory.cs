@@ -10,7 +10,7 @@ namespace TinyERP.Common.Data.UoW
             IDbContext dbContext = DbContextFactory.CreateContext<TEntity>();
             if (dbContext == null)
             {
-                throw new Exception("dbContext is null");
+                throw new System.Exception("dbContext is null");
             }
             return new UnitOfWork(dbContext);
         }

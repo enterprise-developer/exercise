@@ -3,7 +3,6 @@ namespace TinyERP.Course.Repositories
 {
     using System.Collections.Generic;
     using System.Linq;
-    using TinyERP.Common.Common.Data;
     using TinyERP.Common.Data;
     using TinyERP.Common.Data.UoW;
     using TinyERP.Course.Data.Repositories;
@@ -21,7 +20,7 @@ namespace TinyERP.Course.Repositories
         }
         public IList<Entity.Course> GetCourses()
         {
-            return this.DbSet.ToList();
+            return this.DbSet.AsQueryable().ToList();
         }
     }
 }

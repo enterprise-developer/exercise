@@ -95,6 +95,7 @@
     <Compile Include="Config\UserManagementElement.cs" />
     <Compile Include="Connector\ConnectorContentType.cs" />
     <Compile Include="Connector\JsonContent.cs" />
+    <Compile Include="Data\BaseDbSet.cs" />
     <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\DbContextFactory.cs" />
     <Compile Include="Data\IBaseRepository.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Data\UoW\UnitOfWork.cs" />
     <Compile Include="Data\UoW\UnitOfWorkFactory.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Exception\UnSupportException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
   </ItemGroup>

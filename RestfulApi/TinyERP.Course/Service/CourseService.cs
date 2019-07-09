@@ -33,7 +33,7 @@
                     AuthorId = authorId
                 };
                 courseRepository.Add(courseEntity);
-                //unitOfWork.Commit();
+                unitOfWork.Commit();
             }
         }
 

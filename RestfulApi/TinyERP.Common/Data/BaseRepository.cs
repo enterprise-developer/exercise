@@ -6,14 +6,14 @@
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private IDbContext dbContext;
-        protected IDbSet<TEntity> DbSet { get; private set; }
-        public BaseRepository() : this(DbContextFactory.CreateContext<TEntity>())
+        protected BaseDbSet<TEntity> DbSet { get; private set; }
+        public BaseRepository() : this(DbContextFactory.CreateContext<TEntity>(), IOMode.ReadOnly)
         {
         }
 
-        public BaseRepository(IDbContext dbContext)
+        public BaseRepository(IDbContext dbContext, IOMode mode = IOMode.Write)
         {
-            this.DbSet = dbContext.GetDbSet<TEntity>();
+            this.DbSet = dbContext.GetDbSet<TEntity>(mode);
             this.dbContext = dbContext;
         }
 
@@ -29,7 +29,7 @@
 
         public void Update(TEntity entity)
         {
-           // this.DbSet.Update(entity);
+            // this.DbSet.Update(entity);
         }
     }
 }
