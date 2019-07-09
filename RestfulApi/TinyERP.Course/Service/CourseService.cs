@@ -3,12 +3,13 @@
     using System.Collections.Generic;
     using TinyERP.Common.Common.IoC;
     using TinyERP.Common.Data.UoW;
+    using TinyERP.Common.Service;
     using TinyERP.Course.Data.Repositories;
     using TinyERP.Course.Dto;
     using TinyERP.UserManagement.Share.Dto;
     using TinyERP.UserManagement.Share.Facade;
 
-    public class CourseService : ICourseService
+    public class CourseService : BaseService, ICourseService
     {
         public IList<Entity.Course> GetCourses()
         {
@@ -36,9 +37,5 @@
             }
         }
 
-        private IUnitOfWork CreateUnitOfWork<TEntity>()
-        {
-            return UnitOfWorkFactory.Create<TEntity>();
-        }
     }
 }
