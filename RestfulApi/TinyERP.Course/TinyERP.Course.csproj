@@ -72,6 +72,8 @@
     <Compile Include="Service\CourseService.cs" />
     <Compile Include="Service\ICourseService.cs" />
     <Compile Include="Share\Task\Bootstrap.cs" />
+    <Compile Include="Share\Task\CreateSeedDataCourseDbContext.cs" />
+    <Compile Include="Share\Task\ICreateSeedDataCourseDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyERP.Common\TinyERP.Common.csproj">

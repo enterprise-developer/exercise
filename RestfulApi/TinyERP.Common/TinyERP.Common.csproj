@@ -87,6 +87,7 @@
     <Compile Include="Common\Task\IApplicationStarted.cs" />
     <Compile Include="Common\Task\IBaseTask.cs" />
     <Compile Include="Common\Task\IBootStrapper.cs" />
+    <Compile Include="Common\Task\ICreateSeedDataDbContext.cs" />
     <Compile Include="Common\Validation\Attr\Required.cs" />
     <Compile Include="Common\Validation\BaseValidationAttribute.cs" />
     <Compile Include="Common\Validation\ValidationError.cs" />

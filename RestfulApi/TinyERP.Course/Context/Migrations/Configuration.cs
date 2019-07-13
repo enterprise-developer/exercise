@@ -4,6 +4,8 @@ namespace TinyERP.Course.Context.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TinyERP.Common.Common.Helper;
+    using TinyERP.Course.Share.Task;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TinyERP.Course.Context.CourseDbContext>
     {
@@ -19,6 +21,7 @@ namespace TinyERP.Course.Context.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            AssemblyHelper.Execute<ICreateSeedDataCourseDbContext>();
         }
     }
 }
