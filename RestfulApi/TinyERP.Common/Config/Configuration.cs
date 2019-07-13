@@ -28,7 +28,7 @@ namespace TinyERP.Common.Config
         }
         [ConfigurationProperty("databaseConnections")]
         [ConfigurationCollection(typeof(DatabaseConnectionsElement), AddItemName = "add", ClearItemsName = "clear", RemoveItemName = "remove")]
-        public DatabaseConnectionsElement DatabaseConnection
+        public DatabaseConnectionsElement DatabaseConnections
         {
             get
             {

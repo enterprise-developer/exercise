@@ -9,7 +9,7 @@ namespace TinyERP.Common.Common.Helper
         public static ConnectionString GetConnection<IDbType>()
         {
             string idbContextName = typeof(IDbType).FullName;
-            DatabaseConnectionElement databaseConnection = Configuration.Instance.DatabaseConnection[idbContextName];
+            DatabaseConnectionElement databaseConnection = Configuration.Instance.DatabaseConnections[idbContextName];
             if (databaseConnection == null) {
                 throw new UnSupportException($"Can not found connection String to {idbContextName}");
             }

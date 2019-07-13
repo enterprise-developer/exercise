@@ -56,7 +56,12 @@
     <Compile Include="Api\CoursesController.cs" />
     <Compile Include="Context\CourseDbContext.cs" />
     <Compile Include="Context\ICourseDbContext.cs" />
+    <Compile Include="Context\Migrations\201907131416108_Add-Course.cs" />
+    <Compile Include="Context\Migrations\201907131416108_Add-Course.Designer.cs">
+      <DependentUpon>201907131416108_Add-Course.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Student.cs" />
+    <Compile Include="Context\Migrations\Configuration.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />
     <Compile Include="Dto\CreateCourseRequest.cs" />
@@ -81,6 +86,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Migrations\201907131416108_Add-Course.resx">
+      <DependentUpon>201907131416108_Add-Course.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

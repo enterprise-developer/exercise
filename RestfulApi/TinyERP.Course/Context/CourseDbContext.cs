@@ -8,7 +8,8 @@ namespace TinyERP.Course.Context
     {
         public CourseDbContext() : base(DatabaseConnectionHelper.GetConnection<ICourseDbContext>().ToString())
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CourseDbContext>());
+            //Database.SetInitializer<CourseDbContext>(null);
+
         }
 
         public IDbSet<Entity.Course> Courses { get; set; }
