@@ -30,7 +30,7 @@
                 {
                     Name = request.Name,
                     Description = request.Description,
-                    AuthorId = authorId
+                    AuthorId = 2
                 };
                 courseRepository.Add(courseEntity);
                 unitOfWork.Commit();

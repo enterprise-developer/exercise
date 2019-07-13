@@ -71,6 +71,7 @@
     <Compile Include="Common\Data\IDbContext.cs" />
     <Compile Include="Common\Data\ResponseData.cs" />
     <Compile Include="Common\Helper\AssemblyHelper.cs" />
+    <Compile Include="Common\Helper\DatabaseConnectionHelper.cs" />
     <Compile Include="Common\Helper\JsonHelper.cs" />
     <Compile Include="Common\Helper\NumberHelper.cs" />
     <Compile Include="Common\Helper\ObjectHelper.cs" />
@@ -92,11 +93,15 @@
     <Compile Include="Common\Validation\ValidationException.cs" />
     <Compile Include="Common\Validation\ValidationHelper.cs" />
     <Compile Include="Config\Configuration.cs" />
+    <Compile Include="Config\DatabaseConnectionElement.cs" />
+    <Compile Include="Config\DatabaseConnectionsElement.cs" />
     <Compile Include="Config\UserManagementElement.cs" />
     <Compile Include="Connector\ConnectorContentType.cs" />
     <Compile Include="Connector\JsonContent.cs" />
     <Compile Include="Data\BaseDbSet.cs" />
     <Compile Include="Data\BaseRepository.cs" />
+    <Compile Include="Data\ConnectionString.cs" />
+    <Compile Include="Data\DatabaseConnectionFactory.cs" />
     <Compile Include="Data\DbContextFactory.cs" />
     <Compile Include="Data\IBaseRepository.cs" />
     <Compile Include="Data\UoW\IUnitOfWork.cs" />

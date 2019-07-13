@@ -13,7 +13,7 @@
     {
         public void Execute()
         {
-            IoC.RegisterAsSingleton<IUserService, UserService>();
+            IoC.RegisterAsTransient<IUserService, UserService>();
             IoC.RegisterAsTransient<IUserRepository, UserRepository>();
 
             IntegrationModeType mode = TinyERP.Common.Config.Configuration.Instance.UserManagement.IntegrationMode;

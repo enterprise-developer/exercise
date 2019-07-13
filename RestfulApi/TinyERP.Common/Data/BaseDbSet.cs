@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using TinyERP.Common.Common.Data;
 using TinyERP.Common.Exception;
 
 namespace TinyERP.Common.Data
@@ -20,7 +18,7 @@ namespace TinyERP.Common.Data
 
         public void Add(TEntity entity)
         {
-            if (mode == IOMode.ReadOnly)
+            if (this.mode == IOMode.ReadOnly)
             {
                 throw new UnSupportException(string.Format("invalid mode:{0}", mode));
             }

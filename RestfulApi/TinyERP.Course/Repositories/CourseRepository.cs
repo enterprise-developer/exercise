@@ -1,5 +1,4 @@
-﻿
-namespace TinyERP.Course.Repositories
+﻿namespace TinyERP.Course.Repositories
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,15 +8,9 @@ namespace TinyERP.Course.Repositories
 
     internal class CourseRepository : BaseRepository<Entity.Course>, ICourseRepository
     {
-        public CourseRepository() : base()
-        {
+        public CourseRepository() : base() { }
 
-        }
-
-        public CourseRepository(IUnitOfWork unitOfWork) : base(unitOfWork.Context)
-        {
-
-        }
+        public CourseRepository(IUnitOfWork unitOfWork) : base(unitOfWork.Context) { }
         public IList<Entity.Course> GetCourses()
         {
             return this.DbSet.AsQueryable().ToList();

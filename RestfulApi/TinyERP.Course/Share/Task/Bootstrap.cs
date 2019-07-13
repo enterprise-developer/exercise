@@ -11,8 +11,8 @@
     {
         public void Execute()
         {
-            IoC.RegisterAsSingleton<ICourseService, CourseService>();
-            IoC.RegisterAsSingleton<ICourseRepository, CourseRepository>();
+            IoC.RegisterAsTransient<ICourseService, CourseService>();
+            IoC.RegisterAsTransient<ICourseRepository, CourseRepository>();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace TinyERP.UserMangement.Repository
+﻿namespace TinyERP.UserMangement.Repository
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,15 +8,9 @@ namespace TinyERP.UserMangement.Repository
 
     internal class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository() : base()
-        {
+        public UserRepository() : base() { }
 
-        }
-
-        public UserRepository(IUnitOfWork unitOfWork) : base(unitOfWork.Context)
-        {
-
-        }
+        public UserRepository(IUnitOfWork unitOfWork) : base(unitOfWork.Context) { }
 
         public User GetUserByUserName(string userName)
         {

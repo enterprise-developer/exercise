@@ -1,11 +1,12 @@
 ﻿using System.Data.Entity;
 using TinyERP.Common.Common.Data;
+using TinyERP.Common.Common.Helper;
 
 namespace TinyERP.Course.Context
 {
     public class CourseDbContext : BaseDbContext, ICourseDbContext
     {
-        public CourseDbContext() : base("CourseDbConnectionString")
+        public CourseDbContext() : base(DatabaseConnectionHelper.GetConnection<ICourseDbContext>().ToString())
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CourseDbContext>());
         }
