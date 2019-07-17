@@ -5,7 +5,6 @@
     using TinyERP.Course.Data.Repositories;
     using TinyERP.Course.Repositories;
     using TinyERP.Course.Service;
-    using TinyERP.UserManagement.Share.Facade;
 
     public class Bootstrap : IBootStrapper
     {

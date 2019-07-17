@@ -18,7 +18,7 @@ namespace REST
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AssemblyHelper.Execute<IApplicationStarted>();
             AssemblyHelper.Execute<IBootStrapper>();
-            //AssemblyHelper.Execute<IApplicationReady>();
+            AssemblyHelper.Execute<IApplicationReady>();
         }
 
         protected void Application_End()

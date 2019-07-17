@@ -1,6 +1,6 @@
 ﻿namespace TinyERP.Common.Common.Task
 {
-    public interface ICreateSeedDataDbContext : IBaseTask
+    public interface ICreateSeedDataDbContext : IApplicationReady
     {
     }
 }

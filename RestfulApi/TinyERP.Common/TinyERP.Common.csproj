@@ -93,6 +93,8 @@
     <Compile Include="Common\Validation\ValidationError.cs" />
     <Compile Include="Common\Validation\ValidationException.cs" />
     <Compile Include="Common\Validation\ValidationHelper.cs" />
+    <Compile Include="Config\ApplicationTaskElement.cs" />
+    <Compile Include="Config\ApplicationTasksElement.cs" />
     <Compile Include="Config\Configuration.cs" />
     <Compile Include="Config\DatabaseConnectionElement.cs" />
     <Compile Include="Config\DatabaseConnectionsElement.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Exception\UnSupportException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Tasks\BaseTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
