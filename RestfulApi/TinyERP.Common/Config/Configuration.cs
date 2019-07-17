@@ -37,7 +37,7 @@ namespace TinyERP.Common.Config
         }
 
         [ConfigurationProperty("tasks")]
-        [ConfigurationCollection(typeof(ApplicationTasksElement), AddItemName = "add", ClearItemsName = "clear", RemoveItemName = "remove")]
+        [ConfigurationCollection(typeof(ApplicationTasksElement), AddItemName = "task", ClearItemsName = "clear", RemoveItemName = "remove")]
         public ApplicationTasksElement ApplicationTasks
         {
             get

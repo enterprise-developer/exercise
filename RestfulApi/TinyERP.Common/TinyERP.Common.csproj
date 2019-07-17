@@ -72,6 +72,7 @@
     <Compile Include="Common\Data\ResponseData.cs" />
     <Compile Include="Common\Helper\AssemblyHelper.cs" />
     <Compile Include="Common\Helper\DatabaseConnectionHelper.cs" />
+    <Compile Include="Common\Helper\EnumHelper.cs" />
     <Compile Include="Common\Helper\JsonHelper.cs" />
     <Compile Include="Common\Helper\NumberHelper.cs" />
     <Compile Include="Common\Helper\ObjectHelper.cs" />

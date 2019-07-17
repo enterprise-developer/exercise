@@ -10,4 +10,9 @@
         ReadOnly = 1,
         Write = 2
     }
+    public enum TaskRunningMode
+    {
+        AllowAll = 1,
+        DenyAll = 2
+    }
 }

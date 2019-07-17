@@ -10,7 +10,8 @@ namespace TinyERP.Common.Tasks
             get
             {
                 ApplicationTaskElement config = Configuration.Instance.ApplicationTasks[this.GetType().FullName];
-                return config == null || config.Enable;
+                TaskRunningMode runningMode = Configuration.Instance.ApplicationTasks.Mode;
+                return config != null ? config.Enable : runningMode == TaskRunningMode.AllowAll;
             }
         }
 

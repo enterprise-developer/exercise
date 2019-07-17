@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using TinyERP.Common.Common.Helper;
 
 namespace TinyERP.Common.Config
 {
@@ -13,9 +14,19 @@ namespace TinyERP.Common.Config
         {
             return ((ApplicationTaskElement)element).Name;
         }
-        public new ApplicationTaskElement this[string name] {
-            get {
+        public new ApplicationTaskElement this[string name]
+        {
+            get
+            {
                 return (ApplicationTaskElement)this.BaseGet(name);
+            }
+        }
+        [ConfigurationProperty("mode")]
+        public TaskRunningMode Mode
+        {
+            get
+            {
+                return EnumHelper.Parse<TaskRunningMode>(base["mode"].ToString());
             }
         }
     }
