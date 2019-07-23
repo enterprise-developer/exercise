@@ -14,15 +14,18 @@ namespace TinyERP.UserManagement.Share.Facade
         {
             HttpClient client = new HttpClient();
             string userUrl = TinyERP.Common.Config.Configuration.Instance.UserManagement.ApiEndpoint; //ConfigurationManager.AppSettings["UserManagementUrl"];
-            HttpResponseMessage response = client.PostAsync(userUrl + "/createIfNotExist",
-                new JsonContent<CreateUserRequest>(createUserRequest)).Result;
+            HttpResponseMessage response = client.PostAsync(userUrl + "/createIfNotExist", new JsonContent<CreateUserRequest>(createUserRequest)).Result;
             response.EnsureSuccessStatusCode();
             string result = response.Content.ReadAsStringAsync().Result;
 
             int userId = 0;
 
             ResponseData respondData = JsonHelper.ToObject<ResponseData>(result);
-            userId = int.Parse(respondData.Data.ToString());
+            if (respondData != null && respondData.Data != null)
+            {
+                userId = int.Parse(respondData.Data.ToString());
+            }
+
             return userId;
         }
     }
