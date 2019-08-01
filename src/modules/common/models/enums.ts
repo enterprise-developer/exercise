@@ -14,7 +14,8 @@ export enum IoCLifecycle {
 export enum IoCNames {
     IResourceManager = "IResourceManager",
     IConnector = "IConnector",
-    IStudentService = "IStudentService"
+    IStudentService = "IStudentService",
+    IAppSettingService = "IAppSettingService"
 }
 
 
@@ -30,3 +31,14 @@ export enum LanguageCodes {
 export enum ConnectorType {
     Json = 1
 }
+
+export interface IConfigDomain {
+    key: string;
+    value: string;
+}
+
+
+export class IConfigModel {
+    domains: Array<IConfigDomain>;
+}
+

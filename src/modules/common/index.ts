@@ -4,3 +4,7 @@ export { IoCFactory } from "./ioc/iocFactory";
 export * from "./models/enums";
 export { Promise } from "./models/promise";
 export { IConnector } from "./connector/iconnector";
+export {ConnectorFactory} from "./connector/connectorFactory";
+export { BaseService } from "./services/baseService";
+export { AppSettingService } from "./services/appSettingService";
+export {IAppSettingService } from "./services/iappSettingService";

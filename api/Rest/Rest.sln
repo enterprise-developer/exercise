@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learning", "Learning\Learning.csproj", "{D1A4CAAF-1546-4DBC-A0D8-8CC7141BE40A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.Common", "TinyERP.Common\TinyERP.Common.csproj", "{CE0103FA-D99F-4728-845F-C9DE808D716D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1A4CAAF-1546-4DBC-A0D8-8CC7141BE40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A4CAAF-1546-4DBC-A0D8-8CC7141BE40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A4CAAF-1546-4DBC-A0D8-8CC7141BE40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A4CAAF-1546-4DBC-A0D8-8CC7141BE40A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0103FA-D99F-4728-845F-C9DE808D716D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0103FA-D99F-4728-845F-C9DE808D716D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0103FA-D99F-4728-845F-C9DE808D716D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0103FA-D99F-4728-845F-C9DE808D716D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F4F2FBA-F399-4EDA-903D-306503453848}
+	EndGlobalSection
+EndGlobal

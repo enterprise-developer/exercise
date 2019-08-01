@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "es5",
     "module": "system",
     "sourceMap": true,
@@ -13,8 +14,10 @@
       "es2015",
       "dom"
     ],
-    "paths":{
-      "@app/common":["src/modules/common/index"]
+    "paths": {
+      "@app/common": [
+        "src/modules/common/index"
+      ]
     }
   },
   "exclude": [
