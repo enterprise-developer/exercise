@@ -24,7 +24,7 @@ export class Promise {
         return self;
     }
 
-    private subscribe(callback: any): Promise {
+    public subscribe(callback: any): Promise {
         this.subscribeCallback = callback;
         return this;
     }

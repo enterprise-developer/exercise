@@ -1,5 +1,8 @@
 {
     "students":{
-        "title":"Student Management"
+        "title":"Student Management",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "userName": "User Name"
     }
 }

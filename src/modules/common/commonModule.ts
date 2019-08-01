@@ -1,11 +1,17 @@
 import { NgModule } from "@angular/core";
 import { Page } from "./components/pages/page";
+import { PageContent } from "./components/pages/pageContent";
+import { Grid } from "./components/grid/grid";
 @NgModule({
     declarations: [
-        Page
+        Page,
+        PageContent,
+        Grid
     ],
     exports: [
-        Page
+        Page,
+        PageContent,
+        Grid
     ]
 })
 export class AppCommonModule {

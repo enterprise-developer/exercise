@@ -13,7 +13,8 @@ export enum IoCLifecycle {
 
 export enum IoCNames {
     IResourceManager = "IResourceManager",
-    IConnector = "IConnector"
+    IConnector = "IConnector",
+    IStudentService = "IStudentService"
 }
 
 

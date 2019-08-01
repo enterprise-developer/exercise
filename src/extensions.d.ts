@@ -1,5 +1,6 @@
 declare interface Window {
     ioc: IIoCContainer;
+    jQuery: any;
 }
 
 declare interface IIoCContainer {
