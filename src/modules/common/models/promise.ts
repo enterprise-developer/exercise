@@ -12,6 +12,8 @@ export class Promise {
     private status: PromiseStatus;
     private data?: any;
     private successCallback: any;
+    private failedCallback:any;
+    private errors: Array<string>;
     constructor() {
         this.id = guidHelper.newGuid();
     }
@@ -45,6 +47,9 @@ export class Promise {
         if (this.status == PromiseStatus.Success && !!this.successCallback) {
             this.successCallback(this.data);
         }
+        if(this.status == PromiseStatus.Failed){
+            this.failedCallback(this.errors);
+        }
     }
 
     public resolve(data?: any): Promise {
@@ -59,4 +64,12 @@ export class Promise {
         this.processCallback();
         return this;
     }
+
+    public reject(errors?:Array<string>): Promise {
+        this.status = PromiseStatus.Failed;
+        this.errors = errors;
+        this.processCallback();
+        return this;
+    }
+
 }

@@ -21,7 +21,8 @@ export enum IoCNames {
 
 export enum PromiseStatus {
     Subscribe = 1,
-    Success = 2
+    Success = 2,
+    Failed=3
 }
 
 export enum LanguageCodes {
@@ -42,3 +43,6 @@ export class IConfigModel {
     domains: Array<IConfigDomain>;
 }
 
+export enum HttpStatusCode{
+    OK = 200
+}

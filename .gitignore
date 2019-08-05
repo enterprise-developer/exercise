@@ -6,3 +6,8 @@ api/Rest/Learning/bin/
 api/Rest/packages/Microsoft.Net.Compilers.2.4.0/
 api/Rest/packages/
 api/Rest/Learning/obj/
+api/Rest/Learning.Api/bin/
+api/Rest/Learning.Api/obj/
+api/Rest/Learning.Api/Scripts/
+api/Rest/TinyERP.Common/obj/
+api/Rest/Learning.Api/Areas/

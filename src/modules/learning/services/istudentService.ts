@@ -1,4 +1,4 @@
-import { Promise } from "@angular/common";
+import { Promise } from "@app/common";
 export interface IStudentService {
     getStudents(): Promise;
 }
