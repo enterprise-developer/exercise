@@ -1,0 +1,14 @@
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\TinyERP.Common.dll
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\TinyERP.Common.pdb
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\System.Web.Http.dll
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\Newtonsoft.Json.dll
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\System.Web.Http.xml
+G:\training\onlineTraining\api\Rest\TinyERP.Common\obj\Debug\TinyERP.Common.csprojResolveAssemblyReference.cache
+G:\training\onlineTraining\api\Rest\TinyERP.Common\obj\Debug\TinyERP.Common.csproj.CoreCompileInputs.cache
+G:\training\onlineTraining\api\Rest\TinyERP.Common\obj\Debug\TinyERP.Common.csproj.CopyComplete
+G:\training\onlineTraining\api\Rest\TinyERP.Common\obj\Debug\TinyERP.Common.dll
+G:\training\onlineTraining\api\Rest\TinyERP.Common\obj\Debug\TinyERP.Common.pdb
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\Castle.Core.dll
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\Castle.Windsor.dll
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\Castle.Core.xml
+G:\training\onlineTraining\api\Rest\TinyERP.Common\bin\Debug\Castle.Windsor.xml
