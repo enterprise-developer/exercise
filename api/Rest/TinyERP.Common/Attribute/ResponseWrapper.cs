@@ -26,8 +26,8 @@
             }
             if (context.Exception == null && context.Response.StatusCode != HttpStatusCode.NoContent)
             {
-                HttpContent dataObject = (HttpContent)context.Response.Content;
-                response.Data = dataObject;
+                ObjectContent dataObject = (ObjectContent)context.Response.Content;
+                response.Data = dataObject.Value;
                 response.StatusCode = HttpStatusCode.OK;
             }
             context.Response = context.Request.CreateResponse(response.StatusCode, response);

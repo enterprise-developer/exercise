@@ -24,7 +24,7 @@ export class ResourceManager implements IResourceManager {
     private getLocaleByName(name: string): Promise {
         let def = PromiseFactory.create();
 
-        let url: string = String.format("/resource/locales/{0}.{1}.json", name, this.languageCode);
+        let url: string = String.format("resources/locales/{0}.{1}.json", name, this.languageCode);
         let iconnector: IConnector = ConnectorFactory.create(ConnectorType.Json);
         let self = this;
         iconnector.get(url).then(function (data: any) {

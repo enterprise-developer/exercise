@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { BasePage } from "@app/common";
-import { IGridOption } from "../../common/grid/igridOption";
+import { IGridOption } from "../../common/components/grid/igridOption";
 import { PromiseFactory } from "../../common/models/promise";
 import { IoCNames } from "../../common";
 import {IStudentService} from "../services/istudentService";

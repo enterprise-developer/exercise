@@ -8,14 +8,17 @@ import { IResourceManager } from "./modules/common/services/iresourceManager";
 import { IoCNames } from "./modules/common";
 import { IAppSettingService } from "@app/common";
 import appConfig from "./apps/default/appConfig";
+import { HttpModule } from "@angular/http";
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         RouterModule,
+        HttpModule,
         AppRoutes
     ],
-    declarations: [Layout]
+    declarations: [Layout],
+    entryComponents: [Layout]
 
 })
 export class AppModule {

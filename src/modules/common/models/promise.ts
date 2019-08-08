@@ -10,12 +10,12 @@ export class Promise {
     public id: string;
     private subscribeCallback: any;
     private status: PromiseStatus;
-    private data?: any;
+    public data?: any;
     private successCallback: any;
-    private failedCallback:any;
+    private failedCallback: any;
     private errors: Array<string>;
     constructor() {
-        this.id = guidHelper.newGuid();
+        this.id = guidHelper.create();
     }
     public resolveAll(subPromise: Promise): Promise {
         let self = this;
@@ -27,6 +27,7 @@ export class Promise {
     }
 
     public subscribe(callback: any): Promise {
+        this.status = PromiseStatus.Subscribe;
         this.subscribeCallback = callback;
         return this;
     }
@@ -34,7 +35,7 @@ export class Promise {
     private checkComplete(subPromise: Promise): void {
         this.queue = this.queue.removeItem(subPromise.id);
         if (this.queue.isEmpty()) {
-            this.status = PromiseStatus.Subscribe;
+            this.status = PromiseStatus.Success;
             this.processCallback();
         }
     }
@@ -47,14 +48,15 @@ export class Promise {
         if (this.status == PromiseStatus.Success && !!this.successCallback) {
             this.successCallback(this.data);
         }
-        if(this.status == PromiseStatus.Failed){
+        if (this.status == PromiseStatus.Failed) {
             this.failedCallback(this.errors);
         }
     }
 
     public resolve(data?: any): Promise {
+
         this.data = data;
-        this.status = PromiseStatus.Success;
+        this.status = this.status != PromiseStatus.Subscribe ? PromiseStatus.Success : this.status;
         this.processCallback();
         return this;
     }
@@ -65,7 +67,7 @@ export class Promise {
         return this;
     }
 
-    public reject(errors?:Array<string>): Promise {
+    public reject(errors?: Array<string>): Promise {
         this.status = PromiseStatus.Failed;
         this.errors = errors;
         this.processCallback();

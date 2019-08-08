@@ -1,3 +1,3 @@
 export enum LearningConst{
-    UrlApi = "learningsUrlApi"
+    UrlApi = "learningUrlApi"
 }

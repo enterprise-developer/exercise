@@ -2,8 +2,8 @@ import { IConnector } from "./iconnector";
 import { PromiseFactory, Promise } from "../models/promise";
 import { Http } from "@angular/http";
 import 'rxjs/add/operator/map';
-import {ResponseModel} from "../models/responseModel";
-import {HttpStatusCode} from "../models/enums";
+import { ResponseModel } from "../models/responseModel";
+import { HttpStatusCode } from "../models/enums";
 export class JsonConnector implements IConnector {
     public get(url: string): Promise {
         let def = PromiseFactory.create();

@@ -1,4 +1,4 @@
-import { Promise } from "../models/promise";
+import { Promise } from "../../models/promise";
 export interface IGridOption {
     data: Promise;
     columns: Array<IGridColumn>;

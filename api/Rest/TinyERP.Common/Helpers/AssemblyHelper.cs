@@ -37,14 +37,14 @@
         {
             IList<string> dlls = new List<string>();
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().EscapedCodeBase).Replace("file:\\", string.Empty);
-            dlls = Directory.GetFiles(path, ".dll").Where(item => IsCustomeClass(item)).Select(file => Path.GetFileNameWithoutExtension(file)).ToList();
+            dlls = Directory.GetFiles(path, "*.dll").Where(item => IsCustomeClass(item)).Select(file => Path.GetFileNameWithoutExtension(file)).ToList();
             return dlls;
         }
 
         private static bool IsCustomeClass(string item)
         {
             Regex regex = new Regex(@"^(TinyERP.|Learning.)");
-            Match match = regex.Match(item);
+            Match match = regex.Match(Path.GetFileName(item));
             return match.Success;
         }
     }

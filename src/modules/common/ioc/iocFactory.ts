@@ -17,7 +17,7 @@ class IoCContainer implements IIoCContainer {
 
     public resolve(name: string | any): any {
         if (typeof name != "string") {
-            return this.getTypeAngular(name);
+            return this.getAngularType(name);
         }
 
         let registration: IIoCRegistration = this.registrations.firstOrDefault((item: IIoCRegistration) => {
@@ -32,7 +32,7 @@ class IoCContainer implements IIoCContainer {
         return iocBuilder.build();
     }
 
-    private getTypeAngular(type: any): any {
+    private getAngularType(type: any): any {
         return this.injector.get(type);
     }
 

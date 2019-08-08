@@ -41,7 +41,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,7 +59,7 @@
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Services\IStudentService.cs" />
     <Compile Include="Services\StudentService.cs" />
-    <Compile Include="Task\Bootstrapper.cs.cs" />
+    <Compile Include="Task\Bootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyERP.Common\TinyERP.Common.csproj">

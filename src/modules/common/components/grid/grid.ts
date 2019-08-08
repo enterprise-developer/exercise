@@ -1,6 +1,7 @@
 import { Input, DoCheck, Component, AfterViewInit } from "@angular/core";
 import { IGridOption, IGridColumn } from "./igridOption";
-import guidHelper from "../helpers/guid";
+import guidHelper from "../../helpers/guid";
+import {Promise} from "../../models/promise";
 @Component({
     selector: "grid",
     template: `<table id="{{id}}" width="100%">
@@ -15,8 +16,8 @@ export class Grid implements DoCheck, AfterViewInit {
     }
     public ngAfterViewInit(): void {
         let self = this;
-        this.options.data.subscribe((data: any) => {
-            self.renderDataTable(data || []);
+        this.options.data.subscribe((def: Promise) => {
+            self.renderDataTable(def.data || []);
         });
     }
     public ngDoCheck(): void {
@@ -32,7 +33,7 @@ export class Grid implements DoCheck, AfterViewInit {
         this.grid.rows.add(data).draw(false);
     }
     private renderColums(): Array<any> {
-        let columns: Array<any>;
+        let columns: Array<any> = [];
         if (!this.options.columns) { return; }
         this.options.columns.forEach((item: IGridColumn) => {
             columns.push({
