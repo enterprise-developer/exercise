@@ -33,4 +33,13 @@ export class ResourceManager implements IResourceManager {
         });
         return def;
     }
+
+    public resolve(key: string): string {
+        let subKeys = key.split(".");
+        let result = this.locales;
+        subKeys.forEach((sub: string) => {
+            result = result[sub];
+        });
+        return result;
+    }
 }

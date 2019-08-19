@@ -6,8 +6,9 @@ import { Component, Input } from "@angular/core";
     <div class="x_panel">
         <div class="x_title">
             <h2>{{title}}</h2>
+            <ng-content select="page-command"></ng-content>
             <div class="clearfix"></div>
-        </div>
+        </div>        
         <div class="x_content">
             <ng-content select="page-content"></ng-content>
         </div>

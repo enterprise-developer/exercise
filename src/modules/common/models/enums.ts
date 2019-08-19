@@ -15,14 +15,15 @@ export enum IoCNames {
     IResourceManager = "IResourceManager",
     IConnector = "IConnector",
     IStudentService = "IStudentService",
-    IAppSettingService = "IAppSettingService"
+    IAppSettingService = "IAppSettingService",
+    IEventManager = "IEventManager"
 }
 
 
 export enum PromiseStatus {
     Subscribe = 1,
     Success = 2,
-    Failed=3
+    Failed = 3
 }
 
 export enum LanguageCodes {
@@ -39,10 +40,20 @@ export interface IConfigDomain {
 }
 
 
-export class IConfigModel {
+export interface IConfigModel {
     domains: Array<IConfigDomain>;
 }
 
-export enum HttpStatusCode{
+export enum HttpStatusCode {
     OK = 200
+}
+
+export interface IButtonModel {
+    onClicked: (event?: any) => void;
+    text: string;
+    cls: string;
+}
+
+export enum ValidationMessage {
+    InvalidState = "invalid-state"
 }
