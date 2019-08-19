@@ -2,7 +2,7 @@ import { IEventManager } from "../../services/ieventManager";
 import { IoCNames } from "../../models/enums";
 import { ValidationResult } from "../../models/ivalidationResult";
 export function required(errorKey: string) {
-    return function (target: string, propertyKey: string) {
+    return function (target: any, propertyKey: string) {
 
         let setFunc = function (val: any) {
             target[propertyKey] = val;
