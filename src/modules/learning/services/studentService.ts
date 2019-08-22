@@ -12,4 +12,9 @@ export class StudentService extends BaseService implements IStudentService {
         let connector: IConnector = ConnectorFactory.create(ConnectorType.Json);
         return connector.get(this.resolveUrl(url));
     }
+    public addNewStudent(item: any): Promise {
+        let url: string = "/students";
+        let connector: IConnector = ConnectorFactory.create(ConnectorType.Json);
+        return connector.post(this.resolveUrl(url), item);
+    }
 }

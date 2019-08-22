@@ -9,4 +9,7 @@ export { BaseService } from "./services/baseService";
 export { AppSettingService } from "./services/appSettingService";
 export { IAppSettingService } from "./services/iappSettingService";
 export { EventManager } from "./services/eventManager";
+export {BaseModel} from "./models/baseModel";
 export * from "./components/decorators/required";
+export * from "./components/decorators/minLength";
+export * from "./components/decorators/maxLength";

@@ -8,8 +8,15 @@
     },
     "addNewStudent":{
         "title":"Add New Student",
-        "firstNameIsRequired": "First Name is required",
-        "firstNameUnderMinLenght":"Min lenght is 6 letters",
-        "firstNameExcessMaxLenght":"Max lenght is 50 letters"
+        "firstNameIsRequired": "First Name was required",
+        "firstNameUnderMinLength": "First Name is under min length",
+        "firstNameExcessMaxLength": "First Name is excess max length",
+        "lastNameIsRequired": "Last Name was required",
+        "lastNameUnderMinLength": "Last Name is under min length",
+        "lastNameExcessMaxLength": "Last Name is excess max length",
+        "userNameIsRequired": "Usert Name was required",
+        "userNameUnderMinLength": "User Name is under min length",
+        "userNameExcessMaxLength": "User Name is excess max length",
+        "userNameHasExisted": "User Name has existed"
     }
 }

@@ -1,26 +1,12 @@
-import { IEventManager } from "../../services/ieventManager";
-import { IoCNames } from "../../models/enums";
-import { ValidationResult } from "../../models/ivalidationResult";
-export function required(errorKey: string) {
+import decoratorHelper from "../../helpers/decoratorHelper";
+import { ValidationStatus } from "../../models/enums";
+export function required(messageKey: string) {
     return function (target: any, propertyKey: string) {
-
-        let setFunc = function (val: any) {
-            target[propertyKey] = val;
-            let eventManager: IEventManager = window.ioc.resolve(IoCNames.IEventManager);
-            if (!val) {
-                let validationResult = new ValidationResult();
-                validationResult.isValid = false;
-                validationResult.messageKey = errorKey;
-                eventManager.publish(validationResult);
-            }
+        target[ValidationStatus.InvalidState] = target[ValidationStatus.InvalidState] || [];
+        target[ValidationStatus.InvalidState].push(messageKey);
+        return decoratorHelper.defineDecorator(target, propertyKey, messageKey, isValid);
+        function isValid(value: any): boolean {
+            return !value;
         }
-        let getFunc = function () {
-            return target[propertyKey];
-        }
-
-        Object.defineProperty(target, propertyKey, {
-            get: getFunc,
-            set: setFunc
-        });
     }
 }

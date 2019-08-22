@@ -57,3 +57,6 @@ export interface IButtonModel {
 export enum ValidationMessage {
     InvalidState = "invalid-state"
 }
+export enum ValidationStatus {
+    InvalidState = "invalid"
+}

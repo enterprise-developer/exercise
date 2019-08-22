@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
-import {AddNewStudentModel} from "../models/addNewStudentModel";
+import { AddNewStudentModel } from "../models/addNewStudentModel";
+import { IStudentService } from "../services/istudentService";
+import { IoCNames } from "@app/common";
 @Component({
     template: `
     <page title="i18n.learning.addNewStudent.title">
@@ -9,8 +11,8 @@ import {AddNewStudentModel} from "../models/addNewStudentModel";
                     [title]="i18n.learning.addNewStudent.firstName" 
                     [validations]="[
                         'learning.addNewStudent.firstNameIsRequired',
-                        'learning.addNewStudent.firstNameUnderMinLenght',
-                        'learning.addNewStudent.firstNameExcessMaxLenght'
+                        'learning.addNewStudent.firstNameUnderMinLength',
+                        'learning.addNewStudent.firstNameExcessMaxLength'
                         ]"
                     [(model)]="model.firstName"
                 >
@@ -19,8 +21,8 @@ import {AddNewStudentModel} from "../models/addNewStudentModel";
                     [title]="i18n.learning.addNewStudent.lastName" 
                     [validations]="[
                         'learning.addNewStudent.lastNameIsRequired',
-                        'learning.addNewStudent.minLenghtExceed',
-                        'learning.addNewStudent.maxLenghtExceed'
+                        'learning.addNewStudent.lastNameUnderMinLength',
+                        'learning.addNewStudent.lastNameExcessMaxLength'
                         ]"
                     [(model)]="model.lastName"
                 >
@@ -29,9 +31,9 @@ import {AddNewStudentModel} from "../models/addNewStudentModel";
                     [title]="i18n.learning.addNewStudent.userName" 
                     [validations]="[
                         'learning.addNewStudent.userNameIsRequired',
-                        'learning.addNewStudent.minLenghtExceed',
-                        'learning.addNewStudent.maxLenghtExceed',
-                        'learning.addNewStudent.usernameHasExist'
+                        'learning.addNewStudent.userNameUnderMinLength',
+                        'learning.addNewStudent.userNameExcessMaxLength',
+                        'learning.addNewStudent.userNameHasExisted'
                         ]"
                     [(model)]="model.userName"
                 >
@@ -47,6 +49,12 @@ import {AddNewStudentModel} from "../models/addNewStudentModel";
     `
 })
 export class AddNewStudent {
-    private model: AddNewStudentModel;
-
+    public model: AddNewStudentModel = new AddNewStudentModel();
+    public onSaveClicked(): void {
+        if (!this.model.isValid()) { return; }
+        let studentService: IStudentService = window.ioc.resolve(IoCNames.IStudentService);
+        studentService.addNewStudent(this.model).then(() => {
+            self.router.navigate(['/users']);
+        });
+    }
 }
