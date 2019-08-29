@@ -12,5 +12,11 @@ namespace Learning.Repositories
             LearningDbContext context = new LearningDbContext();
             return context.Students.ToList();
         }
+
+        public Student GetStudentByUserName(string userName)
+        {
+            LearningDbContext context = new LearningDbContext();
+            return context.Students.FirstOrDefault(x => x.UserName == userName);
+        }
     }
 }

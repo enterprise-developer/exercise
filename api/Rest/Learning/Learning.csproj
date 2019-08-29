@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Api\StudentsController.cs" />
     <Compile Include="Context\LearningDbContext.cs" />
+    <Compile Include="Dto\CreateStudentRequest.cs" />
     <Compile Include="Entity\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IStudentRepository.cs" />

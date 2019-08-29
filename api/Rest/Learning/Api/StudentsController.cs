@@ -17,5 +17,13 @@ namespace Learning.Api
             IStudentService service = IoC.Container.Resolve<IStudentService>();
             return service.GetStudents();
         }
+        [Route("")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public Student AddStudent(CreateStudentRequest request)
+        {
+            IStudentService service = IoC.Container.Resolve<IStudentService>();
+            return service.AddStudent(request);
+        }
     }
 }

@@ -4,6 +4,6 @@ namespace TinyERP.Common.Exceptions
 {
     public interface IValidationException
     {
-        IList<ExceptionErrorMessage> Errors { get; set; }
+        IList<ExceptionErrorMessage> Errors { get; }
     }
 }

@@ -6,5 +6,6 @@ namespace Learning.Repositories
     public interface IStudentRepository
     {
         IList<Student> GetAll();
+        Student GetStudentByUserName(string userName);
     }
 }
