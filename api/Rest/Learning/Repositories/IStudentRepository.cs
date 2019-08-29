@@ -7,5 +7,6 @@ namespace Learning.Repositories
     {
         IList<Student> GetAll();
         Student GetStudentByUserName(string userName);
+        Student AddStudent(Student student);
     }
 }

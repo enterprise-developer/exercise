@@ -1,4 +1,5 @@
-﻿using Learning.Entity;
+﻿using Learning.Dto;
+using Learning.Entity;
 using Learning.Services;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -17,6 +18,7 @@ namespace Learning.Api
             IStudentService service = IoC.Container.Resolve<IStudentService>();
             return service.GetStudents();
         }
+
         [Route("")]
         [HttpPost()]
         [ResponseWrapper()]

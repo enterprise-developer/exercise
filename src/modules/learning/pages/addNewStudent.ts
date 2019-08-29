@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import {Router} from "@angular/router";
 import { AddNewStudentModel } from "../models/addNewStudentModel";
 import { IStudentService } from "../services/istudentService";
 import { IoCNames } from "@app/common";
@@ -40,8 +41,8 @@ import { IoCNames } from "@app/common";
                 </form-text-input>
 
                 <form-buttons>
-                        <button-primary (onClicked)="onSaveClicked($event)" [title]="i18n.learning.addNewStudent.save"></button-primary>
-                        <button-default (onClicked)="onCancelClicked($event)" [title]="i18n.learning.addNewStudent.cancel"></button-default>
+                        <button-primary (onClicked)="onSaveClicked($event)" [text]="i18n.common.save"></button-primary>
+                        <button-default (onClicked)="onCancelClicked($event)" [text]="i18n.common.cancel"></button-default>
                 </form-buttons>
             </form-horizontal>
         </page-content>
@@ -50,11 +51,22 @@ import { IoCNames } from "@app/common";
 })
 export class AddNewStudent {
     public model: AddNewStudentModel = new AddNewStudentModel();
+    private router:Router;
+    
+    constructor(router:Router){
+        this.router = router;
+    }
+    
     public onSaveClicked(): void {
         if (!this.model.isValid()) { return; }
         let studentService: IStudentService = window.ioc.resolve(IoCNames.IStudentService);
+        let self = this;
         studentService.addNewStudent(this.model).then(() => {
-            self.router.navigate(['/users']);
+            self.router.navigate(['/learning/students']);
         });
+    }
+
+    public onCancelClicked():void{
+        this.router.navigate(["/learning/students"]);
     }
 }

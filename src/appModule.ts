@@ -31,7 +31,7 @@ export class AppModule {
     }
 
     ngDoBootstrap() {
-        let locales: Array<string> = ['learning'];
+        let locales: Array<string> = ['learning','common'];
         let resourceManager: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
         let self = this;
         resourceManager.loadLocales(locales).then(() => {

@@ -34,7 +34,7 @@ export class Students extends BasePage {
     }
 
     public onAddNewClicked(): void {
-        this.router.navigate(["learning/students/addNew"]);
+        this.router.navigate(["/learning/students/addNew"]);
     }
 }
 

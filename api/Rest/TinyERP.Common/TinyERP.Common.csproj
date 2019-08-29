@@ -58,10 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\BaseAttribute.cs" />
+    <Compile Include="Attribute\MaxLength.cs" />
+    <Compile Include="Attribute\MinLength.cs" />
+    <Compile Include="Attribute\Required.cs" />
     <Compile Include="Attribute\ResponseWrapper.cs" />
     <Compile Include="Exceptions\ExceptionErrorMessage.cs" />
     <Compile Include="Exceptions\IValidationException.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Helpers\AssemblyHelper.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="IoC\BaseContainer.cs" />
     <Compile Include="IoC\IBaseContainer.cs" />
     <Compile Include="IoC\IoC.cs" />

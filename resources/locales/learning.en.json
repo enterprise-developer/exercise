@@ -17,6 +17,6 @@
         "userNameIsRequired": "Usert Name was required",
         "userNameUnderMinLength": "User Name is under min length",
         "userNameExcessMaxLength": "User Name is excess max length",
-        "userNameHasExisted": "User Name has existed"
+        "userNameHasExisted": "User Name has existed"        
     }
 }
