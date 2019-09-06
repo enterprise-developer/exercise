@@ -8,7 +8,7 @@
             this.MessageKey = messageKey;
         }
 
-        public bool IsValid(object value) {
+        public virtual bool IsValid(object value) {
             return false;
         }
     }

@@ -61,6 +61,7 @@
     <Compile Include="Services\IStudentService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Task\Bootstrapper.cs" />
+    <Compile Include="Utils\Enums.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyERP.Common\TinyERP.Common.csproj">

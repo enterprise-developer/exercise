@@ -1,4 +1,5 @@
-﻿using TinyERP.Common.Attribute;
+﻿using Learning.Utils;
+using TinyERP.Common.Attribute;
 
 namespace Learning.Dto
 {

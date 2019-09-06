@@ -28,4 +28,3 @@ D:\Workspace\learning\enterprise_app\exercise\api\Rest\TinyERP.Common\obj\Debug\
 D:\Workspace\learning\enterprise_app\exercise\api\Rest\TinyERP.Common\bin\Debug\System.Net.Http.Formatting.dll
 D:\Workspace\learning\enterprise_app\exercise\api\Rest\TinyERP.Common\bin\Debug\Newtonsoft.Json.xml
 D:\Workspace\learning\enterprise_app\exercise\api\Rest\TinyERP.Common\bin\Debug\System.Net.Http.Formatting.xml
-D:\Workspace\learning\enterprise_app\exercise\api\Rest\TinyERP.Common\obj\Debug\TinyERP.Common.csprojAssemblyReference.cache

@@ -7,5 +7,10 @@
         {
             this.MaxLengthValue = maxLengthValue;
         }
+
+        public override bool IsValid(object value)
+        {
+            return value.ToString().Length < this.MaxLengthValue;
+        }
     }
 }

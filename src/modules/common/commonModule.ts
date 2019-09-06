@@ -11,8 +11,9 @@ import { FormHorizontal } from "./components/forms/formHorizontal";
 import { FormButtons } from "./components/forms/formButtons";
 import { FormTextInput } from "./components/forms/formTextInput";
 import { Validation } from "./components/directives/validation";
-import {PrimaryButton} from "./components/buttons/primaryButton";
-import {DefaultButton} from "./components/buttons/defaultButton";
+import { PrimaryButton } from "./components/buttons/primaryButton";
+import { DefaultButton } from "./components/buttons/defaultButton";
+import { BaseButton } from "./components/buttons/baseButton";
 @NgModule({
     imports: [CommonModule, FormsModule],
     declarations: [
@@ -30,6 +31,7 @@ import {DefaultButton} from "./components/buttons/defaultButton";
 
         /* buttons */
         Buttons,
+        BaseButton,
         PrimaryButton,
         DefaultButton,
 
@@ -55,6 +57,7 @@ import {DefaultButton} from "./components/buttons/defaultButton";
 
         /* buttons */
         Buttons,
+        BaseButton,
         PrimaryButton,
         DefaultButton,
 

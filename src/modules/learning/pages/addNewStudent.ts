@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { AddNewStudentModel } from "../models/addNewStudentModel";
 import { IStudentService } from "../services/istudentService";
 import { IoCNames } from "@app/common";
+import { BaseComponent } from "@app/common";
 @Component({
     template: `
     <page title="i18n.learning.addNewStudent.title">
@@ -49,14 +50,15 @@ import { IoCNames } from "@app/common";
     </page>
     `
 })
-export class AddNewStudent {
+export class AddNewStudent extends BaseComponent {
     public model: AddNewStudentModel = new AddNewStudentModel();
-    private router:Router;
-    
-    constructor(router:Router){
+    private router: Router;
+
+    constructor(router: Router) {
+        super();
         this.router = router;
     }
-    
+
     public onSaveClicked(): void {
         if (!this.model.isValid()) { return; }
         let studentService: IStudentService = window.ioc.resolve(IoCNames.IStudentService);
@@ -66,7 +68,7 @@ export class AddNewStudent {
         });
     }
 
-    public onCancelClicked():void{
+    public onCancelClicked(): void {
         this.router.navigate(["/learning/students"]);
     }
 }

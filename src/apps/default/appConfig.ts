@@ -3,7 +3,7 @@ let appConfig: IConfigModel = {
     domains: [
         {
             key: "learningUrlApi",
-            value: "http://learning.com/api"
+            value: "http://localhost/learningApi/api"
         }
     ]
 };

@@ -7,5 +7,10 @@
         {
             this.MinLengthValue = minLength;
         }
+
+        public override bool IsValid(object value)
+        {
+            return value.ToString().Length > this.MinLengthValue;
+        }
     }
 }

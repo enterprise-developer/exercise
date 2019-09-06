@@ -1,5 +1,4 @@
-import { Component, Input, Output } from "@angular/core";
-import { EventEmitter } from "@angular/common/src/facade/async";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: "form-text-input",

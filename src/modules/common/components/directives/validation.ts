@@ -10,6 +10,10 @@ import { BaseComponent } from "../baseComponent";
 export class Validation extends BaseComponent implements AfterContentInit {
     @Input("validations") messages: Array<string> = [];
     private ui: ElementRef;
+    constructor(elRef: ElementRef) {
+        super();
+        this.ui = elRef;
+    }
     public ngAfterContentInit(): void {
         let eventManager: IEventManager = window.ioc.resolve(IoCNames.IEventManager);
         let self = this;
@@ -24,7 +28,7 @@ export class Validation extends BaseComponent implements AfterContentInit {
     private onTrigger(validationResult: IValidationResult): void {
         if (validationResult.isValid == true) {
             this.ui.nativeElement.classList.remove(ValidationMessage.InvalidState);
-            this.ui.nativeElement.title = "";
+            this.ui.nativeElement.title = ""; //TODO: backup value if we set title for tooltip
         } else {
             this.ui.nativeElement.classList.add(ValidationMessage.InvalidState);
             this.ui.nativeElement.title = this.i18nHelper.resolve(validationResult.messageKey);

@@ -30,7 +30,9 @@ export class Students extends BasePage {
         service.getStudents().then((response: Array<StudentsModel>) => {
             self.model.options.data.resolve(response);
         });
-        this.model.addButton(this.i18n.learning.students.addNew, "fa-plus", this.onAddNewClicked);
+        this.model.addButton(this.i18n.learning.students.addNew, "fa-plus", ()=>{
+            self.onAddNewClicked();
+        });
     }
 
     public onAddNewClicked(): void {
