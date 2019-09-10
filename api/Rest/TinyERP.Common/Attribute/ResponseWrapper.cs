@@ -15,7 +15,7 @@
             if (context.Exception != null && context.Exception is IValidationException)
             {
                 response.SetErrors(((IValidationException)context.Exception).Errors);
-                response.StatusCode = HttpStatusCode.BadRequest;
+                response.StatusCode = HttpStatusCode.OK;
             }
             else {
                 response.StatusCode = HttpStatusCode.InternalServerError;

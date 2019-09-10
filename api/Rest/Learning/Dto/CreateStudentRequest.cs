@@ -6,7 +6,7 @@ namespace Learning.Dto
     public class CreateStudentRequest
     {
         [Required("learning.addNewStudent.firstNameIsRequired")]
-        [MaxLength((int)StudentValidationRules.MaxLength,"learning.addNewStudent.firstNameUnderMinLength")]
+        [MaxLength((int)StudentValidationRules.MaxLength, "learning.addNewStudent.firstNameExcessMaxLength")]
         [MinLength((int)StudentValidationRules.MinLength, "learning.addNewStudent.firstNameUnderMinLength")]
         public string FirstName { get; set; }
         [Required("learning.addNewStudent.lastNameIsRequired")]
