@@ -1,0 +1,19 @@
+{
+  "FilePath": "d:\\Workspace\\learning\\enterprise_app\\exercise\\Rest\\ExamERP\\ExamERP.Business.Api\\ExamERP.Business.Api.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 800
+  },
+  "RootNamespace": null,
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

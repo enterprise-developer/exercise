@@ -1,0 +1,27 @@
+{
+    "products":{
+        "title":"Product Management",
+        "name":"Name",
+        "quantity":"Quantity",
+        "price":"Price",
+        "description":"Description"
+    },
+    "addEditProduct":{
+        "name":"Name",
+        "nameIsRequired":"This field is required",
+        "nameWasUnderMinLength":"This field was atleast 4 letters",
+        "nameWasExcessMaxLength":"This fiels was maximun 50 letters",
+        "nameWasExist":"This name was existed",
+        "quantity":"Quantity",
+        "quantityShouldGreaterOrEqualThanZero":"The quantity should be greater than or equal zero",
+        "price":"Price",
+        "priceShouldGreaterOrEqualThanZero":"The price should be greater than or equal zero",
+        "description":"Description"
+    },
+    "addProduct":{
+        "title":"Add New Product"
+    },
+    "editProduct":{
+        "title":"Edit Product"
+    }
+}

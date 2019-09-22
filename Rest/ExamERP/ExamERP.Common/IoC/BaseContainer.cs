@@ -1,0 +1,26 @@
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+
+namespace ExamERP.Common.IoC
+{
+    public class BaseContainer : IBaseContainer
+    {
+        private IWindsorContainer _container;
+        public BaseContainer()
+        {
+            this._container = new WindsorContainer();
+        }
+
+        public void RegisterAsSingleton<IInterface, IImplement>()
+            where IInterface : class
+            where IImplement : IInterface
+        {
+            this._container.Register(Component.For<IInterface>().ImplementedBy<IImplement>().LifeStyle.Singleton);
+        }
+
+        public IInterface Resolve<IInterface>()
+        {
+            return this._container.Resolve<IInterface>();
+        }
+    }
+}

@@ -1,0 +1,6 @@
+D:\Workspace\learning\enterprise_app\exercise\Rest\ExamERP\ExamERP.Common\bin\Debug\netstandard2.0\ExamERP.Common.deps.json
+D:\Workspace\learning\enterprise_app\exercise\Rest\ExamERP\ExamERP.Common\bin\Debug\netstandard2.0\ExamERP.Common.dll
+D:\Workspace\learning\enterprise_app\exercise\Rest\ExamERP\ExamERP.Common\obj\Debug\netstandard2.0\ExamERP.Common.csprojAssemblyReference.cache
+D:\Workspace\learning\enterprise_app\exercise\Rest\ExamERP\ExamERP.Common\obj\Debug\netstandard2.0\ExamERP.Common.csproj.CoreCompileInputs.cache
+D:\Workspace\learning\enterprise_app\exercise\Rest\ExamERP\ExamERP.Common\obj\Debug\netstandard2.0\ExamERP.Common.AssemblyInfoInputs.cache
+D:\Workspace\learning\enterprise_app\exercise\Rest\ExamERP\ExamERP.Common\obj\Debug\netstandard2.0\ExamERP.Common.AssemblyInfo.cs
