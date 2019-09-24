@@ -1,1 +1,3 @@
-export interface IResourceManager{}
+export interface IResourceManager{
+
+}
