@@ -11,6 +11,16 @@ export class BasePage{
         ]
         */
         let resource : IResourceManager = window.ioc.resolve("IResourceManager");
+        /*
+         module learning => learning.en.json
+         .... load learning.en.json => ....
+         return ....
+
+         getLocale:
+         - public
+         - no parameter
+         - return any
+        */
         this.i18n= resource.getLocale();
     }
 }
