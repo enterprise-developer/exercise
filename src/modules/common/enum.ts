@@ -8,3 +8,6 @@ export enum IoCLifecycle{
     Transient=1,
     Singleton=2
 }
+export enum ConnectorType{
+    Json=1
+}
