@@ -1,5 +1,6 @@
 import { IConnector } from "./iconnector";
 import { Promise, PromiseFactory } from "../models/promise";
+import {Http} from "@angular/http";
 
 export class JsonConnector implements IConnector{
     public get(uri:string):Promise{

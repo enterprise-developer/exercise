@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Injector } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { Layout } from "./layout";
 import {Promise, PromiseFactory} from "./modules/common/models/promise";
@@ -13,6 +13,9 @@ let routes : Routes=[
     //bootstrap:[Layout]
 })
 export class AppModule{
+    constructor(injector:Injector){
+        window.ioc.setInjector(injector);
+    }
     public ngDoBootstrap():void{
         // private, 1 parameter:["learning", "productManagement"]: Array<string> , return promise
         this.loadJsones(locales).then(()=>{
