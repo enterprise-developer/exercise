@@ -5,7 +5,8 @@ export class PromiseFactory{
     }
 }
 enum PromiseStatus{
-    Subscribe=1
+    Subscribe=1,
+    Success=2
 }
 export class Promise{
     private subPromies:Array<string>=[];
@@ -13,6 +14,8 @@ export class Promise{
     private subscribeCallback: any;
     private callback:any;
     private id:string;
+    private successCallback:any;
+    private data: any;
     constructor(){
         this.id=guidHelper.createNew();
     }
@@ -20,10 +23,26 @@ export class Promise{
         this.status=PromiseStatus.Subscribe;
         this.subscribeCallback=callback;
     }
-    public resolve():void{
+    public resolve(arg?: any):void{
+        this.status=this.status==PromiseStatus.Subscribe? this.status:PromiseStatus.Success;
+        this.data=arg;
+
         if(this.status==PromiseStatus.Subscribe){
             this.subscribeCallback(this);
         }
+
+        if( this.successCallback){
+            this.successCallback(this.data);
+        }
+    }
+
+    public then(callback:(arg: any)=>any):Promise{
+        this.successCallback=callback;
+
+        if( this.status==PromiseStatus.Success){
+            this.successCallback(this.data);
+        }
+        return this;
     }
 
     public resolveAll(subPromise: Promise):void{

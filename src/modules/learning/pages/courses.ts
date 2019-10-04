@@ -1,13 +1,15 @@
 import { Component } from "@angular/core";
 import {BasePage} from "../../common/basePage"
+import { IoCNames } from "../../common/enum";
+import {ICourseService} from "../_shared/services/icourseService";
 @Component({
 template:   `
 <div class="x_panel">
     <div class="x_title">
-        <h2>{{i18n.learning.pages.courses.title_}}</small></h2>
+        <h2>{{i18n.learning.pages.courses.title_}}</h2>
         <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
+    </div>
+    <div class="x_content">
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +28,18 @@ template:   `
             </tr>
             </tbody>
         </table>
-     </div>
+    </div>
 </div>`
 })
-export class Courses extends BasePage {}
+export class Courses extends BasePage {
+    private courses:Array<ICourse>=[];
+    constructor(){
+        super();
+        let courseService: ICourseService = window.ioc.resolve(IoCNames.ICourseService);
+        courseService.getCourses().then((items:Array<ICourse>)=>{
+            self.courses=items;
+        });
+    }
+}
+
+interface ICourse{}

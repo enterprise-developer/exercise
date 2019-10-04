@@ -1,0 +1,10 @@
+{
+    "pages":{
+        "courses":{
+            "title_":"Course Management",
+            "title":"Title",
+            "decription":"decription",
+            "actions":"Actions"
+        }
+    }
+}

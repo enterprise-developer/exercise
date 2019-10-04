@@ -1,6 +1,8 @@
-import {IIoCRegistration, IoCLifecycle} from "../modules/common/enum";
+import {IIoCRegistration, IoCLifecycle, IoCNames} from "../modules/common/enum";
 import {ResourceManager} from "../modules/common/services/resourceManager";
+import {CourseService} from "../modules/learning/_shared/services/courseService";
 let ioc :Array<IIoCRegistration>=[
-    { name:"IResourceManager", instanceOf: ResourceManager, lifecycle:IoCLifecycle.Singleton}
+    { name:IoCNames.IResourceManager, instanceOf: ResourceManager, lifecycle:IoCLifecycle.Singleton},
+    {name: IoCNames.ICourseService, instanceOf: CourseService, lifecycle: IoCLifecycle.Transient}
 ];
 export default ioc;

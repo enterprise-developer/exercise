@@ -11,3 +11,7 @@ export enum IoCLifecycle{
 export enum ConnectorType{
     Json=1
 }
+export enum IoCNames{
+    IResourceManager="IResourceManager",
+    ICourseService="ICourseService"
+}
