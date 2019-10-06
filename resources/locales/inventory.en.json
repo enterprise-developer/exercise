@@ -1,0 +1,9 @@
+{
+    "products":{
+        "title":"Product Management",
+        "name":"Name",
+        "quantity":"Quantity",
+        "price":"Price",
+        "description":"Description"
+    }
+}

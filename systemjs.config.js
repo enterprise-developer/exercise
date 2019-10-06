@@ -35,11 +35,16 @@
             '@angular/upgrade': 'npm@angular/upgrade/bundles/upgrade.umd.js',
             '@angular/upgrade/static': 'npm@angular/upgrade/bundles/upgrade-static.umd.js',
             'rxjs': 'npmrxjs',
+            '@app/common': 'src/modules/common',
             /*'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',*/
             'ts': 'npm@plugin-typescript@4.0.10/lib/plugin.js',
             'typescript': 'npm@typescript@2.0.3/lib/typescript.js'
         },
         packages: {
+            "@app/common": {
+                main: "index",
+                defaultExtension: "js"
+            },
             src: {
                 main: "./main.ts",
                 defaultExtension: "js"
@@ -49,7 +54,10 @@
             }
         }
     });
-    if (global.autoBootstrap) { bootstrap(); }
+    if (global.autoBootstrap) {
+        bootstrap();
+    }
+
     function bootstrap() {
         console.log("System was bootstrapped automaticly");
         //System.set(System.normalizeSync("src/main.ts"), System.newModule({}));
@@ -64,6 +72,7 @@
             console.log("import modules with error:", err);
         });
     }
+
     function getModule(modulePath) {
         console.log("Load module", modulePath);
         return Promise.all([
@@ -74,7 +83,7 @@
             var core = imports[0];
             var browser = imports[1];
             var module = imports[2].Module;
-            var appModule = function(){ };
+            var appModule = function () {};
             appModule.annotations = [
                 new core.NgModule({
                     imports: [browser.BrowserModule],
@@ -82,7 +91,9 @@
                     bootstrap: [module]
                 })
             ];
-            return { appModule: appModule };
+            return {
+                appModule: appModule
+            };
         });
     }
 })(window);

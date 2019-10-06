@@ -1,0 +1,11 @@
+node_modules
+src/**/*.js
+src/**/*.js.map
+REST/TestERP/.vs/
+REST/TestERP/.vs/Rest/v16/
+REST/TestERP/TestERP/bin/
+REST/TestERP/TestERP/obj/
+REST/TestERP/packages/
+REST/TestERP/TestERP.Inventory.Api/bin/
+REST/TestERP/TestERP.Common/obj/
+REST/TestERP/.vs/TestERP/v16/.suo
