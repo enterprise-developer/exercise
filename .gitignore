@@ -1,0 +1,7 @@
+api/Rest/packages/
+api/Rest/Product.Api/Areas/
+api/Rest/Product.Api/bin/
+api/Rest/Product.Api/obj/
+api/Rest/Product/obj/
+node_modules/
+api/Rest/Application.Common/obj/
