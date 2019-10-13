@@ -13,12 +13,14 @@ export enum IoCLifecycle {
 export enum IoCNames {
     IResourceManager = "IResourceManager",
     IProductService = "IProductService",
-    IAppSettingService = "IAppSettingService"
+    IAppSettingService = "IAppSettingService",
+    IEventManager = "IEventManager"
 }
 
 export enum PromiseStatus {
     Subscribe = 1,
-    Success = 2
+    Success = 2,
+    Failed = 3
 }
 
 export enum LanguageCode {
@@ -46,4 +48,21 @@ export interface IDomainConfig {
 
 export enum AppConst {
     InventoryUrlApi = "InventoryUrlApi"
+}
+
+export enum ValidationMessage {
+    InvalidState = "invalid-state"
+}
+
+export enum ValidationState {
+    InvalidState = "invalid-state"
+}
+
+export enum ProductValidation {
+    MinLength = 4,
+    MaxLength = 50
+}
+
+export enum HttpStatusCode{
+    OK = 200
 }

@@ -14,7 +14,8 @@ export class Promise {
     private subscribeCallback: any;
     public data: any;
     private successCallback: any;
-
+    private errors: any;
+    private failedCallback: any;
     constructor() {
         this.id = guidHelper.create();
     }
@@ -50,6 +51,10 @@ export class Promise {
         if (this.status == PromiseStatus.Success && !!this.successCallback) {
             this.successCallback(this.data);
         }
+
+        if (this.status == PromiseStatus.Failed && !!this.failedCallback) {
+            this.failedCallback(this.errors);
+        }
     }
 
     public resolve(data?: any): Promise {
@@ -61,6 +66,13 @@ export class Promise {
 
     public then(callback: any): Promise {
         this.successCallback = callback;
+        this.processCallback();
+        return this;
+    }
+
+    public reject(errors?: any): Promise {
+        this.errors = errors;
+        this.status = PromiseStatus.Failed;
         this.processCallback();
         return this;
     }
