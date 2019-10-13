@@ -60,11 +60,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\ResponseWrapper.cs" />
+    <Compile Include="Helpers\AssemblyHelper.cs" />
     <Compile Include="IoC\BaseContainer.cs" />
     <Compile Include="IoC\IBaseContainer.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response\ResponseData.cs" />
+    <Compile Include="Task\IBootstrapper.cs" />
+    <Compile Include="Task\ITask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
