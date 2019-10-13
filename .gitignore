@@ -3,9 +3,15 @@ src/**/*.js
 src/**/*.js.map
 REST/TestERP/.vs/
 REST/TestERP/.vs/Rest/v16/
-REST/TestERP/TestERP/bin/
-REST/TestERP/TestERP/obj/
 REST/TestERP/packages/
 REST/TestERP/TestERP.Inventory.Api/bin/
+REST/TestERP/TestERP.Inventory.Api/obj/
+REST/TestERP/TestERP.Inventory.Api/obj/Debug/
+REST/TestERP/TestERP.Inventory/bin/
+REST/TestERP/TestERP.Inventory/obj/
+REST/TestERP/TestERP.Inventory/obj/Debug/
+REST/TestERP/TestERP.Common/bin/
 REST/TestERP/TestERP.Common/obj/
+REST/TestERP/TestERP.Common/obj/Debug/
+
 REST/TestERP/.vs/TestERP/v16/.suo

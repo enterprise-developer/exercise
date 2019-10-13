@@ -1,3 +1,6 @@
+import { HttpStatusCode } from "./enums";
 export class ResponseModel {
-    data?:any;
+    data?: any;
+    statusCode: HttpStatusCode;
+    errors: any;
 }

@@ -5,12 +5,14 @@ import { UserRoutes } from "./userRoutes";
 import { Layout } from "./layout";
 import { IoCNames, IResourceManager, IAppSettingService } from "@app/common";
 import appConfig from "./apps/default/appConfig";
+import { HttpModule } from "@angular/http";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        UserRoutes
+        UserRoutes,
+        HttpModule
     ],
     declarations: [Layout],
     entryComponents: [Layout]
@@ -25,7 +27,7 @@ export class UserModule {
     }
 
     ngDoBootstrap() {
-        let locales: Array<string> = ["inventory"];
+        let locales: Array<string> = ["inventory","common"];
         let self = this;
         let resourceManager: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
         resourceManager.loadLocale(locales).then(() => {

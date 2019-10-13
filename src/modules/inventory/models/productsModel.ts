@@ -1,12 +1,12 @@
-import { IButtonModel, IGridOption } from "@app/common";
+import { IButtonModel, IGridOption, BaseModel } from "@app/common";
 import { PromiseFactory } from "src/modules/common/models/promise";
 
 
-export class ProductsModel {
-    public buttons: Array<IButtonModel> = [];
+export class ProductsModel extends BaseModel {
     public options: IGridOption;
     private i18n: any = {};
     constructor(i18n: any) {
+        super();
         this.i18n = i18n;
         this.options = {
             data: PromiseFactory.create(),

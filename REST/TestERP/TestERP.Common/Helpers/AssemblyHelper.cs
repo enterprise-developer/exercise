@@ -43,7 +43,7 @@ namespace TestERP.Common.Helpers
 
         private static bool IsCustomClass(string item)
         {
-            Regex regex = new Regex(@"^(TextERP)");
+            Regex regex = new Regex(@"^(TestERP)");
             Match match = regex.Match(Path.GetFileName(item));
             return match.Success;
         }

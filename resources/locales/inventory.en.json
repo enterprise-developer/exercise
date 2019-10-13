@@ -4,6 +4,22 @@
         "name":"Name",
         "quantity":"Quantity",
         "price":"Price",
+        "description":"Description",
+        "addNewProduct":"Add New Product"
+    },
+    "addNewProduct":{
+        "title":"Add New Product",
+        "name":"Name",
+        "nameIsRequired":"Name is required",
+        "nameWasUnderMinLength":"Name was under min length",
+        "nameWasExcessMaxLength":"Name was excess max length",
+        "nameWasExist":"Name was exist",
+        "quantity":"Quantity",
+        "quantityIsRequired":"Quantity is required",
+        "quantityShouldGreaterOrEqualThanZero":"Quantity should greater or equal than zero",
+        "price":"Price",
+        "priceIsRequired":"Price is required",
+        "priceShouldGreaterOrEqualThanZero":"Price should greater or equal than zero",
         "description":"Description"
     }
 }

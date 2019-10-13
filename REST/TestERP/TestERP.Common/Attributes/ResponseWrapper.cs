@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
+using TestERP.Common.Exceptions;
 using TestERP.Common.Response;
 
 namespace TestERP.Common.Attributes
@@ -10,6 +11,10 @@ namespace TestERP.Common.Attributes
         public override void OnActionExecuted(HttpActionExecutedContext context)
         {
             ResponseData response = new ResponseData();
+            if (context.Exception !=null && context.Exception is ValidationException)
+            {
+                response.StatusCode = HttpStatusCode.BadRequest;
+            }
             if (context.Exception != null)
             {
                 response.StatusCode = HttpStatusCode.InternalServerError;
@@ -25,7 +30,7 @@ namespace TestERP.Common.Attributes
                 response.Data = content;
             }
 
-            context.Response = context.Request.CreateResponse(response.StatusCode, response);
+            context.Response = context.Request.CreateResponse(HttpStatusCode.OK, response);
         }
     }
 }

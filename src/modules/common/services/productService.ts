@@ -14,4 +14,10 @@ export class ProductService extends BaseService implements IProductService {
         let connector: IConnector = ConnectorFactory.create(ConnectorType.Json);
         return connector.get(this.resolveUrl(url));
     }
+
+    public addProduct(item: any): Promise {
+        let url: string = "/products";
+        let connector: IConnector = ConnectorFactory.create(ConnectorType.Json);
+        return connector.post(this.resolveUrl(url), item);
+    }
 }
