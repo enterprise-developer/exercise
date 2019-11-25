@@ -16,8 +16,10 @@
             if (types.Count() == 0) { return; }
             foreach (var type in types)
             {
-                ITask task = AssemblyHelper.CreateInstance<ITask>(type);
-                task.Execute();
+                
+               ITask task = AssemblyHelper.CreateInstance<ITask>(type);
+                Console.WriteLine(task.GetType().FullName);
+                //task.Execute();
             }
         }
 

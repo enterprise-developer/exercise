@@ -65,6 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\ApplicationFactory.cs" />
+    <Compile Include="Application\BaseApplication.cs" />
+    <Compile Include="Application\ConsoleApplication.cs" />
+    <Compile Include="Application\IApplication.cs" />
+    <Compile Include="Application\WebApiApplication.cs" />
     <Compile Include="Attribute\DbContextAttribute.cs" />
     <Compile Include="Common\Attribute\ResponseWrapper.cs" />
     <Compile Include="Common\Data\BaseDbContext.cs" />

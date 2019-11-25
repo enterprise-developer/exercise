@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Course", "Course", "{54DBC5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST", "REST\REST.csproj", "{BFE19069-098B-404F-87B3-F5A2350204AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{F9CCEC4F-4855-4485-8B4C-9300E3A90090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{BFE19069-098B-404F-87B3-F5A2350204AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFE19069-098B-404F-87B3-F5A2350204AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFE19069-098B-404F-87B3-F5A2350204AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9CCEC4F-4855-4485-8B4C-9300E3A90090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9CCEC4F-4855-4485-8B4C-9300E3A90090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9CCEC4F-4855-4485-8B4C-9300E3A90090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9CCEC4F-4855-4485-8B4C-9300E3A90090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

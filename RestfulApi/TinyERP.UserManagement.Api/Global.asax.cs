@@ -1,15 +1,19 @@
 ﻿using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using TinyERP.Common.Common.Helper;
-using TinyERP.Common.Common.Task;
+using TinyERP.Common;
+using TinyERP.Common.Application;
 
 namespace REST
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private IApplication app;
+        public WebApiApplication()
+        {
+             this.app= ApplicationFactory.Create(ApplicationType.WebApi);
+        }
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -17,14 +21,13 @@ namespace REST
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AssemblyHelper.Execute<IApplicationStarted>();
-            AssemblyHelper.Execute<IBootStrapper>();
-            //AssemblyHelper.Execute<IApplicationReady>();
+            
+            app.OnApplicationStarting();
         }
 
         protected void Application_End()
         {
-            AssemblyHelper.Execute<IApplicationEnd>();
+            app.OnApplicationEnding();
         }
     }
 }

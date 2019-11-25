@@ -1,4 +1,6 @@
-﻿namespace TinyERP.Common
+﻿using System;
+
+namespace TinyERP.Common
 {
     public enum IntegrationModeType
     {
@@ -14,5 +16,10 @@
     {
         AllowAll = 1,
         DenyAll = 2
+    }
+
+    public enum ApplicationType {
+        WebApi=1,
+        Console=2
     }
 }
