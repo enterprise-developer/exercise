@@ -2,12 +2,13 @@
 using TinyERP.Common;
 using TinyERP.Common.Common.IoC;
 using TinyERP.Common.Common.Task;
+using TinyERP.Common.Tasks;
 
 namespace TinyERP.UserManagement.Share.Facade
 {
-    public class Bootstrapper : IBootStrapper
+    public class Bootstrapper : BaseTask, IBootStrapper
     {
-        public void Execute()
+        protected override void ExecuteInternal(ITaskArgument arg)
         {
             var mode = TinyERP.Common.Config.Configuration.Instance.UserManagement.IntegrationMode;//ConfigurationManager.AppSettings["UserManagement:IntergrationMode"];
             if (mode == IntegrationModeType.Remote)

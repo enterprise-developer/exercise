@@ -1,10 +1,16 @@
-﻿using TinyERP.Common.Common.Task;
-using TinyERP.Common.Config;
-
-namespace TinyERP.Common.Tasks
+﻿namespace TinyERP.Common.Tasks
 {
+    using TinyERP.Common.Common.Task;
+    using TinyERP.Common.Config;
     public class BaseTask : IBaseTask
     {
+        public ApplicationType AppType { get; private set; }
+        public int Priority { get; private set; }
+        public BaseTask(ApplicationType appType = ApplicationType.All, TaskPriority priority = TaskPriority.Normal)
+        {
+            this.AppType = appType;
+            this.Priority = (int)priority;
+        }
         protected bool Enable
         {
             get
@@ -15,12 +21,12 @@ namespace TinyERP.Common.Tasks
             }
         }
 
-        public void Execute()
+        public void Execute(ITaskArgument arg)
         {
-            if (!this.Enable) { return; }
-            this.ExecuteInternal();
+            if (!this.Enable || (this.AppType!=ApplicationType.All && arg.Application.Type!=this.AppType)) { return; }
+            this.ExecuteInternal(arg);
         }
 
-        protected virtual void ExecuteInternal() { }
+        protected virtual void ExecuteInternal(ITaskArgument arg) { }
     }
 }

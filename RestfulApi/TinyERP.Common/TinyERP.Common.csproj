@@ -42,6 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -69,6 +72,7 @@
     <Compile Include="Application\BaseApplication.cs" />
     <Compile Include="Application\ConsoleApplication.cs" />
     <Compile Include="Application\IApplication.cs" />
+    <Compile Include="Application\Tasks\OnApplicationErrorTask.cs" />
     <Compile Include="Application\WebApiApplication.cs" />
     <Compile Include="Attribute\DbContextAttribute.cs" />
     <Compile Include="Common\Attribute\ResponseWrapper.cs" />
@@ -89,11 +93,14 @@
     <Compile Include="Common\Paging.cs" />
     <Compile Include="Common\PagingInfo.cs" />
     <Compile Include="Common\Task\IApplicationEnd.cs" />
+    <Compile Include="Common\Task\IApplicationError.cs" />
     <Compile Include="Common\Task\IApplicationReady.cs" />
     <Compile Include="Common\Task\IApplicationStarted.cs" />
     <Compile Include="Common\Task\IBaseTask.cs" />
     <Compile Include="Common\Task\IBootStrapper.cs" />
     <Compile Include="Common\Task\ICreateSeedDataDbContext.cs" />
+    <Compile Include="Common\Task\ITaskArgument.cs" />
+    <Compile Include="Common\Task\TaskArgument.cs" />
     <Compile Include="Common\Validation\Attr\Required.cs" />
     <Compile Include="Common\Validation\BaseValidationAttribute.cs" />
     <Compile Include="Common\Validation\ValidationError.cs" />
@@ -118,15 +125,19 @@
     <Compile Include="Data\UoW\UnitOfWorkFactory.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Exception\UnSupportException.cs" />
+    <Compile Include="Logging\FileLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Tasks\BaseTask.cs" />
+    <Compile Include="Tasks\ConfigWebApiTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <Content Include="Config\Configuration.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /S /Y /r "$(ProjectDir)Config\Configuration.config" "$(SolutionDir)TinyERP.Course.Api\Config\" 

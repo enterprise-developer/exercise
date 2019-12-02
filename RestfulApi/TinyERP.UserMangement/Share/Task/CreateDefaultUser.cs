@@ -1,11 +1,13 @@
 ﻿using TinyERP.Common.Common.Task;
+using TinyERP.Common.Tasks;
 
 namespace TinyERP.UserMangement.Share.Task
 {
-    public class CreateDefaultUser : IApplicationStarted
+    public class CreateDefaultUser :BaseTask, IApplicationStarted
     {
-        public void Execute()
+        protected override void ExecuteInternal(ITaskArgument arg)
         {
+            base.ExecuteInternal(arg);
         }
     }
 }

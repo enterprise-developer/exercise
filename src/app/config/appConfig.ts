@@ -6,7 +6,7 @@ let config = {
         },{
             key:"TINYERP.USER.API_ENDPOINT",
             value:"http://usermanagement.tinyerp.com/api"
-        }
+        },
     ]
 };
 

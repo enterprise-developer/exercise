@@ -1,5 +1,6 @@
 ﻿namespace TinyERP.UserMangement.Service
 {
+    using System;
     using System.Collections.Generic;
     using TinyERP.Common.Common.IoC;
     using TinyERP.Common.Common.Validation;
@@ -13,8 +14,14 @@
     {
         public IList<User> GetUsers()
         {
-            IUserRepository userRepository = IoC.Resolve<IUserRepository>();
-            return userRepository.GetUsers();
+            try
+            {
+                IUserRepository userRepository = IoC.Resolve<IUserRepository>();
+                return userRepository.GetUsers();
+            }
+            catch (Exception ex) {
+                throw new Exception("ldgjsldgjsldgjskld");
+            }
         }
 
         public User GetUser(int userId)

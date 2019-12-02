@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TinyERP.Common
+﻿namespace TinyERP.Common
 {
     public enum IntegrationModeType
     {
@@ -18,8 +16,16 @@ namespace TinyERP.Common
         DenyAll = 2
     }
 
-    public enum ApplicationType {
-        WebApi=1,
-        Console=2
+    public enum ApplicationType
+    {
+        WebApi = 1,
+        Console = 2,
+        All=4
+    }
+
+    public enum TaskPriority
+    {
+        High=70,
+        Normal = 50
     }
 }
