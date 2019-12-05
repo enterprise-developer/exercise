@@ -22,8 +22,6 @@
             {
                 IoC.RegisterAsSingleton<IUserManagementFacade, UserManagementFacade>();
             }
-
-
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace TinyERP.UserManagement.Share.Dto
 {
-    public class CreateUserRequest
+    using TinyERP.Common.CQRS;
+    public class CreateUserRequest: ICommand
     {
         public CreateUserRequest(string firstName, string lastName, string userName)
         {

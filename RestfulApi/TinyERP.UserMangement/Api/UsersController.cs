@@ -4,12 +4,13 @@
     using System.Web.Http;
     using TinyERP.Common.Common.Attribute;
     using TinyERP.Common.Common.IoC;
+    using TinyERP.Common.CQRS;
     using TinyERP.UserManagement.Share.Dto;
     using TinyERP.UserMangement.Aggregate;
     using TinyERP.UserMangement.Service;
 
     [RoutePrefix("api/users")]
-    public class UsersController : ApiController
+    public class UsersController : CommandControllerHandler
     {
         [HttpGet()]
         [Route("")]
@@ -32,10 +33,11 @@
         [HttpPost()]
         [Route("")]
         [ResponseWrapper()]
-        public User CreateUser(CreateUserRequest request)
+        public void CreateUser(CreateUserRequest request)
         {
-            IUserService userService = IoC.Resolve<IUserService>();
-            return userService.CreateUser(request);
+            this.Execute(request);
+            //IUserService userService = IoC.Resolve<IUserService>();
+            //return userService.CreateUser(request);
         }
 
         [HttpPost]

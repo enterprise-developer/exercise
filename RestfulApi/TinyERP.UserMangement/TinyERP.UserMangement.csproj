@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\UsersController.cs" />
+    <Compile Include="Command\Bootstrapper.cs" />
+    <Compile Include="Command\UserCommandHandler.cs" />
     <Compile Include="Context\IUserDbContext.cs" />
     <Compile Include="Context\UserDbContext.cs" />
     <Compile Include="Repository\IUserRepository.cs" />

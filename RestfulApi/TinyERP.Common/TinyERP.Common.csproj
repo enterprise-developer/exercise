@@ -114,6 +114,10 @@
     <Compile Include="Config\UserManagementElement.cs" />
     <Compile Include="Connector\ConnectorContentType.cs" />
     <Compile Include="Connector\JsonContent.cs" />
+    <Compile Include="CQRS\BaseCommandHandler.cs" />
+    <Compile Include="CQRS\CommandControllerHandler.cs" />
+    <Compile Include="CQRS\ICommand.cs" />
+    <Compile Include="CQRS\ICommandHandler.cs" />
     <Compile Include="Data\BaseDbSet.cs" />
     <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\ConnectionString.cs" />

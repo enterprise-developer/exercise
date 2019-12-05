@@ -41,7 +41,7 @@ export class AddNewUser extends BasePage{
         this.model=new AddNewUserModel();
     }
     public onSaveClicked():void{
-        if(!this.model.isValid()){return;}
+        //if(!this.model.isValid()){return;}
         let service : IUserService = window.ioc.resolve(IoCNames.IUserService);
         let self=this;
         service.createUser(this.model).then(()=>{
