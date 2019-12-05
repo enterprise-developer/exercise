@@ -15,7 +15,7 @@
         protected override void ExecuteInternal(ITaskArgument arg)
         {
             IoC.RegisterAsTransient<IUserService, UserService>();
-            //IoC.RegisterAsTransient<IUserRepository, UserRepository>();
+            IoC.RegisterAsTransient<IUserRepository, UserRepository>();
 
             IntegrationModeType mode = TinyERP.Common.Config.Configuration.Instance.UserManagement.IntegrationMode;
             if (mode != IntegrationModeType.Remote)

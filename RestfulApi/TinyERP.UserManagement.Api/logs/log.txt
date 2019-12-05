@@ -1,0 +1,12 @@
+ERROR 2019-12-05 18:59:39,777   103ms FileLogger             Error              - System.InvalidOperationException: The given filter instance must implement one or more of the following filter interfaces: System.Web.Mvc.IAuthorizationFilter, System.Web.Mvc.IActionFilter, System.Web.Mvc.IResultFilter, System.Web.Mvc.IExceptionFilter, System.Web.Mvc.Filters.IAuthenticationFilter.
+   at System.Web.Mvc.GlobalFilterCollection.ValidateFilterInstance(Object instance)
+   at System.Web.Mvc.GlobalFilterCollection.AddInternal(Object filter, Nullable`1 order)
+   at System.Web.Mvc.GlobalFilterCollection.Add(Object filter)
+   at REST.FilterConfig.RegisterGlobalFilters(GlobalFilterCollection filters) in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\App_Start\FilterConfig.cs:line 12
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 33
+ERROR 2019-12-05 19:00:18,457  9749ms FileLogger             Error              - System.InvalidOperationException: The given filter instance must implement one or more of the following filter interfaces: System.Web.Mvc.IAuthorizationFilter, System.Web.Mvc.IActionFilter, System.Web.Mvc.IResultFilter, System.Web.Mvc.IExceptionFilter, System.Web.Mvc.Filters.IAuthenticationFilter.
+   at System.Web.Mvc.GlobalFilterCollection.ValidateFilterInstance(Object instance)
+   at System.Web.Mvc.GlobalFilterCollection.AddInternal(Object filter, Nullable`1 order)
+   at System.Web.Mvc.GlobalFilterCollection.Add(Object filter)
+   at REST.FilterConfig.RegisterGlobalFilters(GlobalFilterCollection filters) in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\App_Start\FilterConfig.cs:line 12
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 33

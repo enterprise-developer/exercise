@@ -9,15 +9,15 @@ namespace REST
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new LogExceptionFilterAttribute());
+            //filters.Add(new LogExceptionFilterAttribute());
         }
     }
 
-    public class LogExceptionFilterAttribute : ExceptionFilterAttribute
-    {
-        public override void OnException(HttpActionExecutedContext context)
-        {
-            Console.WriteLine(context);
-        }
-    }
+    //public class LogExceptionFilterAttribute : ExceptionFilterAttribute
+    //{
+    //    public override void OnException(HttpActionExecutedContext context)
+    //    {
+    //        Console.WriteLine(context);
+    //    }
+    //}
 }

@@ -13,7 +13,7 @@
     {
         [HttpGet()]
         [Route("")]
-        //[ResponseWrapper()]
+        [ResponseWrapper()]
         public IList<User> GetUsers()
         {
             IUserService userService = IoC.Resolve<IUserService>();
