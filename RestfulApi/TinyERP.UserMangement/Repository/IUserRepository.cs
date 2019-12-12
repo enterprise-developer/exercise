@@ -5,11 +5,11 @@ namespace TinyERP.UserMangement.Repository
     using TinyERP.Common.Data;
     using TinyERP.UserMangement.Aggregate;
 
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserRepository : IBaseRepository<UserAggregateRoot>
     {
-        IList<User> GetUsers();
-        User GetUserDetail(int userId);
-        User GetUserByUserName(string userName);
+        IList<UserAggregateRoot> GetUsers();
+        UserAggregateRoot GetUserDetail(int userId);
+        UserAggregateRoot GetUserByUserName(string userName, int excludedUserId=0);
         
     }
 }

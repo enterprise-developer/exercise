@@ -10,3 +10,69 @@ ERROR 2019-12-05 19:00:18,457  9749ms FileLogger             Error              
    at System.Web.Mvc.GlobalFilterCollection.Add(Object filter)
    at REST.FilterConfig.RegisterGlobalFilters(GlobalFilterCollection filters) in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\App_Start\FilterConfig.cs:line 12
    at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 33
+ERROR 2019-12-12 20:11:35,306    84ms FileLogger             Error              - Castle.MicroKernel.ComponentRegistrationException: Component TinyERP.UserMangement.Command.UserCommandHandler could not be registered. There is already a component with that name. Did you want to modify the existing component instead? If not, make sure you specify a unique name.
+   at Castle.MicroKernel.SubSystems.Naming.DefaultNamingSubSystem.Register(IHandler handler)
+   at Castle.MicroKernel.DefaultKernel.AddCustomComponent(ComponentModel model)
+   at Castle.MicroKernel.DefaultKernel.Register(IRegistration[] registrations)
+   at Castle.Windsor.WindsorContainer.Register(IRegistration[] registrations)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl]() in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 26
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl]() in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 26
+   at TinyERP.UserMangement.Command.Bootstrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Command\Bootstrapper.cs:line 15
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-12 20:11:56,448    84ms FileLogger             Error              - Castle.MicroKernel.ComponentRegistrationException: Component TinyERP.UserMangement.Command.UserCommandHandler could not be registered. There is already a component with that name. Did you want to modify the existing component instead? If not, make sure you specify a unique name.
+   at Castle.MicroKernel.SubSystems.Naming.DefaultNamingSubSystem.Register(IHandler handler)
+   at Castle.MicroKernel.DefaultKernel.AddCustomComponent(ComponentModel model)
+   at Castle.MicroKernel.DefaultKernel.Register(IRegistration[] registrations)
+   at Castle.Windsor.WindsorContainer.Register(IRegistration[] registrations)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl]() in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 26
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl]() in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 26
+   at TinyERP.UserMangement.Command.Bootstrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Command\Bootstrapper.cs:line 15
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-12 20:12:22,255 10266ms FileLogger             Error              - Castle.MicroKernel.ComponentRegistrationException: Component TinyERP.UserMangement.Command.UserCommandHandler could not be registered. There is already a component with that name. Did you want to modify the existing component instead? If not, make sure you specify a unique name.
+   at Castle.MicroKernel.SubSystems.Naming.DefaultNamingSubSystem.Register(IHandler handler)
+   at Castle.MicroKernel.DefaultKernel.AddCustomComponent(ComponentModel model)
+   at Castle.MicroKernel.DefaultKernel.Register(IRegistration[] registrations)
+   at Castle.Windsor.WindsorContainer.Register(IRegistration[] registrations)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl]() in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 26
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl]() in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 26
+   at TinyERP.UserMangement.Command.Bootstrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Command\Bootstrapper.cs:line 15
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-12 20:15:56,315    78ms FileLogger             Error              - System.ArgumentException: name
+   at Castle.Core.Internal.Must.NotBeEmpty[T](T arg, String name)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.Named(String name)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 26
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 26
+   at TinyERP.UserMangement.Share.Task.BootStrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Share\Task\BootStrapper.cs:line 17
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-12 20:16:19,264    77ms FileLogger             Error              - System.ArgumentException: name
+   at Castle.Core.Internal.Must.NotBeEmpty[T](T arg, String name)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.Named(String name)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 26
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 26
+   at TinyERP.UserMangement.Share.Task.BootStrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Share\Task\BootStrapper.cs:line 17
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-12 20:16:50,670    77ms FileLogger             Error              - System.ArgumentException: name
+   at Castle.Core.Internal.Must.NotBeEmpty[T](T arg, String name)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.Named(String name)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 26
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 26
+   at TinyERP.UserMangement.Share.Task.BootStrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Share\Task\BootStrapper.cs:line 17
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30

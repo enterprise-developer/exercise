@@ -12,7 +12,7 @@
 
     public class UserService : BaseService, IUserService
     {
-        public IList<User> GetUsers()
+        public IList<UserAggregateRoot> GetUsers()
         {
             try
             {
@@ -24,18 +24,18 @@
             }
         }
 
-        public User GetUser(int userId)
+        public UserAggregateRoot GetUser(int userId)
         {
             IUserRepository userRepository = IoC.Resolve<IUserRepository>();
             return userRepository.GetUserDetail(userId);
         }
 
-        public User CreateUser(CreateUserRequest request)
+        public UserAggregateRoot CreateUser(CreateUserRequest request)
         {
             this.Validate(request);
-            using (IUnitOfWork unitOfWork = this.CreateUnitOfWork<User>())
+            using (IUnitOfWork unitOfWork = this.CreateUnitOfWork<UserAggregateRoot>())
             {
-                User user = new User()
+                UserAggregateRoot user = new UserAggregateRoot()
                 {
                     FirstName = request.FirstName,
                     LastName = request.LastName,
@@ -61,10 +61,10 @@
 
         public void UpdateUser(UpateUserRequest request)
         {
-            using (IUnitOfWork unitOfWork = this.CreateUnitOfWork<User>())
+            using (IUnitOfWork unitOfWork = this.CreateUnitOfWork<UserAggregateRoot>())
             {
                 IUserRepository userRepository = IoC.Resolve<IUserRepository>(unitOfWork);
-                User user = userRepository.GetUserDetail(request.UserId);
+                UserAggregateRoot user = userRepository.GetUserDetail(request.UserId);
                 user.FirstName = request.FirstName;
                 user.LastName = request.LastName;
                 user.UserName = request.UserName;               
@@ -73,7 +73,7 @@
             }
         }
 
-        public User GetUserByUserName(string userName)
+        public UserAggregateRoot GetUserByUserName(string userName)
         {
             IUserRepository userRepository = IoC.Resolve<IUserRepository>();
             return userRepository.GetUserByUserName(userName);

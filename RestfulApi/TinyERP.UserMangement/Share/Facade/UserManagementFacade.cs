@@ -11,7 +11,7 @@ namespace TinyERP.UserMangement.Share.Facade
         public int CreateUserIfNotExisted(CreateUserRequest createUserRequest)
         {
             IUserService service = IoC.Resolve<IUserService>();
-            User user = service.GetUserByUserName(createUserRequest.UserName);
+            UserAggregateRoot user = service.GetUserByUserName(createUserRequest.UserName);
             if (user != null)
             {
                 return user.Id;

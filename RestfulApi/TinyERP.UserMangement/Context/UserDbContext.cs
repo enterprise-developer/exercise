@@ -5,7 +5,7 @@
     using TinyERP.UserMangement.Aggregate;
     public class UserDbContext : BaseDbContext, IUserDbContext
     {
-        public IDbSet<User> Users { get; set; }
+        public IDbSet<UserAggregateRoot> Users { get; set; }
         public IDbSet<UserGroup> UserGroups { get; set; }
         public UserDbContext() : base("UserDbConnectionString")
         {

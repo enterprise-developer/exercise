@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\CreateUserRequest.cs" />
+    <Compile Include="Dto\UpdateUserRequest.cs" />
     <Compile Include="Facade\Bootstrapper.cs" />
     <Compile Include="Facade\IUserManagementFacade.cs" />
     <Compile Include="Facade\RemoteUserManagementFacade.cs" />

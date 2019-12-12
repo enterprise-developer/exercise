@@ -11,7 +11,8 @@
         public Bootstrapper():base(Common.ApplicationType.All){}
         protected override void ExecuteInternal(ITaskArgument arg)
         {
-            IoC.RegisterAsTransient<ICommandHandler<CreateUserRequest>, UserCommandHandler>();
+            IoC.RegisterAsTransient<ICommandHandler<CreateUserRequest>, UserCommandHandler>("TinyERP.Users.CreateUserRequest");
+            IoC.RegisterAsTransient<ICommandHandler<UpdateUserRequest>, UserCommandHandler>("TinyERP.Users.UpdateUserRequest");
         }
     }
 }

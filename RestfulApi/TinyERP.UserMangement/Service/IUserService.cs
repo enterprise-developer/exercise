@@ -6,10 +6,10 @@
 
     public interface IUserService
     {
-        IList<User> GetUsers();
-        User GetUser(int userId);
-        User CreateUser(CreateUserRequest request);
+        IList<UserAggregateRoot> GetUsers();
+        UserAggregateRoot GetUser(int userId);
+        UserAggregateRoot CreateUser(CreateUserRequest request);
         void UpdateUser(UpateUserRequest request);
-        User GetUserByUserName(string userName);
+        UserAggregateRoot GetUserByUserName(string userName);
     }
 }

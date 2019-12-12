@@ -20,10 +20,10 @@
             IoC.container.RegisterAsSingleton<IInterface, Impl>();
         }
 
-        public static void RegisterAsTransient<IInterface, Impl>()
+        public static void RegisterAsTransient<IInterface, Impl>(string name="")
             where IInterface : class where Impl : IInterface
         {
-            IoC.container.RegisterAsTransient<IInterface, Impl>();
+            IoC.container.RegisterAsTransient<IInterface, Impl>(name);
         }
     }
 }

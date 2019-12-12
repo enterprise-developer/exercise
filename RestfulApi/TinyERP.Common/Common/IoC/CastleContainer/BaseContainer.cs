@@ -21,9 +21,12 @@ namespace TinyERP.Common.Common.IoC.CastleContainer
             this.container.Register(Component.For<IInterface>().ImplementedBy<Impl>().LifestyleSingleton());
         }
 
-        public void RegisterAsTransient<IInterface, Impl>() where IInterface : class where Impl : IInterface
+        public void RegisterAsTransient<IInterface, Impl>(string name="") where IInterface : class where Impl : IInterface
         {
-            this.container.Register(Component.For<IInterface>().ImplementedBy<Impl>().LifestyleTransient());
+            if (string.IsNullOrWhiteSpace(name)) {
+                name = typeof(IInterface).Name + "__" + typeof(Impl).Name;
+            }
+            this.container.Register(Component.For<IInterface>().ImplementedBy<Impl>().LifestyleTransient().Named(name));
         }        
 
         public TResult Resolve<TResult>(object[] args = null) where TResult : class
