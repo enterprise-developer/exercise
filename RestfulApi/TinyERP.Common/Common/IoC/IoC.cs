@@ -1,6 +1,6 @@
 ﻿namespace TinyERP.Common.Common.IoC
 {
-    using System;
+    using System.Collections.Generic;
     using TinyERP.Common.Common.IoC.CastleContainer;
     public class IoC
     {
@@ -12,6 +12,11 @@
         public static TResult Resolve<TResult>(params object[] agrs) where TResult : class
         {
             return IoC.container.Resolve<TResult>(agrs);
+        }
+
+        public static IList<TResult> ResolveAll<TResult>(params object[] agrs) where TResult : class
+        {
+            return IoC.container.ResolveAll<TResult>(agrs);
         }
 
         public static void RegisterAsSingleton<IInterface, Impl>()

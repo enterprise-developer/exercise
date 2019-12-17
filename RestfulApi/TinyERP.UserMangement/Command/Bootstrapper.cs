@@ -6,7 +6,7 @@
     using TinyERP.Common.Tasks;
     using TinyERP.UserManagement.Share.Dto;
 
-    public class Bootstrapper:BaseTask, IBootStrapper
+    public class Bootstrapper:BaseTask, IBootstrapper
     {
         public Bootstrapper():base(Common.ApplicationType.All){}
         protected override void ExecuteInternal(ITaskArgument arg)

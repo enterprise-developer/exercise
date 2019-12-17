@@ -10,7 +10,7 @@
     using TinyERP.UserMangement.Service;
     using TinyERP.UserMangement.Share.Facade;
 
-    public class BootStrapper : BaseTask, IBootStrapper
+    public class BootStrapper : BaseTask, IBootstrapper
     {
         protected override void ExecuteInternal(ITaskArgument arg)
         {

@@ -25,7 +25,7 @@
         public virtual void OnApplicationStarting()
         {
             AssemblyHelper.Execute<IApplicationStarted>(this.GetTaskArgument());
-            AssemblyHelper.Execute<IBootStrapper>(this.GetTaskArgument());
+            AssemblyHelper.Execute<IBootstrapper>(this.GetTaskArgument());
         }
 
         public void OnErrors(IList<Exception> errors)

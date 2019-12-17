@@ -28,4 +28,9 @@
         High=70,
         Normal = 50
     }
+
+    public enum EventPriority {
+        High=70,
+        Normal=50
+    }
 }

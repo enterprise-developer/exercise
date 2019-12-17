@@ -6,7 +6,7 @@ using TinyERP.Common.Tasks;
 
 namespace TinyERP.UserManagement.Share.Facade
 {
-    public class Bootstrapper : BaseTask, IBootStrapper
+    public class Bootstrapper : BaseTask, IBootstrapper
     {
         protected override void ExecuteInternal(ITaskArgument arg)
         {

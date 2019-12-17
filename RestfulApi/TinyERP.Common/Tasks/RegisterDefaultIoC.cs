@@ -4,7 +4,7 @@
     using TinyERP.Common.Common.Task;
     using TinyERP.Common.Logging;
 
-    public class RegisterDefaultIoC: BaseTask, IBootStrapper
+    public class RegisterDefaultIoC: BaseTask, IBootstrapper
     {
         public RegisterDefaultIoC() : base(ApplicationType.All, TaskPriority.High) { }
         protected override void ExecuteInternal(ITaskArgument arg)

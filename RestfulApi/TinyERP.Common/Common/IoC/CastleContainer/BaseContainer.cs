@@ -3,7 +3,6 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using System;
 using System.Collections.Generic;
-using TinyERP.Common.Common.Data;
 using TinyERP.Common.Common.Helper;
 
 namespace TinyERP.Common.Common.IoC.CastleContainer
@@ -31,12 +30,21 @@ namespace TinyERP.Common.Common.IoC.CastleContainer
 
         public TResult Resolve<TResult>(object[] args = null) where TResult : class
         {
-            //Arguments winsorArg = Arguments.FromTyped(args);
+            Arguments winsorArg = this.GetArgument(args);
+            return this.container.Resolve<TResult>(winsorArg);
+        }
+
+        public IList<TResult> ResolveAll<TResult>(object[] args = null) where TResult : class
+        {
+            Arguments winsorArg = this.GetArgument(args);
+            return this.container.ResolveAll<TResult>(winsorArg);
+        }
+        private Arguments GetArgument(object[] args) {
+            Arguments winsorArg = new Arguments();
             if (args == null || args.Length == 0)
             {
-                return this.container.Resolve<TResult>();
+                return winsorArg;
             }
-            Arguments winsorArg = new Arguments();
             for (int index = 0; index < args.Length; index++)
             {
                 if (args[index] == null)
@@ -49,7 +57,7 @@ namespace TinyERP.Common.Common.IoC.CastleContainer
                     winsorArg.AddTyped(item, args[index]);
                 }
             }
-            return this.container.Resolve<TResult>(winsorArg);
+            return winsorArg;
         }
     }
 }

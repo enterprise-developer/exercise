@@ -7,7 +7,7 @@
     using TinyERP.Course.Repositories;
     using TinyERP.Course.Service;
 
-    public class Bootstrap :BaseTask, IBootStrapper
+    public class Bootstrap :BaseTask, IBootstrapper
     {
         protected override void ExecuteInternal(ITaskArgument arg)
         {
