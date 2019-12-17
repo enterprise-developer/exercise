@@ -75,6 +75,7 @@
     <Compile Include="Application\Tasks\OnApplicationErrorTask.cs" />
     <Compile Include="Application\WebApiApplication.cs" />
     <Compile Include="Attribute\DbContextAttribute.cs" />
+    <Compile Include="BaseAggregateRoot.cs" />
     <Compile Include="Common\Attribute\ResponseWrapper.cs" />
     <Compile Include="Common\Data\BaseDbContext.cs" />
     <Compile Include="Common\Data\IDbContext.cs" />
@@ -128,6 +129,11 @@
     <Compile Include="Data\UoW\UnitOfWork.cs" />
     <Compile Include="Data\UoW\UnitOfWorkFactory.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Event\BaseEvent.cs" />
+    <Compile Include="Event\EventManager.cs" />
+    <Compile Include="Event\IEventHandler.cs" />
+    <Compile Include="Event\IEvent.cs" />
+    <Compile Include="Event\IEventManager.cs" />
     <Compile Include="Exception\UnSupportException.cs" />
     <Compile Include="Logging\FileLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
@@ -135,6 +141,7 @@
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Tasks\BaseTask.cs" />
     <Compile Include="Tasks\ConfigWebApiTask.cs" />
+    <Compile Include="Tasks\RegisterCommonIoC.cs" />
     <Compile Include="Tasks\RegisterDefaultIoC.cs" />
   </ItemGroup>
   <ItemGroup>
