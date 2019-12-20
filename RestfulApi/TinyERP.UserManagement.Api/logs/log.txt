@@ -76,3 +76,41 @@ ERROR 2019-12-12 20:16:50,670    77ms FileLogger             Error              
    at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
    at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
    at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-20 19:58:36,827 20972ms FileLogger             Error              - Castle.MicroKernel.ComponentRegistrationException: Component IEventHandler`1__UserEventHandler could not be registered. There is already a component with that name. Did you want to modify the existing component instead? If not, make sure you specify a unique name.
+   at Castle.MicroKernel.SubSystems.Naming.DefaultNamingSubSystem.Register(IHandler handler)
+   at Castle.MicroKernel.DefaultKernel.AddCustomComponent(ComponentModel model)
+   at Castle.MicroKernel.DefaultKernel.Register(IRegistration[] registrations)
+   at Castle.Windsor.WindsorContainer.Register(IRegistration[] registrations)
+   at TinyERP.Common.Common.IoC.CastleContainer.BaseContainer.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\CastleContainer\BaseContainer.cs:line 28
+   at TinyERP.Common.Common.IoC.IoC.RegisterAsTransient[IInterface,Impl](String name) in F:\training\group01\RestfulApi\TinyERP.Common\Common\IoC\IoC.cs:line 31
+   at TinyERP.UserMangement.Event.Bootstrapper.ExecuteInternal(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Event\Bootstrapper.cs:line 16
+   at TinyERP.Common.Tasks.BaseTask.Execute(ITaskArgument arg) in F:\training\group01\RestfulApi\TinyERP.Common\Tasks\BaseTask.cs:line 27
+   at TinyERP.Common.Common.Helper.AssemblyHelper.Execute[ITask](ITaskArgument arg, Boolean runInOrder) in F:\training\group01\RestfulApi\TinyERP.Common\Common\Helper\AssemblyHelper.cs:line 26
+   at TinyERP.Common.Application.BaseApplication.OnApplicationStarting() in F:\training\group01\RestfulApi\TinyERP.Common\Application\BaseApplication.cs:line 28
+   at REST.WebApiApplication.Application_Start() in F:\training\group01\RestfulApi\TinyERP.UserManagement.Api\Global.asax.cs:line 30
+ERROR 2019-12-20 20:51:10,124 14006ms FileLogger             Error              - MongoDB.Bson.BsonSerializationException: The property 'MongoDB.Bson.ObjectId _id' of class 'TinyERP.Common.Data.MongoDb.BaseMongoEntity' has no 'set' accessor. To avoid this exception, call IsReadOnly to ensure that setting a value is allowed.
+   at MongoDB.Bson.Serialization.BsonMemberMap.GetPropertySetter()
+   at MongoDB.Bson.Serialization.BsonMemberMap.get_Setter()
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer.SetDocumentId(Object document, Object id)
+   at MongoDB.Driver.MongoCollection.AssignId(InsertRequest request)
+   at MongoDB.Driver.Operations.BulkInsertOperation.<DecorateRequests>b__0(WriteRequest r)
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at MongoDB.Driver.Operations.BulkUnmixedWriteOperationBase.BatchSerializer.Serialize(BsonWriter bsonWriter, Type nominalType, Object value, IBsonSerializationOptions options)
+   at MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.Serialize(BsonWriter bsonWriter, Type nominalType, Object value, IBsonSerializationOptions options)
+   at MongoDB.Bson.Serialization.Serializers.BsonDocumentSerializer.Serialize(BsonWriter bsonWriter, Type nominalType, Object value, IBsonSerializationOptions options)
+   at MongoDB.Bson.Serialization.Serializers.BsonArraySerializer.Serialize(BsonWriter bsonWriter, Type nominalType, Object value, IBsonSerializationOptions options)
+   at MongoDB.Bson.Serialization.Serializers.BsonDocumentSerializer.Serialize(BsonWriter bsonWriter, Type nominalType, Object value, IBsonSerializationOptions options)
+   at MongoDB.Driver.Internal.MongoQueryMessage.WriteBodyTo(BsonBuffer buffer)
+   at MongoDB.Driver.Internal.MongoRequestMessage.WriteTo(BsonBuffer buffer)
+   at MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   at MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   at MongoDB.Driver.Operations.BulkUnmixedWriteOperationBase.ExecuteBatch(MongoConnection connection, Batch`1 batch, Int32 originalIndex)
+   at MongoDB.Driver.Operations.BulkUnmixedWriteOperationBase.Execute(MongoConnection connection)
+   at MongoDB.Driver.Operations.InsertOpcodeOperationEmulator.Execute(MongoConnection connection)
+   at MongoDB.Driver.MongoCollection.InsertBatch(Type nominalType, IEnumerable documents, MongoInsertOptions options)
+   at MongoDB.Driver.MongoCollection.Insert(Type nominalType, Object document, MongoInsertOptions options)
+   at TinyERP.UserMangement.Event.UserEventHandler.Handle(OnUserCreated ev) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Event\UserEventHandler.cs:line 19
+   at TinyERP.Common.Event.EventManager._Publish[TEvent](TEvent ev) in F:\training\group01\RestfulApi\TinyERP.Common\Event\EventManager.cs:line 28
+ERROR 2019-12-20 20:53:26,410 93086ms FileLogger             Error              - System.InvalidCastException: Unable to cast object of type 'MongoDB.Driver.Linq.MongoQueryable`1[TinyERP.UserMangement.Query.Entity.UserSummary]' to type 'TinyERP.UserMangement.Query.Entity.UserSummary'.
+   at TinyERP.UserMangement.Event.UserEventHandler.Handle(OnUserUpdated ev) in F:\training\group01\RestfulApi\TinyERP.UserMangement\Event\UserEventHandler.cs:line 28
+   at TinyERP.Common.Event.EventManager._Publish[TEvent](TEvent ev) in F:\training\group01\RestfulApi\TinyERP.Common\Event\EventManager.cs:line 28

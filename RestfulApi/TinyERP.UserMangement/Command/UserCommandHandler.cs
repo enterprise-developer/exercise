@@ -3,16 +3,11 @@
     using TinyERP.Common.Common.IoC;
     using TinyERP.Common.CQRS;
     using TinyERP.Common.Data.UoW;
-    using TinyERP.Common.Event;
     using TinyERP.UserManagement.Share.Dto;
     using TinyERP.UserMangement.Aggregate;
-    using TinyERP.UserMangement.Event.User;
     using TinyERP.UserMangement.Repository;
 
-    internal class UserCommandHandler : 
-        BaseCommandHandler, 
-        ICommandHandler<CreateUserRequest>,
-        ICommandHandler<UpdateUserRequest>
+    internal class UserCommandHandler : BaseCommandHandler, IUserCommandHandler
     {
         public void Handle(CreateUserRequest command)
         {
@@ -22,9 +17,7 @@
                 IUserRepository userRepository = IoC.Resolve<IUserRepository>(unitOfWork);
                 userRepository.Add(user);
                 unitOfWork.Commit();
-                OnUserCreated ev = new OnUserCreated(user);
-                IEventManager eventManager = IoC.Resolve<IEventManager>();
-                eventManager.Publish(ev);
+                user.PublishEvents();
             }
         }
 
@@ -34,11 +27,11 @@
             {
                 IUserRepository userRepository = IoC.Resolve<IUserRepository>(unitOfWork);
                 UserAggregateRoot user = userRepository.GetUserDetail(command.UserId);
+                
                 user.Update(command);
                 userRepository.Update(user);
                 unitOfWork.Commit();
                 user.PublishEvents();
-                
             }
         }
     }

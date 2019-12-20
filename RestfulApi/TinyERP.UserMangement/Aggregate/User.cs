@@ -26,7 +26,7 @@
             this.FirstName = command.FirstName;
             this.LastName = command.LastName;
             this.UserName = command.UserName;
-            
+            this.AddEvent(new OnUserCreated(this));
         }
 
         private void Validate(CreateUserRequest request)

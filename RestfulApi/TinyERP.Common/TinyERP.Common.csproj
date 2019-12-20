@@ -45,6 +45,15 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Kennedy, Version=1.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Kennedy.Concurrency.1.0.12\lib\MongoDB.Kennedy.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -74,6 +83,7 @@
     <Compile Include="Application\IApplication.cs" />
     <Compile Include="Application\Tasks\OnApplicationErrorTask.cs" />
     <Compile Include="Application\WebApiApplication.cs" />
+    <Compile Include="Attribute\TableName.cs" />
     <Compile Include="Attribute\DbContextAttribute.cs" />
     <Compile Include="BaseAggregateRoot.cs" />
     <Compile Include="Common\Attribute\ResponseWrapper.cs" />
@@ -81,6 +91,7 @@
     <Compile Include="Common\Data\IDbContext.cs" />
     <Compile Include="Common\Data\ResponseData.cs" />
     <Compile Include="Common\Helper\AssemblyHelper.cs" />
+    <Compile Include="Common\Helper\AttributeHelper.cs" />
     <Compile Include="Common\Helper\DatabaseConnectionHelper.cs" />
     <Compile Include="Common\Helper\EnumHelper.cs" />
     <Compile Include="Common\Helper\JsonHelper.cs" />
@@ -125,6 +136,7 @@
     <Compile Include="Data\DatabaseConnectionFactory.cs" />
     <Compile Include="Data\DbContextFactory.cs" />
     <Compile Include="Data\IBaseRepository.cs" />
+    <Compile Include="Data\MongoDb\BaseMongoEntity.cs" />
     <Compile Include="Data\UoW\IUnitOfWork.cs" />
     <Compile Include="Data\UoW\UnitOfWork.cs" />
     <Compile Include="Data\UoW\UnitOfWorkFactory.cs" />

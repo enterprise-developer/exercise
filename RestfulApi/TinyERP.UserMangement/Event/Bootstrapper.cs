@@ -12,8 +12,8 @@
 
         protected override void ExecuteInternal(ITaskArgument arg)
         {
-            IoC.RegisterAsTransient<IEventHandler<OnUserCreated>, UserEventHandler>();
-            IoC.RegisterAsTransient<IEventHandler<OnUserUpdated>, UserEventHandler>();
+            IoC.RegisterAsTransient<IEventHandler<OnUserCreated>, UserEventHandler>("TinyERP.Users.Event.OnUserCreated");
+            IoC.RegisterAsTransient<IEventHandler<OnUserUpdated>, UserEventHandler>("TinyERP.Users.Event.OnUserUpdated");
         }
     }
 }

@@ -7,6 +7,10 @@
     public abstract class BaseAggregateRoot
     {
         public IList<IEvent> Events { get; private set; }
+        public BaseAggregateRoot()
+        {
+            this.Events = new List<IEvent>();
+        }
         public void AddEvent<TEvent>(TEvent ev) where TEvent : IEvent
         {
             this.Events.Add(ev);
