@@ -1,12 +1,11 @@
 ﻿namespace TinyERP.Common.Data
 {
-    using System.Data.Entity;
     using TinyERP.Common.Common.Data;
 
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private IDbContext dbContext;
-        protected BaseDbSet<TEntity> DbSet { get; private set; }
+        protected IDbSet<TEntity> DbSet { get; private set; }
         public BaseRepository() : this(DbContextFactory.CreateContext<TEntity>(), IOMode.ReadOnly)
         {
         }

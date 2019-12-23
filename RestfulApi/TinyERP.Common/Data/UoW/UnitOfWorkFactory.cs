@@ -1,8 +1,6 @@
-﻿using System;
-using TinyERP.Common.Common.Data;
-
-namespace TinyERP.Common.Data.UoW
+﻿namespace TinyERP.Common.Data.UoW
 {
+    using TinyERP.Common.Common.Data;
     public class UnitOfWorkFactory
     {
         public static IUnitOfWork Create<TEntity>()

@@ -1,14 +1,13 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using TinyERP.Common.Exception;
-
-namespace TinyERP.Common.Data
+﻿namespace TinyERP.Common.Data
 {
-    public class BaseDbSet<TEntity> where TEntity : class
+    using System.Data.Entity;
+    using System.Linq;
+    using TinyERP.Common.Exception;
+    public class BaseDbSet<TEntity>: IDbSet<TEntity> where TEntity : class
     {
         private DbContext dbContext;
         private IOMode mode;
-        private IDbSet<TEntity> dbSet;
+        private System.Data.Entity.IDbSet<TEntity> dbSet;
         public BaseDbSet(DbContext dbContext, IOMode mode)
         {
             this.dbContext = dbContext;

@@ -2,7 +2,9 @@
 {
     using TinyERP.Common.Attribute;
     using TinyERP.Common.Data.MongoDb;
+    using TinyERP.UserMangement.Context;
     using TinyERP.UserMangement.Share;
+    [DbContext(Use = typeof(IUserQueryDbContext))]
     [TableName(Name = "UserSummaryCollection")]
     public class UserSummary: BaseMongoEntity
     {

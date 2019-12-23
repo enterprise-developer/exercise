@@ -136,12 +136,17 @@
     <Compile Include="Data\DatabaseConnectionFactory.cs" />
     <Compile Include="Data\DbContextFactory.cs" />
     <Compile Include="Data\IBaseRepository.cs" />
+    <Compile Include="Data\IDbSet.cs" />
     <Compile Include="Data\MongoDb\BaseMongoEntity.cs" />
+    <Compile Include="Data\MongoDb\IMongoDbContext.cs" />
+    <Compile Include="Data\MongoDb\MongoDbContext.cs" />
+    <Compile Include="Data\MongoDb\MongoDbSet.cs" />
     <Compile Include="Data\UoW\IUnitOfWork.cs" />
     <Compile Include="Data\UoW\UnitOfWork.cs" />
     <Compile Include="Data\UoW\UnitOfWorkFactory.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Event\BaseEvent.cs" />
+    <Compile Include="Event\BaseEventHandler.cs" />
     <Compile Include="Event\EventManager.cs" />
     <Compile Include="Event\IEventHandler.cs" />
     <Compile Include="Event\IEvent.cs" />

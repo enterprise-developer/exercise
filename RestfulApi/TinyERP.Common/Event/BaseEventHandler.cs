@@ -1,7 +1,7 @@
-﻿namespace TinyERP.Common.CQRS
+﻿namespace TinyERP.Common.Event
 {
     using TinyERP.Common.Data.UoW;
-    public abstract class BaseCommandHandler
+    public abstract class BaseEventHandler
     {
         protected IUnitOfWork CreateUnitOfWork<TEntity>()
         {

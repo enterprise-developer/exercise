@@ -96,6 +96,7 @@
     <Compile Include="Command\IUserCommandHandler.cs" />
     <Compile Include="Command\UserCommandHandler.cs" />
     <Compile Include="Context\IUserDbContext.cs" />
+    <Compile Include="Context\IUserQueryDbContext.cs" />
     <Compile Include="Context\UserDbContext.cs" />
     <Compile Include="Event\Bootstrapper.cs" />
     <Compile Include="Event\IUserEventHandler.cs" />
@@ -104,6 +105,8 @@
     <Compile Include="Event\User\OnUserFirstNameUpdated.cs" />
     <Compile Include="Event\User\OnUserUpdated.cs" />
     <Compile Include="Query\Entity\UserSummary.cs" />
+    <Compile Include="Query\IUserQuery.cs" />
+    <Compile Include="Query\UserQuery.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Service\IUserService.cs" />

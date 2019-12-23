@@ -13,6 +13,8 @@ namespace TinyERP.Course.Context
         }
 
         public IDbSet<Entity.Course> Courses { get; set; }
+        // fluent configuration
+        // xml configuration
         public IDbSet<Entity.Student> Students { get; set; }
     }
 }

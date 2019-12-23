@@ -1,7 +1,6 @@
-﻿using TinyERP.Common.Common.Data;
-
-namespace TinyERP.Common.Data.UoW
+﻿namespace TinyERP.Common.Data.UoW
 {
+    using TinyERP.Common.Common.Data;
     internal class UnitOfWork : IUnitOfWork
     {
         public IDbContext Context { get; private set; }
