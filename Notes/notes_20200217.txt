@@ -1,0 +1,61 @@
+RestfulAPI
+	+ CourseAPI ==> Host ==> reference to Course
+	+ Course ==> Implement Course's API
+		+ CourseController ==> naming "api/courses"
+			+) Rewrite url
+			+) Methods: CRUD
+				++) Create: POST
+					input: CreateCourseDto ==> validation
+						CreateCourseDto:
+							+ Name (Unique,Required, Min - 6, Max - 50)
+							+ Description (optional)
+					
+					validation: Annotation for DTO ==> Common's Project. 
+						+ Required: This field is required
+						+ Unique: This name has exist
+						+ Min: Min length is 6
+						+ Max: Max lenght is 50
+					
+					process:
+						+ Call service ==> 
+						
+								validate
+											+ for each properties, check annotation ==> mark error ==> throw error 
+										validate ==> if success: call repository
+														else: throw error
+														
+							
+					output: Response
+						Response:
+							+ Data<Course>:
+								Course:
+								+ Id: int
+								+ Name: string
+								+ Description: string
+								
+							+ Errors: List of error
+								Error:
+								+ Message: string
+							+ StatusCode: 500 
+							
+				{
+					statusCode: 500,
+					errors: [
+						{
+							message: "course.createCourse.nameWasUnderMinLenght" ==> Key ===> looking for inside course.{en}.json ==> module
+								
+						}
+					]
+				}
+				
+				{
+					course:
+					{
+						min_length_is_six:"Min lenght is 6"
+					}
+				}
+					
+	+ Common
+	
+	
+	QUESTION: controller's convention ==> why we need to remove 's' behind controller
