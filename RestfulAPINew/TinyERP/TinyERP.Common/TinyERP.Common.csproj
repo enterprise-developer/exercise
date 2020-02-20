@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\BaseAttribute.cs" />
+    <Compile Include="Attributes\MaxLength.cs" />
+    <Compile Include="Attributes\MinLength.cs" />
+    <Compile Include="Attributes\Required.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\Response.cs" />
-    <Compile Include="Vadations\Error.cs" />
+    <Compile Include="Validations\Error.cs" />
+    <Compile Include="Validations\ValidationException.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
