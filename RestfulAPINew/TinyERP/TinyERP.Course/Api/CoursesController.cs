@@ -12,21 +12,22 @@ namespace TinyERP.Course.Api
     {
         [Route("")]
         [HttpPost()]
-        public Response<TinyERP.Course.Entities.Course> CreateCourse(CreateCourseDto createCouseDto)
+        [ResponseWrapper()]
+        public TinyERP.Course.Entities.Course CreateCourse(CreateCourseDto createCouseDto)
         {
-            try
-            {
-                CourseService service = new CourseService();
-                return service.Create(createCouseDto);
-            }
-            catch (ValidationException exs)
-            {
-
-                Response<TinyERP.Course.Entities.Course> response = new Response<Entities.Course>();
-                response.Errors = exs.Errors;
-                response.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return response;
-            }
+            CourseService service = new CourseService();
+            return service.Create(createCouseDto);
         }
+
+        [Route("{id}")]
+        [HttpPut()]
+        [ResponseWrapper()]
+        public Entities.Course Update(int id, UpdateCourseDto updateCourseDto)
+        {
+            CourseService service = new CourseService();
+            updateCourseDto.Id = id;
+            return service.Update(updateCourseDto);
+        }
+
     }
 }

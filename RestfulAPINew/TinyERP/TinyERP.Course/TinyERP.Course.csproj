@@ -131,6 +131,7 @@
     <Compile Include="Const\CourseValidationRules.cs" />
     <Compile Include="Context\CourseContext.cs" />
     <Compile Include="Dtos\CreateCourseDto.cs" />
+    <Compile Include="Dtos\UpdateCourseDto.cs" />
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reponsitories\CourseRepository.cs" />

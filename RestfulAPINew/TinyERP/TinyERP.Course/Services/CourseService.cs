@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Reflection;
-using TinyERP.Common.Attributes;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.Responses;
 using TinyERP.Common.Vadations;
@@ -14,32 +11,68 @@ namespace TinyERP.Course.Services
 {
     public class CourseService
     {
-        public Response<TinyERP.Course.Entities.Course> Create(CreateCourseDto createCourse)
+        public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
             this.Validate(createCourse);
-            Response<TinyERP.Course.Entities.Course> response = new Response<TinyERP.Course.Entities.Course>();
             CourseRepository respository = new CourseRepository();
-            TinyERP.Course.Entities.Course course = new Entities.Course()
+            Entities.Course course = new Entities.Course()
             {
                 Name = createCourse.Name,
                 Description = createCourse.Description
             };
 
-            TinyERP.Course.Entities.Course itemAdded = respository.Create(course);
+            Entities.Course itemAdded = respository.Create(course);
 
-            response.StatusCode = HttpStatusCode.OK;
-            response.Data = itemAdded;
-            return response;
+            return itemAdded;
         }
+
         private void Validate(CreateCourseDto request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
             CourseRepository repo = new CourseRepository();
-            TinyERP.Course.Entities.Course course = repo.GetByName(request.Name);
+            Entities.Course course = repo.GetByName(request.Name);
             if (course != null)
             {
-                errors.Add(new Error("course.addCourse.nameWasExisted"));
+                errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
             }
+            if (errors.Any())
+            {
+                throw new ValidationException(errors);
+            }
+        }
+
+        public Entities.Course Update(UpdateCourseDto updateCourseDto)
+        {
+            this.Validate(updateCourseDto);
+            
+            CourseRepository repository = new CourseRepository();
+            Entities.Course itemExisted = repository.GetById(updateCourseDto.Id);
+            itemExisted.Name = updateCourseDto.Name;
+            itemExisted.Description = updateCourseDto.Description;
+            repository.Update(itemExisted);
+
+            return itemExisted;
+
+        }
+
+        private void Validate(UpdateCourseDto request)
+        {
+            IList<Error> errors = ValidationHelper.Validate(request);
+            CourseRepository repository = new CourseRepository();
+            Entities.Course course = repository.GetById(request.Id);
+
+            if (course == null)
+            {
+                errors.Add(new Error("course.addOrUpdateCourse.courseNotExisted"));
+                throw new ValidationException(errors);
+            }
+
+            bool isExist = repository.IsExistName(request.Name, request.Id);
+            if (isExist)
+            {
+                errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
+            }
+
             if (errors.Any())
             {
                 throw new ValidationException(errors);
