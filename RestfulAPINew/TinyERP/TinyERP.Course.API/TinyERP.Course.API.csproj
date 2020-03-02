@@ -253,6 +253,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TinyERP.Common\TinyERP.Common.csproj">
+      <Project>{11FCAD88-1374-4DF0-BBB1-FF335E230965}</Project>
+      <Name>TinyERP.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TinyERP.Course\TinyERP.Course.csproj">
       <Project>{89bf931d-ba03-4db2-961c-2bb921bf4316}</Project>
       <Name>TinyERP.Course</Name>

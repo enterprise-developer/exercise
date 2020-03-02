@@ -1,0 +1,10 @@
+﻿using TinyERP.Course.Dtos;
+
+namespace TinyERP.Course.Services
+{
+    public interface ICourseService
+    {
+        Entities.Course Create(CreateCourseDto request);
+        Entities.Course Update(UpdateCourseDto request);
+    }
+}

@@ -9,7 +9,7 @@ using TinyERP.Course.Reponsitories;
 
 namespace TinyERP.Course.Services
 {
-    public class CourseService
+    public class CourseService : ICourseService
     {
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {

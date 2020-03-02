@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using TinyERP.Common.DI;
 using TinyERP.Common.Responses;
 using TinyERP.Common.Validations;
 using TinyERP.Course.Dtos;
@@ -15,7 +16,7 @@ namespace TinyERP.Course.Api
         [ResponseWrapper()]
         public TinyERP.Course.Entities.Course CreateCourse(CreateCourseDto createCouseDto)
         {
-            CourseService service = new CourseService();
+            ICourseService service = IoC.Resolve<ICourseService>();
             return service.Create(createCouseDto);
         }
 
@@ -24,7 +25,7 @@ namespace TinyERP.Course.Api
         [ResponseWrapper()]
         public Entities.Course Update(int id, UpdateCourseDto updateCourseDto)
         {
-            CourseService service = new CourseService();
+            ICourseService service = IoC.Resolve<ICourseService>();
             updateCourseDto.Id = id;
             return service.Update(updateCourseDto);
         }

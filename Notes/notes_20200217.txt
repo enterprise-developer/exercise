@@ -58,4 +58,6 @@ RestfulAPI
 	+ Common
 	
 	
-	QUESTION: controller's convention ==> why we need to remove 's' behind controller
+	QUESTION: controller's convention ==> why we need to remove 's' behind controller.
+
+	QUESTION: Bat cap o Unity Container la gi??
