@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TinyERP.Common.Applications;
 using TinyERP.Common.DI;
 using TinyERP.Course.Services;
 
@@ -13,6 +14,12 @@ namespace TinyERP.Course.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private IApplication app;
+        public WebApiApplication()
+        {
+            this.app = new Application();
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -20,7 +27,8 @@ namespace TinyERP.Course.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            IoC.RegisterTransient<ICourseService, CourseService>();
+          //  IoC.RegisterTransient<ICourseService, CourseService>();
+            this.app.OnStart();
         }
     }
 }

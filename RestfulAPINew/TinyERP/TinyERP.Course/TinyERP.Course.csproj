@@ -137,6 +137,7 @@
     <Compile Include="Reponsitories\CourseRepository.cs" />
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\ICourseService.cs" />
+    <Compile Include="Task\ApplicationStartTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
