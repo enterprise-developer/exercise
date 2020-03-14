@@ -10,13 +10,13 @@ namespace TinyERP.Common.Helpers
 {
     public class AssemblyHelper
     {
-        public static void Execute<IInterface>() where IInterface : ITask
+        public static void Execute<IInterface>(object arg = null) where IInterface : ITask
         {
             IList<Type> types = AssemblyHelper.GetTypes<IInterface>();
             foreach (Type type in types)
             {
                 IInterface task = (IInterface)Activator.CreateInstance(type);
-                task.Execute();
+                task.Execute(arg);
             }
 
         }

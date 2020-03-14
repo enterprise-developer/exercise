@@ -1,12 +1,11 @@
 ﻿using TinyERP.Common.DI;
 using TinyERP.Common.Tasks;
-using TinyERP.Course.Services;
 
-namespace TinyERP.Course.Task
+namespace TinyERP.Course.Services
 {
-    public class ApplicationStartTask : IApplicationStartTask
+    public class RegistrationServicesTask : IApplicationStartTask
     {
-        public void Execute()
+        public void Execute(object arg = null)
         {
             IoC.RegisterTransient<ICourseService, CourseService>();
         }

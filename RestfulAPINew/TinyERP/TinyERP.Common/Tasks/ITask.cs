@@ -2,6 +2,6 @@
 {
     public interface ITask
     {
-        void Execute();
+        void Execute(object arg = null);
     }
 }

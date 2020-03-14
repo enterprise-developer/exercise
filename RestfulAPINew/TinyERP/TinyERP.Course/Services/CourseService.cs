@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.Responses;
 using TinyERP.Common.Vadations;
@@ -14,14 +15,14 @@ namespace TinyERP.Course.Services
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
             this.Validate(createCourse);
-            CourseRepository respository = new CourseRepository();
+            ICourseRepository repository = IoC.Resolve<ICourseRepository>();
             Entities.Course course = new Entities.Course()
             {
                 Name = createCourse.Name,
                 Description = createCourse.Description
             };
 
-            Entities.Course itemAdded = respository.Create(course);
+            Entities.Course itemAdded = repository.Create(course);
 
             return itemAdded;
         }
@@ -29,7 +30,7 @@ namespace TinyERP.Course.Services
         private void Validate(CreateCourseDto request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
-            CourseRepository repo = new CourseRepository();
+            ICourseRepository repo = IoC.Resolve<ICourseRepository>();
             Entities.Course course = repo.GetByName(request.Name);
             if (course != null)
             {
@@ -44,21 +45,20 @@ namespace TinyERP.Course.Services
         public Entities.Course Update(UpdateCourseDto updateCourseDto)
         {
             this.Validate(updateCourseDto);
-            
-            CourseRepository repository = new CourseRepository();
+
+            ICourseRepository repository = IoC.Resolve<ICourseRepository>();
             Entities.Course itemExisted = repository.GetById(updateCourseDto.Id);
             itemExisted.Name = updateCourseDto.Name;
             itemExisted.Description = updateCourseDto.Description;
             repository.Update(itemExisted);
 
             return itemExisted;
-
         }
 
         private void Validate(UpdateCourseDto request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
-            CourseRepository repository = new CourseRepository();
+            ICourseRepository repository = IoC.Resolve<ICourseRepository>();
             Entities.Course course = repository.GetById(request.Id);
 
             if (course == null)

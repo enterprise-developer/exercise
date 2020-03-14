@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using TinyERP.Common.Applications;
-using TinyERP.Common.DI;
-using TinyERP.Course.Services;
+using TinyERP.Common.Helpers;
+using TinyERP.Common.Tasks;
 
 namespace TinyERP.Course.API
 {
@@ -22,12 +18,12 @@ namespace TinyERP.Course.API
 
         protected void Application_Start()
         {
+            this.app.OnInit();
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-          //  IoC.RegisterTransient<ICourseService, CourseService>();
+            GlobalConfiguration.Configuration.EnsureInitialized();
             this.app.OnStart();
         }
     }

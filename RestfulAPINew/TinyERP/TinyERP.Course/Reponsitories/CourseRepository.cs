@@ -1,46 +1,40 @@
 ﻿using System.Linq;
 using TinyERP.Course.Context;
-using TinyERP.Course.Dtos;
 
 namespace TinyERP.Course.Reponsitories
 {
-    public class CourseRepository
+    public class CourseRepository : ICourseRepository
     {
-        private CourseContext Context { get; set; }
+        private CourseContext context;
         public CourseRepository()
         {
-            this.Context = new CourseContext();
+            this.context = new CourseContext();
         }
         public TinyERP.Course.Entities.Course GetByName(string name)
         {
-            CourseContext context = new CourseContext();
-
-            return context.Courses.FirstOrDefault(item => item.Name == name);
+            return this.context.Courses.FirstOrDefault(item => item.Name == name);
         }
 
         public TinyERP.Course.Entities.Course Create(TinyERP.Course.Entities.Course course)
         {
-            CourseContext context = new CourseContext();
-            context.Courses.Add(course);
-            context.SaveChanges();
+            this.context.Courses.Add(course);
+            this.context.SaveChanges();
             return course;
         }
 
         public bool IsExistName(string name, int excludedId)
         {
-            CourseContext courseContext = new CourseContext();
-            return courseContext.Courses.Any(item => item.Name.Equals(name) && item.Id != excludedId);
+            return this.context.Courses.Any(item => item.Name.Equals(name) && item.Id != excludedId);
         }
 
         public void Update(Entities.Course course)
         {
-            this.Context.SaveChanges();
+            this.context.SaveChanges();
         }
 
         public Entities.Course GetById(int id)
         {
-            CourseContext context = new CourseContext();
-            return context.Courses.FirstOrDefault(item => item.Id == id);
+            return this.context.Courses.FirstOrDefault(item => item.Id == id);
         }
 
     }

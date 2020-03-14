@@ -135,9 +135,11 @@
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reponsitories\CourseRepository.cs" />
+    <Compile Include="Reponsitories\ICourseRepository.cs" />
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\ICourseService.cs" />
-    <Compile Include="Task\ApplicationStartTask.cs" />
+    <Compile Include="Reponsitories\RegistrationRepositoriesTask.cs" />
+    <Compile Include="Services\RegistrationServicesTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -148,6 +150,9 @@
       <Project>{11FCAD88-1374-4DF0-BBB1-FF335E230965}</Project>
       <Name>TinyERP.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Task\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
