@@ -18,7 +18,7 @@ function defineDecorator(target: any, propertyKey: string, messageKey: string, i
             target[ValidationStatus.InvalidState].push(messageKey);
         } else {
             eventManager.publish(new ValidationResult(messageKey, true));
-            target[ValidationStatus.InvalidState].remove(messageKey);
+            target[ValidationStatus.InvalidState].removeItem(messageKey);
         }
         target[_propertyKey] = value;
     }

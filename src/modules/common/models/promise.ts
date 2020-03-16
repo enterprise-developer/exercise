@@ -48,7 +48,7 @@ export class Promise {
         if (this.status == PromiseStatus.Success && !!this.successCallback) {
             this.successCallback(this.data);
         }
-        if (this.status == PromiseStatus.Failed) {
+        if (this.status == PromiseStatus.Failed && !!this.failedCallback) {
             this.failedCallback(this.errors);
         }
     }
@@ -70,6 +70,12 @@ export class Promise {
     public reject(errors?: Array<string>): Promise {
         this.status = PromiseStatus.Failed;
         this.errors = errors;
+        this.processCallback();
+        return this;
+    }
+
+    public error(errorCallBack: any): Promise {
+        this.failedCallback = errorCallBack;
         this.processCallback();
         return this;
     }

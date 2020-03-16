@@ -2,11 +2,12 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AddNewStudentModel } from "../models/addNewStudentModel";
 import { IStudentService } from "../services/istudentService";
-import { IoCNames } from "@app/common";
+import { IoCNames, ValidationStatus } from "@app/common";
 import { BaseComponent } from "@app/common";
+import { ValidationResult } from "src/modules/common/models/ivalidationResult";
 @Component({
     template: `
-    <page title="i18n.learning.addNewStudent.title">
+    <page [title]="i18n.learning.addNewStudent.title">
         <page-content>
             <form-horizontal>
                 <form-text-input 
@@ -51,12 +52,13 @@ import { BaseComponent } from "@app/common";
     `
 })
 export class AddNewStudent extends BaseComponent {
-    public model: AddNewStudentModel = new AddNewStudentModel();
+    public model: AddNewStudentModel;
     private router: Router;
 
     constructor(router: Router) {
         super();
         this.router = router;
+        this.model = new AddNewStudentModel();
     }
 
     public onSaveClicked(): void {

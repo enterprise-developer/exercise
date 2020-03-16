@@ -6,7 +6,7 @@ export function required(messageKey: string) {
         target[ValidationStatus.InvalidState].push(messageKey);
         return decoratorHelper.defineDecorator(target, propertyKey, messageKey, isValid);
         function isValid(value: any): boolean {
-            return !value;
+            return !!value;
         }
     }
 }
