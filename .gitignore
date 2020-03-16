@@ -9,3 +9,7 @@ api/Rest/packages/Microsoft.Net.Compilers.2.4.0/
 api/Rest/packages/
 api/Rest/Learning.Api/bin/
 api/Rest/TinyERP.Common/obj/
+RestfulApi/.vs/REST/v16/Server/sqlite3/db.lock
+RestfulApi/.vs/REST/v16/Server/sqlite3/storage.ide
+RestfulApi/.vs/REST/v16/Server/sqlite3/storage.ide-shm
+RestfulApi/.vs/REST/v16/Server/sqlite3/storage.ide-wal
