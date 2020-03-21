@@ -7,6 +7,7 @@ using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
 using TinyERP.Course.Dtos;
 using TinyERP.Course.Reponsitories;
+using TinyERP.UserManagement.Share.Facade;
 
 namespace TinyERP.Course.Services
 {
@@ -15,6 +16,9 @@ namespace TinyERP.Course.Services
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
             this.Validate(createCourse);
+            IUserFacade userFacade = IoC.Resolve<IUserFacade>();
+            int authorId = userFacade.CreateIfNotExist(createCourse.Author);
+
             ICourseRepository repository = IoC.Resolve<ICourseRepository>();
             Entities.Course course = new Entities.Course()
             {
@@ -22,6 +26,7 @@ namespace TinyERP.Course.Services
                 Description = createCourse.Description
             };
 
+            course.AuthorId = authorId;
             Entities.Course itemAdded = repository.Create(course);
 
             return itemAdded;
