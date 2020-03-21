@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.Course.API", "TinyERP.Course.API\TinyERP.Course.API.csproj", "{CC153427-72D1-4A78-ABDA-B7818E584211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.Course", "TinyERP.Course\TinyERP.Course.csproj", "{89BF931D-BA03-4DB2-961C-2BB921BF4316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.Common", "TinyERP.Common\TinyERP.Common.csproj", "{11FCAD88-1374-4DF0-BBB1-FF335E230965}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC153427-72D1-4A78-ABDA-B7818E584211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC153427-72D1-4A78-ABDA-B7818E584211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC153427-72D1-4A78-ABDA-B7818E584211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC153427-72D1-4A78-ABDA-B7818E584211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BF931D-BA03-4DB2-961C-2BB921BF4316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BF931D-BA03-4DB2-961C-2BB921BF4316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BF931D-BA03-4DB2-961C-2BB921BF4316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BF931D-BA03-4DB2-961C-2BB921BF4316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FC6DB9B-0BF5-4F50-8475-759417F10666}
+	EndGlobalSection
+EndGlobal
