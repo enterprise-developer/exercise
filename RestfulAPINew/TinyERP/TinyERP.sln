@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.Course", "TinyERP.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.Common", "TinyERP.Common\TinyERP.Common.csproj", "{11FCAD88-1374-4DF0-BBB1-FF335E230965}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.UserManagement.Api", "TinyERP.UserManagement.Api\TinyERP.UserManagement.Api.csproj", "{352C4F9B-880F-4DC5-AA09-66047634F709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.UserManagement", "TinyERP.UserManagement\TinyERP.UserManagement.csproj", "{729B4C43-72B2-47B3-BBD5-D83CD5046B36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.UserManagement.Share", "TinyERP.UserManagement.Share\TinyERP.UserManagement.Share.csproj", "{68DEDB19-CA71-414E-A212-E6CBF314EA59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11FCAD88-1374-4DF0-BBB1-FF335E230965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352C4F9B-880F-4DC5-AA09-66047634F709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352C4F9B-880F-4DC5-AA09-66047634F709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352C4F9B-880F-4DC5-AA09-66047634F709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352C4F9B-880F-4DC5-AA09-66047634F709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{729B4C43-72B2-47B3-BBD5-D83CD5046B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{729B4C43-72B2-47B3-BBD5-D83CD5046B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{729B4C43-72B2-47B3-BBD5-D83CD5046B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729B4C43-72B2-47B3-BBD5-D83CD5046B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DEDB19-CA71-414E-A212-E6CBF314EA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DEDB19-CA71-414E-A212-E6CBF314EA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DEDB19-CA71-414E-A212-E6CBF314EA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DEDB19-CA71-414E-A212-E6CBF314EA59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

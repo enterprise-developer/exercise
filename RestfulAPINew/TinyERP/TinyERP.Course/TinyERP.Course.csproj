@@ -150,6 +150,10 @@
       <Project>{11FCAD88-1374-4DF0-BBB1-FF335E230965}</Project>
       <Name>TinyERP.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TinyERP.UserManagement.Share\TinyERP.UserManagement.Share.csproj">
+      <Project>{68dedb19-ca71-414e-a212-e6cbf314ea59}</Project>
+      <Name>TinyERP.UserManagement.Share</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Task\" />
