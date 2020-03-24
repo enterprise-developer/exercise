@@ -1,5 +1,6 @@
 ﻿using TinyERP.Common.Attributes;
 using TinyERP.Course.Const;
+using TinyERP.UserManagement.Share.Dtos;
 
 namespace TinyERP.Course.Dtos
 {
@@ -10,5 +11,8 @@ namespace TinyERP.Course.Dtos
         [MaxLength("course.addOrUpdateCourse.nameWasExceedMaxLenght", CourseValidationRules.Course_Name_Max_Length)]
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public CreateAuthorDto Author{ get; set; }
+
     }
 }

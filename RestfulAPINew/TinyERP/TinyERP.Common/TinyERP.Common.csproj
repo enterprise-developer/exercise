@@ -131,5 +131,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinyERP.UserManagement.Share\TinyERP.UserManagement.Share.csproj">
+      <Project>{68DEDB19-CA71-414E-A212-E6CBF314EA59}</Project>
+      <Name>TinyERP.UserManagement.Share</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
