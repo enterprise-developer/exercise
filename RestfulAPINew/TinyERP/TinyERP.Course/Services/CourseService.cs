@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
-using TinyERP.Common.Responses;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
 using TinyERP.Course.Dtos;
@@ -16,9 +16,9 @@ namespace TinyERP.Course.Services
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
             this.Validate(createCourse);
+            // mode remote
             IUserFacade userFacade = IoC.Resolve<IUserFacade>();
             int authorId = userFacade.CreateIfNotExist(createCourse.Author);
-
             ICourseRepository repository = IoC.Resolve<ICourseRepository>();
             Entities.Course course = new Entities.Course()
             {

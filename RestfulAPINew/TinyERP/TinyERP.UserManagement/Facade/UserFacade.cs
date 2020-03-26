@@ -25,7 +25,7 @@ namespace TinyERP.UserManagement.Facade
             user = new User() { 
                 UserName = createAuthor.UserName,
                 Name = createAuthor.Name,
-                Birthday = createAuthor.Birthday
+               // Birthday = createAuthor.Birthday
             };
             user = repository.Create(user);
             return user.Id;

@@ -1,8 +1,7 @@
 ﻿using TinyERP.Common.DI;
 using TinyERP.Common.Tasks;
-using TinyERP.UserManagement.Repositories;
 
-namespace TinyERP.UserManagement.Tasks
+namespace TinyERP.UserManagement.Repositories
 {
     public class RegistrationRepositoriesTask : IApplicationStartTask
     {

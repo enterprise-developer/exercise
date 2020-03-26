@@ -12,7 +12,7 @@ namespace TinyERP.Course.Reponsitories
         }
         public TinyERP.Course.Entities.Course GetByName(string name)
         {
-            return this.context.Courses.FirstOrDefault(item => item.Name == name);
+            return this.context.Courses?.FirstOrDefault(item => item.Name == name);
         }
 
         public TinyERP.Course.Entities.Course Create(TinyERP.Course.Entities.Course course)

@@ -2,7 +2,6 @@
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.Tasks;
-using TinyERP.UserManagement.Share.Facade;
 
 namespace TinyERP.Common.Applications
 {
