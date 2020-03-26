@@ -11,7 +11,7 @@ namespace TinyERP.UserManagement.Share.Facade
         public int CreateIfNotExist(CreateAuthorDto createAuthor)
         {
             HttpClient http = new HttpClient();
-            string url = "http://testlocalhost.security.api/api/users";
+            string url = "http://user.api/api/users";
             var json = JsonConvert.SerializeObject(createAuthor);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var response = http.PostAsync(url, data).Result;

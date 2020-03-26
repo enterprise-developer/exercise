@@ -108,6 +108,8 @@
     <Compile Include="Attributes\MaxLength.cs" />
     <Compile Include="Attributes\MinLength.cs" />
     <Compile Include="Attributes\Required.cs" />
+    <Compile Include="Configurations\ConfigurationApp.cs" />
+    <Compile Include="Configurations\UserManagement.cs" />
     <Compile Include="DI\ContainerFactory.cs" />
     <Compile Include="DI\WindsorContainer.cs" />
     <Compile Include="DI\BaseUnityContainer.cs" />
