@@ -12,13 +12,11 @@ namespace TinyERP.UserManagement.Tasks
     {
         public void Execute(object arg = null)
         {
-            ConfigurationApp configuration = ConfigurationManager.GetSection("appConfig") as ConfigurationApp;
-            int mode = configuration.UserManagement.Mode;
+            int mode = ConfigurationApp.Instance.UserManagement.Mode;
             if (mode == UserManagementConfiguration.InApp)
             {
                 IoC.RegisterTransient<IUserFacade, UserFacade>();
             }
-            
         }
     }
 }

@@ -109,6 +109,7 @@
     <Compile Include="Attributes\MinLength.cs" />
     <Compile Include="Attributes\Required.cs" />
     <Compile Include="Configurations\ConfigurationApp.cs" />
+    <Compile Include="Configurations\EndPoint.cs" />
     <Compile Include="Configurations\UserManagement.cs" />
     <Compile Include="DI\ContainerFactory.cs" />
     <Compile Include="DI\WindsorContainer.cs" />
@@ -131,10 +132,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="Configurations\Configuration.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy “E:\training\section2\aTu\RestfulAPINew\TinyERP\TinyERP.Common\Configurations\Configuration.config” “E:\training\section2\aTu\RestfulAPINew\TinyERP\TinyERP.Api\Config\Configuration.config” /S /r /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

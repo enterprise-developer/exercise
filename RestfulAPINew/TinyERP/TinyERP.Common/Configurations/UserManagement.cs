@@ -12,5 +12,14 @@ namespace TinyERP.Common.Configurations
                 return (int)this["mode"];
             }
         }
+
+        [ConfigurationProperty("endPoint")]
+        public EndPoint EndPoint
+        {
+            get
+            {
+                return (EndPoint)this["endPoint"];
+            }
+        }
     }
 }

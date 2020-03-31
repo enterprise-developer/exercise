@@ -9,8 +9,7 @@ namespace TinyERP.UserManagement.Share.Facade
     {
         public void Execute(object arg = null)
         {            
-            ConfigurationApp configurationApp = ConfigurationManager.GetSection("appConfig") as ConfigurationApp;
-            int mode = configurationApp.UserManagement.Mode;
+            int mode = ConfigurationApp.Instance.UserManagement.Mode;
             if (mode == UserManagementConfiguration.Remote)
             {
                 IoC.RegisterTransient<IUserFacade, RemoteUserFacade>();
