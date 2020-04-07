@@ -11,4 +11,9 @@
         Remote = 1,
         InApp = 2
     }
+
+    public enum ConnectorType
+    {
+        Json = 1
+    }
 }

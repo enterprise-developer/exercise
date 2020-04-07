@@ -111,6 +111,9 @@
     <Compile Include="Configurations\ConfigurationApp.cs" />
     <Compile Include="Configurations\EndPoint.cs" />
     <Compile Include="Configurations\UserManagement.cs" />
+    <Compile Include="Connector\ConnectorFactory.cs" />
+    <Compile Include="Connector\IConnector.cs" />
+    <Compile Include="Connector\JsonConnector.cs" />
     <Compile Include="DI\ContainerFactory.cs" />
     <Compile Include="DI\WindsorContainer.cs" />
     <Compile Include="DI\BaseUnityContainer.cs" />
