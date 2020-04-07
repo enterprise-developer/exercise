@@ -2,7 +2,13 @@
 {
     public enum ContainerType
     {
-        Windsor =1,
-        Unity=2
+        Windsor = 1,
+        Unity = 2
+    }
+
+    public enum ModuleDeploymentMode
+    {
+        Remote = 1,
+        InApp = 2
     }
 }

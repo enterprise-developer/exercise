@@ -1,9 +1,8 @@
-﻿using System.Configuration;
+﻿using TinyERP.Common;
 using TinyERP.Common.Configurations;
 using TinyERP.Common.DI;
 using TinyERP.Common.Tasks;
 using TinyERP.UserManagement.Facade;
-using TinyERP.UserManagement.Share;
 using TinyERP.UserManagement.Share.Facade;
 
 namespace TinyERP.UserManagement.Tasks
@@ -12,8 +11,8 @@ namespace TinyERP.UserManagement.Tasks
     {
         public void Execute(object arg = null)
         {
-            int mode = ConfigurationApp.Instance.UserManagement.Mode;
-            if (mode == UserManagementConfiguration.InApp)
+            ModuleDeploymentMode mode = ConfigurationApp.Instance.UserManagement.Mode;
+            if (mode == ModuleDeploymentMode.InApp)
             {
                 IoC.RegisterTransient<IUserFacade, UserFacade>();
             }

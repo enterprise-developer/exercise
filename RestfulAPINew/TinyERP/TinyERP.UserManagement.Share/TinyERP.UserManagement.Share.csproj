@@ -50,7 +50,6 @@
     <Compile Include="Facade\RegistrationFacadeTask.cs" />
     <Compile Include="Facade\RemoteUserFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserManagementConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyERP.Common\TinyERP.Common.csproj">

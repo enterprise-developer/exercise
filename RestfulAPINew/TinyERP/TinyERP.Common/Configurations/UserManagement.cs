@@ -1,15 +1,16 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 
 namespace TinyERP.Common.Configurations
 {
     public class UserManagement : ConfigurationElement
     {
         [ConfigurationProperty("mode")]
-        public int Mode
+        public ModuleDeploymentMode Mode
         {
             get
             {
-                return (int)this["mode"];
+                return (ModuleDeploymentMode)Enum.Parse(typeof(ModuleDeploymentMode), this["mode"].ToString());
             }
         }
 
