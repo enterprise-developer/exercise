@@ -17,5 +17,14 @@ namespace TinyERP.UserManagement.Api
             IUserService service = IoC.Resolve<IUserService>();
             return service.Create(request);
         }
+
+        [Route("{id}/authorInfo")]
+        [HttpGet()]
+        [ResponseWrapper()]
+        public AuthorInfo GetAuthorInfo(int id)
+        {
+            IUserService service = IoC.Resolve<IUserService>();
+            return service.GetAuthorInfo(id);
+        }
     }
 }

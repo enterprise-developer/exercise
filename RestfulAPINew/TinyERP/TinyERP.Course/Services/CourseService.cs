@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
 using TinyERP.Course.Dtos;
 using TinyERP.Course.Reponsitories;
+using TinyERP.UserManagement.Share.Dtos;
 using TinyERP.UserManagement.Share.Facade;
 
 namespace TinyERP.Course.Services
@@ -16,7 +18,7 @@ namespace TinyERP.Course.Services
         {
             this.Validate(createCourse);
             IUserFacade userFacade = IoC.Resolve<IUserFacade>();
-            int authorId = userFacade.CreateIfNotExist(createCourse.Author);
+            int authorId = userFacade.CreateIfNotExist(createCourse.Author).Result;
             ICourseRepository repository = IoC.Resolve<ICourseRepository>();
             Entities.Course course = new Entities.Course()
             {
@@ -29,7 +31,6 @@ namespace TinyERP.Course.Services
 
             return itemAdded;
         }
-
         private void Validate(CreateCourseDto request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
@@ -80,6 +81,26 @@ namespace TinyERP.Course.Services
             {
                 throw new ValidationException(errors);
             }
+        }
+
+        public async Task<CourseDetail> GetCourseDetail(int id)
+        {
+            ICourseRepository repo = IoC.Resolve<ICourseRepository>();
+            Entities.Course course = repo.GetById(id);
+            if (course == null)
+            {
+                throw new ValidationException("course.courseDetail.courseNotExisted");
+            }
+
+            IUserFacade userFacade = IoC.Resolve<IUserFacade>();
+            AuthorInfo author = await userFacade.GetAuthor(course.AuthorId);
+
+            CourseDetail courseDetail = new CourseDetail();
+            courseDetail.Id = course.Id;
+            courseDetail.Name = course.Name;
+            courseDetail.Description = course.Description;
+            courseDetail.Author = author;
+            return courseDetail;
         }
     }
 }

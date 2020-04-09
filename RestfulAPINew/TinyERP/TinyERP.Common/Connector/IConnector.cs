@@ -1,7 +1,11 @@
-﻿namespace TinyERP.Common.Connector
+﻿using System.Threading.Tasks;
+
+namespace TinyERP.Common.Connector
 {
     public interface IConnector
     {
-        TData Post<TData>(string url, object value);
+        Task<TData> Post<TData>(string url, object value);
+
+        Task<TData> Get<TData>(string url);
     }
 }

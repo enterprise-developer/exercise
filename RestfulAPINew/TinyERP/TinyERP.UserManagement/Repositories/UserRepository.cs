@@ -22,5 +22,9 @@ namespace TinyERP.UserManagement.Repositories
             this.context.SaveChanges();
             return user;
         }
+        public User GetById(int id)
+        {
+            return this.context.Users.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

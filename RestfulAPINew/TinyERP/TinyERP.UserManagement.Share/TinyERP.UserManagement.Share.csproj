@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\AuthorInfo.cs" />
     <Compile Include="Dtos\CreateAuthorDto.cs" />
     <Compile Include="Facade\IUserFacade.cs" />
     <Compile Include="Facade\RegistrationFacadeTask.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Threading.Tasks;
+using System.Web.Http;
 using TinyERP.Common.DI;
 using TinyERP.Common.Responses;
 using TinyERP.Course.Dtos;
@@ -28,5 +29,13 @@ namespace TinyERP.Course.Api
             return service.Update(updateCourseDto);
         }
 
+        [Route("{id}")]
+        [HttpGet()]
+        [ResponseWrapper()]
+        public async Task<CourseDetail> GetCourseDetail(int id)
+        {
+            ICourseService service = IoC.Resolve<ICourseService>();
+            return await service.GetCourseDetail(id);
+        }
     }
 }

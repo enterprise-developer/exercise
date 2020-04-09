@@ -130,6 +130,7 @@
     <Compile Include="Api\CoursesController.cs" />
     <Compile Include="Const\CourseValidationRules.cs" />
     <Compile Include="Context\CourseContext.cs" />
+    <Compile Include="Dtos\CourseDetail.cs" />
     <Compile Include="Dtos\CreateCourseDto.cs" />
     <Compile Include="Dtos\UpdateCourseDto.cs" />
     <Compile Include="Entities\Course.cs" />

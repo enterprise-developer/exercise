@@ -7,5 +7,6 @@ namespace TinyERP.UserManagement.Repositories
         User GetByUserName(string userName);
 
         User Create(User user);
+        User GetById(int id);
     }
 }

@@ -8,6 +8,7 @@
         {
             this.Errors = errors;
         }
+        public ValidationException(string errorKey) : this(new List<Error>() { new Error(errorKey) }) { }
         public IList<Error> Errors { get; set; }
     }
 }

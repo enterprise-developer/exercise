@@ -1,4 +1,5 @@
-﻿using TinyERP.Course.Dtos;
+﻿using System.Threading.Tasks;
+using TinyERP.Course.Dtos;
 
 namespace TinyERP.Course.Services
 {
@@ -6,5 +7,6 @@ namespace TinyERP.Course.Services
     {
         Entities.Course Create(CreateCourseDto request);
         Entities.Course Update(UpdateCourseDto request);
+        Task<CourseDetail> GetCourseDetail(int id);
     }
 }

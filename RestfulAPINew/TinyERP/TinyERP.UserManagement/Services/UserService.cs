@@ -22,9 +22,10 @@ namespace TinyERP.UserManagement.Services
                 UserName = request.UserName,
                 //Birthday = request.Birthday
             };
-            user =  repo.Create(user);
+            user = repo.Create(user);
             return user.Id;
         }
+
         private void Validate(CreateAuthorDto request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
@@ -33,5 +34,20 @@ namespace TinyERP.UserManagement.Services
                 throw new ValidationException(errors);
             }
         }
+        public AuthorInfo GetAuthorInfo(int id)
+        {
+            IUserRepository repo = IoC.Resolve<IUserRepository>();
+            User user = repo.GetById(id);
+            if (user == null)
+            {
+                throw new ValidationException("user.userDetail.authorNotExisted");
+            }
+            AuthorInfo author = new AuthorInfo();
+            author.Id = user.Id;
+            author.Name = user.Name;
+            author.UserName = user.UserName;
+            return author;
+        }
+
     }
 }

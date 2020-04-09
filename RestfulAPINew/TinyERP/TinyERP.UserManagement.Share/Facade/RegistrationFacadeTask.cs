@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using TinyERP.Common;
+﻿using TinyERP.Common;
 using TinyERP.Common.Configurations;
 using TinyERP.Common.DI;
 using TinyERP.Common.Tasks;
