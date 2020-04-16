@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 
 namespace TinyERP.Common.Configurations
 {
@@ -23,6 +24,17 @@ namespace TinyERP.Common.Configurations
             get
             {
                 return (UserManagement)this["userManagement"];
+            }
+        }
+
+        [ConfigurationProperty("connections")]
+        [ConfigurationCollection(typeof(ConnectionCollection), AddItemName ="add", ClearItemsName ="clear", RemoveItemName ="remove")]
+        public ConnectionCollection Connections
+        {
+            get
+            {
+                ConnectionCollection connections = (ConnectionCollection)base["connections"];
+                return connections;
             }
         }
     }

@@ -109,6 +109,8 @@
     <Compile Include="Attributes\MinLength.cs" />
     <Compile Include="Attributes\Required.cs" />
     <Compile Include="Configurations\ConfigurationApp.cs" />
+    <Compile Include="Configurations\ConnectionCollection.cs" />
+    <Compile Include="Configurations\ConnectionElement.cs" />
     <Compile Include="Configurations\EndPoint.cs" />
     <Compile Include="Configurations\UserManagement.cs" />
     <Compile Include="Connector\ConnectorFactory.cs" />
@@ -120,7 +122,9 @@
     <Compile Include="DI\IBaseContainer.cs" />
     <Compile Include="DI\IoC.cs" />
     <Compile Include="Enum.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Helpers\AssemblyHelper.cs" />
+    <Compile Include="Helpers\DatabaseConnectionHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\Response.cs" />
