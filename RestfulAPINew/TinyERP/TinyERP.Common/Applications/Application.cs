@@ -1,5 +1,7 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using TinyERP.Common.DI;
+using TinyERP.Common.Exceptions;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.Tasks;
 
@@ -16,6 +18,11 @@ namespace TinyERP.Common.Applications
         public void OnStart()
         {
             AssemblyHelper.Execute<IApplicationStartTask>();
+        }
+
+        public void OnError(Exception ex)
+        {
+            AssemblyHelper.Execute<IApplicationErrorTask>(ex);
         }
     }
 }

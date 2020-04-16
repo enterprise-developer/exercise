@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Runtime.Remoting.Channels;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -14,6 +16,7 @@ namespace TinyERP.Course.API
         public WebApiApplication()
         {
             this.app = new Application();
+            this.Error += ApplicationError;
         }
 
         protected void Application_Start()
@@ -25,6 +28,12 @@ namespace TinyERP.Course.API
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configuration.EnsureInitialized();
             this.app.OnStart();
+        }
+
+        protected void ApplicationError(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            this.app.OnError(ex);
         }
     }
 }
