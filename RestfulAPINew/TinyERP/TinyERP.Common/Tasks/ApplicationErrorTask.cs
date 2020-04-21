@@ -1,13 +1,11 @@
-﻿using Castle.Core.Logging;
-using log4net;
-using System;
+﻿using System;
+using TinyERP.Common.DI;
+using TinyERP.Common.Logs;
 
 namespace TinyERP.Common.Tasks
 {
     public class ApplicationErrorTask : IApplicationErrorTask
     {
-
-        static readonly ILog log = LogManager.GetLogger(typeof(ApplicationErrorTask));
         public void Execute(object arg = null)
         {
             if (arg == null)
@@ -15,8 +13,9 @@ namespace TinyERP.Common.Tasks
                 return;
             }
 
+            ILogger logger = IoC.Resolve<ILogger>();
             Exception ex = arg as Exception;
-            log.Error($"message: {ex.Message} \n stack trace: {ex.StackTrace}");
+            logger.Error(ex);
         }
     }
 }

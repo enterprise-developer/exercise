@@ -16,5 +16,10 @@
         {
             IoC.container.RegisterTransient<IInterface, IImpl>();
         }
+
+        public static void RegisterSingleton<IInterface, IImpl>() where IInterface : class where IImpl : IInterface
+        {
+            IoC.container.RegisterSingleton<IInterface, IImpl>();
+        }
     }
 }

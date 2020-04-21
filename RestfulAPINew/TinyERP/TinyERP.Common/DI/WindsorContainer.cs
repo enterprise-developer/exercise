@@ -9,6 +9,14 @@
         {
             this.container = new Castle.Windsor.WindsorContainer();
         }
+
+        public void RegisterSingleton<IInterface, IImpl>()
+            where IInterface : class
+            where IImpl : IInterface
+        {
+            this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleSingleton());
+        }
+
         public void RegisterTransient<IInterface, IImpl>()
             where IInterface : class
             where IImpl : IInterface

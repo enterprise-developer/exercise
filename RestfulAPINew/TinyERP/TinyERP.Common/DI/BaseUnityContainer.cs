@@ -9,6 +9,14 @@ namespace TinyERP.Common.DI
         {
             this.container = new Unity.UnityContainer();
         }
+
+        public void RegisterSingleton<IInterface, IImpl>()
+            where IInterface : class
+            where IImpl : IInterface
+        {
+            this.container.RegisterSingleton<IInterface, IImpl>();
+        }
+
         public void RegisterTransient<IInterface, IImpl>()
             where IInterface : class
             where IImpl : IInterface

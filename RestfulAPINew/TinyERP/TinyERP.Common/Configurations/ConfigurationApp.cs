@@ -5,7 +5,7 @@ namespace TinyERP.Common.Configurations
 {
     public class ConfigurationApp : ConfigurationSection
     {
-        private  static ConfigurationApp configuration;
+        private static ConfigurationApp configuration;
         public static ConfigurationApp Instance
         {
             get
@@ -28,13 +28,22 @@ namespace TinyERP.Common.Configurations
         }
 
         [ConfigurationProperty("connections")]
-        [ConfigurationCollection(typeof(ConnectionCollection), AddItemName ="add", ClearItemsName ="clear", RemoveItemName ="remove")]
+        [ConfigurationCollection(typeof(ConnectionCollection), AddItemName = "add", ClearItemsName = "clear", RemoveItemName = "remove")]
         public ConnectionCollection Connections
         {
             get
             {
                 ConnectionCollection connections = (ConnectionCollection)base["connections"];
                 return connections;
+            }
+        }
+
+        [ConfigurationProperty("logger")]
+        public LoggerElement Logger
+        {
+            get
+            {
+                return (LoggerElement)this["logger"];
             }
         }
     }

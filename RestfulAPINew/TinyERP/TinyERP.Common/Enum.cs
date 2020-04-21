@@ -16,4 +16,8 @@
     {
         Json = 1
     }
+    public enum ApplicationLoggerType
+    {
+        File = 1
+    }
 }

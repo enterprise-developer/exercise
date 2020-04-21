@@ -1,6 +1,10 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
+using TinyERP.Common.DI;
+using TinyERP.Common.Helpers;
+using TinyERP.Common.Logs;
+using TinyERP.Common.Tasks;
 using TinyERP.Common.Validations;
 
 namespace TinyERP.Common.Responses
@@ -10,9 +14,10 @@ namespace TinyERP.Common.Responses
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
             Response<object> response = new Response<object>();
-            if (actionExecutedContext.Exception != null)
+            if (actionExecutedContext.Exception != null && !(actionExecutedContext.Exception is ValidationException))
             {
                 response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+                AssemblyHelper.Execute<IApplicationErrorTask>(actionExecutedContext.Exception);
             }
 
             if (actionExecutedContext.Exception != null && actionExecutedContext.Exception is ValidationException)

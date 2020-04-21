@@ -115,6 +115,7 @@
     <Compile Include="Configurations\ConnectionCollection.cs" />
     <Compile Include="Configurations\ConnectionElement.cs" />
     <Compile Include="Configurations\EndPoint.cs" />
+    <Compile Include="Configurations\LoggerElement.cs" />
     <Compile Include="Configurations\UserManagement.cs" />
     <Compile Include="Connector\ConnectorFactory.cs" />
     <Compile Include="Connector\IConnector.cs" />
@@ -129,6 +130,9 @@
     <Compile Include="Helpers\AssemblyHelper.cs" />
     <Compile Include="Helpers\DatabaseConnectionHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Logs\FileLogger.cs" />
+    <Compile Include="Logs\RegistrationLoggerTask.cs" />
+    <Compile Include="Logs\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Responses\ResponseWrapper.cs" />
@@ -147,6 +151,7 @@
     <Content Include="Configurations\Configuration.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Configurations\Log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
