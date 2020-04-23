@@ -159,7 +159,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /S /Y /r "$(ProjectDir)Configurations\Configuration.config" "$(SolutionDir)TinyERP.Course.Api\Config\" 
+xcopy /S /Y /r "$(ProjectDir)Configurations\Configuration.config" "$(SolutionDir)TinyERP.UserManagement.Api\Config\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
