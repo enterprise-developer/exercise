@@ -13,5 +13,14 @@ namespace TinyERP.Common.Configurations
                 return (ApplicationLoggerType)Enum.Parse(typeof(ApplicationLoggerType), this["type"].ToString());
             }
         }
+
+        [ConfigurationProperty("endPoint")]
+        public EndPoint Endpoint
+        {
+            get
+            {
+                return (EndPoint)this["endPoint"];
+            }
+        }
     }
 }

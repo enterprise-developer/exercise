@@ -18,6 +18,7 @@
     }
     public enum ApplicationLoggerType
     {
-        File = 1
+        File = 1,
+        Api = 2
     }
 }

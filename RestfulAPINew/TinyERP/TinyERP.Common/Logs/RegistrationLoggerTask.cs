@@ -8,9 +8,14 @@ namespace TinyERP.Common.Logs
     {
         public void Execute(object arg = null)
         {
-            if (ConfigurationApp.Instance.Logger.Type == ApplicationLoggerType.File)
+            switch (ConfigurationApp.Instance.Logger.Type)
             {
-                IoC.RegisterSingleton<ILogger, FileLogger>();
+                case ApplicationLoggerType.File:
+                    IoC.RegisterSingleton<ILogger, FileLogger>();
+                    break;
+                case ApplicationLoggerType.Api:
+                    IoC.RegisterSingleton<ILogger, RestApiLogger>();
+                    break;
             }
         }
     }
