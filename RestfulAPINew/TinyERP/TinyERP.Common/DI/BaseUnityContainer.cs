@@ -2,7 +2,7 @@
 
 namespace TinyERP.Common.DI
 {
-    internal class UnityContainer : IBaseContainer
+    internal class UnityContainer //: IBaseContainer
     {
         private IUnityContainer container;
         public UnityContainer()

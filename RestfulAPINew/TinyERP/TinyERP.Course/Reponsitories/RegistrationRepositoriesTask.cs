@@ -9,6 +9,7 @@ namespace TinyERP.Course.Repositories
         public void Execute(object arg = null)
         {
             IoC.RegisterTransient<ICourseRepository, CourseRepository>();
+            IoC.RegisterTransient<ICourseLoggerRepository, CourseLoggerRepository>();
         }
     }
 }

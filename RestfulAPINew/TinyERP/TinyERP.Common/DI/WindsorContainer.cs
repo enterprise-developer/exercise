@@ -2,6 +2,8 @@
 {
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
+    using TinyERP.Common.Contexts;
+
     internal class WindsorContainer : IBaseContainer
     {
         private IWindsorContainer container;
@@ -24,8 +26,14 @@
             this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleTransient());
         }
 
-        public IInterface Resolve<IInterface>() where IInterface : class
+        public IInterface Resolve<IInterface>(IBaseContext context = null) where IInterface : class
         {
+            if (context != null)
+            {
+                Castle.MicroKernel.Arguments arg = new Castle.MicroKernel.Arguments();
+                arg.AddTyped(context.GetType(), context);
+                return this.container.Resolve<IInterface>(arg);
+            }
             return this.container.Resolve<IInterface>();
         }
     }

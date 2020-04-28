@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TinyERP.Common.Contexts;
 using TinyERP.Course.Context;
 
 namespace TinyERP.Course.Reponsitories
@@ -6,6 +7,10 @@ namespace TinyERP.Course.Reponsitories
     public class CourseRepository : ICourseRepository
     {
         private CourseContext context;
+        public CourseRepository(CourseContext context)
+        {
+            this.context = context;
+        }
         public CourseRepository()
         {
             this.context = new CourseContext();
@@ -18,7 +23,6 @@ namespace TinyERP.Course.Reponsitories
         public TinyERP.Course.Entities.Course Create(TinyERP.Course.Entities.Course course)
         {
             this.context.Courses.Add(course);
-            this.context.SaveChanges();
             return course;
         }
 

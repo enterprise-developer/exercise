@@ -120,6 +120,7 @@
     <Compile Include="Connector\ConnectorFactory.cs" />
     <Compile Include="Connector\IConnector.cs" />
     <Compile Include="Connector\JsonConnector.cs" />
+    <Compile Include="Contexts\IBaseContext.cs" />
     <Compile Include="DI\ContainerFactory.cs" />
     <Compile Include="DI\WindsorContainer.cs" />
     <Compile Include="DI\BaseUnityContainer.cs" />
@@ -144,6 +145,8 @@
     <Compile Include="Tasks\IApplicationInitTask.cs" />
     <Compile Include="Tasks\IConfigWebApiTask.cs" />
     <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Validations\Error.cs" />
     <Compile Include="Validations\ValidationException.cs" />
   </ItemGroup>

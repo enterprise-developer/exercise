@@ -6,8 +6,8 @@
         {
             switch (type)
             {
-                case ContainerType.Unity:
-                    return new UnityContainer();
+                //case ContainerType.Unity:
+                //    return new UnityContainer();
                 case ContainerType.Windsor:
                 default:
                     return new WindsorContainer();
