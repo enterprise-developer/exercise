@@ -21,4 +21,10 @@
         File = 1,
         Api = 2
     }
+
+    public enum ContextMode
+    {
+        Write = 1,
+        Read = 2
+    }
 }

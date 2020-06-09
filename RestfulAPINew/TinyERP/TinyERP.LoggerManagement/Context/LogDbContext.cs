@@ -1,10 +1,11 @@
 ﻿using System.Data.Entity;
+using TinyERP.Common.Contexts;
 using TinyERP.Common.Helpers;
 using TinyERP.LoggerManagement.Entities;
 
 namespace TinyERP.LoggerManagement.Context
 {
-    public class LogDbContext : DbContext
+    public class LogDbContext : DbContext, IBaseContext
     {
         public LogDbContext() : base(DatabaseConnectionHelper.GetConnection<LogDbContext>())
         {

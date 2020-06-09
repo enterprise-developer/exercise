@@ -2,8 +2,10 @@
 using System.Linq;
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
+using TinyERP.Common.UnitOfWork;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
+using TinyERP.UserManagement.Context;
 using TinyERP.UserManagement.Entities;
 using TinyERP.UserManagement.Repositories;
 using TinyERP.UserManagement.Share.Dtos;
@@ -15,15 +17,24 @@ namespace TinyERP.UserManagement.Services
         public int Create(CreateAuthorDto request)
         {
             this.Validate(request);
-            IUserRepository repo = IoC.Resolve<IUserRepository>();
-            User user = new User()
+            using (IUnitOfWork uow = new UnitOfWork<UserDbContext>())
             {
-                Name = request.Name,
-                UserName = request.UserName,
-                //Birthday = request.Birthday
-            };
-            user = repo.Create(user);
-            return user.Id;
+                IUserRepository repo = IoC.Resolve<IUserRepository>(uow.Context);
+                User user = repo.GetByUserName(request.UserName);
+                if (user != null)
+                {
+                    return user.Id;
+                }
+                user = new User()
+                {
+                    Name = request.Name,
+                    UserName = request.UserName,
+                    //Birthday = request.Birthday
+                };
+                user = repo.Create(user);
+                uow.Commit();
+                return user.Id;
+            }
         }
 
         private void Validate(CreateAuthorDto request)
@@ -48,6 +59,5 @@ namespace TinyERP.UserManagement.Services
             author.UserName = user.UserName;
             return author;
         }
-
     }
 }

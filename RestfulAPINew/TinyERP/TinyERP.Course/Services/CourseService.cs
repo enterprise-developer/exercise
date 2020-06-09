@@ -21,19 +21,19 @@ namespace TinyERP.Course.Services
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
             this.Validate(createCourse);
-            //IUserFacade userFacade = IoC.Resolve<IUserFacade>();
-            //int authorId = userFacade.CreateIfNotExist(createCourse.Author).Result;
             Entities.Course course = new Entities.Course()
             {
                 Name = createCourse.Name,
                 Description = createCourse.Description
             };
-            course.AuthorId = 100;
+            IUserFacade userFacade = IoC.Resolve<IUserFacade>();
+            int authorId = userFacade.CreateIfNotExist(createCourse.Author).Result;
+            course.AuthorId = authorId;
             Entities.Course itemAdded;
             using (IUnitOfWork uow = new UnitOfWork<CourseContext>())
             {
-                ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
-                 itemAdded = repository.Create(course);
+                ICourseRepository repository = IoC.Resolve<ICourseRepository>();
+                itemAdded = repository.Create(course);
                 ICourseLoggerRepository loggerRepository = IoC.Resolve<ICourseLoggerRepository>(uow.Context);
                 CourseLogger courseLogger = new CourseLogger()
                 {
@@ -42,7 +42,7 @@ namespace TinyERP.Course.Services
                     CreatedDate = DateTime.Now
                 };
                 loggerRepository.Create(courseLogger);
-                uow.Commit();                
+                uow.Commit();
             }
             return itemAdded;
         }
@@ -71,7 +71,7 @@ namespace TinyERP.Course.Services
                 itemExisted = repository.GetById(updateCourseDto.Id);
                 itemExisted.Name = updateCourseDto.Name;
                 itemExisted.Description = updateCourseDto.Description;
-                repository.Update(itemExisted);                
+                repository.Update(itemExisted);
             }
             return itemExisted;
         }

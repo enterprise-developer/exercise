@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using TinyERP.Common.DI;
+using TinyERP.Common.UnitOfWork;
+using TinyERP.LoggerManagement.Context;
 using TinyERP.LoggerManagement.Entities;
 using TinyERP.LoggerManagement.Repositories;
 
@@ -15,8 +17,12 @@ namespace TinyERP.LoggerManagement.Service
                 CreatedDate = DateTime.Now,
                 Message = JsonConvert.SerializeObject(ex)
             };
-            ILoggerRepository repository = IoC.Resolve<ILoggerRepository>();
-            repository.Create(log);
+            using (IUnitOfWork uow = new UnitOfWork<LogDbContext>())
+            {
+                ILoggerRepository repository = IoC.Resolve<ILoggerRepository>();
+                repository.Create(log);
+                uow.Commit();
+            }
         }
     }
 }
