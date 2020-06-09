@@ -29,11 +29,11 @@ namespace TinyERP.Course.Services
                 Description = createCourse.Description
             };
             course.AuthorId = 100;
-
+            Entities.Course itemAdded;
             using (IUnitOfWork uow = new UnitOfWork<CourseContext>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
-                Entities.Course itemAdded = repository.Create(course);
+                 itemAdded = repository.Create(course);
                 ICourseLoggerRepository loggerRepository = IoC.Resolve<ICourseLoggerRepository>(uow.Context);
                 CourseLogger courseLogger = new CourseLogger()
                 {
@@ -42,10 +42,9 @@ namespace TinyERP.Course.Services
                     CreatedDate = DateTime.Now
                 };
                 loggerRepository.Create(courseLogger);
-                uow.Commit();
-                return itemAdded;
+                uow.Commit();                
             }
-
+            return itemAdded;
         }
         private void Validate(CreateCourseDto request)
         {
@@ -65,13 +64,15 @@ namespace TinyERP.Course.Services
         public Entities.Course Update(UpdateCourseDto updateCourseDto)
         {
             this.Validate(updateCourseDto);
-
-            ICourseRepository repository = IoC.Resolve<ICourseRepository>();
-            Entities.Course itemExisted = repository.GetById(updateCourseDto.Id);
-            itemExisted.Name = updateCourseDto.Name;
-            itemExisted.Description = updateCourseDto.Description;
-            repository.Update(itemExisted);
-
+            Entities.Course itemExisted;
+            using (IUnitOfWork uow = new UnitOfWork<CourseContext>())
+            {
+                ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
+                itemExisted = repository.GetById(updateCourseDto.Id);
+                itemExisted.Name = updateCourseDto.Name;
+                itemExisted.Description = updateCourseDto.Description;
+                repository.Update(itemExisted);                
+            }
             return itemExisted;
         }
 
