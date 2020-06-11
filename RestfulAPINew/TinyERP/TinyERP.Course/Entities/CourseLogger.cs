@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using TinyERP.Common.Entities;
 
 namespace TinyERP.Course.Entities
 {
-    public class CourseLogger
+    public class CourseLogger: BaseEntity<int>
     {
-        public int Id { get; set; }
         public int CourseId { get; set; }
         public string Message { get; set; }
         [Column(TypeName = "datetime2")]

@@ -5,6 +5,6 @@ namespace TinyERP.LoggerManagement.Repositories
 {
     public interface ILoggerRepository
     {
-        void Create(Log log);
+        Log Create(Log log);
     }
 }

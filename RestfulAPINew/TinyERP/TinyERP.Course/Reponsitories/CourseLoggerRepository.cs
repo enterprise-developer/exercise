@@ -1,22 +1,16 @@
-﻿using TinyERP.Course.Context;
-using TinyERP.Course.Entities;
+﻿using TinyERP.Common;
+using TinyERP.Common.Repositories;
+using TinyERP.Course.Context;
 
 namespace TinyERP.Course.Reponsitories
 {
-    internal class CourseLoggerRepository : ICourseLoggerRepository
+    internal class CourseLoggerRepository : BaseRepository<TinyERP.Course.Entities.CourseLogger, int>, ICourseLoggerRepository
     {
-        private CourseContext context;
-        public CourseLoggerRepository(CourseContext context)
+        public CourseLoggerRepository(CourseContext context, ContextMode mode = ContextMode.Write) : base(context, mode)
         {
-            this.context = context;
         }
-        public CourseLoggerRepository()
+        public CourseLoggerRepository() : base(new CourseContext(), ContextMode.Read)
         {
-            this.context = new CourseContext();
-        }
-        public void Create(CourseLogger courseLogger)
-        {
-            this.context.CourseLoggers.Add(courseLogger);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace TinyERP.Course.Reponsitories
 {
     public interface ICourseLoggerRepository
     {
-        void Create(CourseLogger courseLogger);
+        CourseLogger Create(CourseLogger courseLogger);
     }
 }

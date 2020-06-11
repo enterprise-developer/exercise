@@ -1,11 +1,9 @@
-﻿using System;
+﻿using TinyERP.Common.Entities;
 
 namespace TinyERP.UserManagement.Entities
 {
-    public class User
+    public class User : BaseEntity<int>
     {
-        public int Id { get; set; }
-
         public string UserName { get; set; }
 
         public string Name { get; set; }

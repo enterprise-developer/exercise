@@ -32,7 +32,7 @@ namespace TinyERP.Course.Services
             Entities.Course itemAdded;
             using (IUnitOfWork uow = new UnitOfWork<CourseContext>())
             {
-                ICourseRepository repository = IoC.Resolve<ICourseRepository>();
+                ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
                 itemAdded = repository.Create(course);
                 ICourseLoggerRepository loggerRepository = IoC.Resolve<ICourseLoggerRepository>(uow.Context);
                 CourseLogger courseLogger = new CourseLogger()
@@ -71,7 +71,7 @@ namespace TinyERP.Course.Services
                 itemExisted = repository.GetById(updateCourseDto.Id);
                 itemExisted.Name = updateCourseDto.Name;
                 itemExisted.Description = updateCourseDto.Description;
-                repository.Update(itemExisted);
+                uow.Commit();
             }
             return itemExisted;
         }
