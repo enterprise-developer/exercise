@@ -1,12 +1,10 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using TinyERP.Common.Entities;
 
 namespace TinyERP.Common.Repositories
 {
-    public abstract class BaseRepository<TEntity, IdType> where TEntity : BaseEntity<IdType>
-         where IdType : IComparable<IdType>
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         private ContextMode mode;
         private IDbSet<TEntity> dbSet;
@@ -35,7 +33,7 @@ namespace TinyERP.Common.Repositories
         }
 
 
-        public TEntity GetById(IdType id)
+        public TEntity GetById(int id)
         {
             return this.AsQueryable.FirstOrDefault(item => item.Id.Equals(id));
         }

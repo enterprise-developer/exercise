@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using TinyERP.Common.Repositories;
 using TinyERP.LoggerManagement.Entities;
 
 namespace TinyERP.LoggerManagement.Repositories
 {
-    public interface ILoggerRepository
+    public interface ILoggerRepository : IBaseRepository<Log>
     {
-        Log Create(Log log);
     }
 }

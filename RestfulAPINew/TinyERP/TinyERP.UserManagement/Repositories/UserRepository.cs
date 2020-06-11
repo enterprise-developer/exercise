@@ -7,7 +7,7 @@ using TinyERP.UserManagement.Entities;
 
 namespace TinyERP.UserManagement.Repositories
 {
-    public class UserRepository : BaseRepository<User, int>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(UserDbContext context, ContextMode contextMode = ContextMode.Write) : base(context, contextMode)
         {

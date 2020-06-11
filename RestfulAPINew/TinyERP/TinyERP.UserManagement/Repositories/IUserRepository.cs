@@ -1,12 +1,10 @@
-﻿using TinyERP.UserManagement.Entities;
+﻿using TinyERP.Common.Repositories;
+using TinyERP.UserManagement.Entities;
 
 namespace TinyERP.UserManagement.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository: IBaseRepository<User>
     {
         User GetByUserName(string userName);
-
-        User Create(User user);
-        User GetById(int id);
     }
 }

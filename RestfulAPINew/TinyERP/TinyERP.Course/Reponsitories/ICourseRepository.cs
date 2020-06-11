@@ -1,10 +1,10 @@
-﻿namespace TinyERP.Course.Reponsitories
+﻿using TinyERP.Common.Repositories;
+
+namespace TinyERP.Course.Reponsitories
 {
-    public interface ICourseRepository
+    public interface ICourseRepository : IBaseRepository<TinyERP.Course.Entities.Course>
     {
-        Entities.Course Create(Entities.Course course);
         Entities.Course GetByName(string name);
-        Entities.Course GetById(int id);
         bool IsExistName(string name, int excludedId);
     }
 }

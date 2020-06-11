@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace TinyERP.Common.Entities
+﻿namespace TinyERP.Common.Entities
 {
-    public abstract class BaseEntity<IdType>
+    public abstract class BaseEntity
     {
-        public IdType Id { get; set; }
+        public int Id { get; set; }
     }
 }

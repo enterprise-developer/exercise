@@ -5,7 +5,7 @@ using TinyERP.LoggerManagement.Entities;
 
 namespace TinyERP.LoggerManagement.Repositories
 {
-    public class LoggerRepository : BaseRepository<Log, int>, ILoggerRepository
+    public class LoggerRepository : BaseRepository<Log>, ILoggerRepository
     {
         public LoggerRepository(LogDbContext context, ContextMode contextMode = ContextMode.Write) : base(context, contextMode)
         {

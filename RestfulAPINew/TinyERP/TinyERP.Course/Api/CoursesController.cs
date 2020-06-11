@@ -1,13 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
-using TinyERP.Common.DI;
-using TinyERP.Common.Responses;
-using TinyERP.Course.Dtos;
-using TinyERP.Course.Services;
-
-namespace TinyERP.Course.Api
+﻿namespace TinyERP.Course.Api
 {
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using TinyERP.Common.DI;
+    using TinyERP.Common.Responses;
+    using TinyERP.Course.Dtos;
+    using TinyERP.Course.Services;
+
     [RoutePrefix("api/courses")]
     public class CoursesController : ApiController
     {

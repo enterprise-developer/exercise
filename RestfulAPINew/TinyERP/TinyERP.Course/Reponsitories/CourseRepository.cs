@@ -5,7 +5,7 @@ using TinyERP.Course.Context;
 
 namespace TinyERP.Course.Reponsitories
 {
-    public class CourseRepository : BaseRepository<TinyERP.Course.Entities.Course, int>, ICourseRepository
+    public class CourseRepository : BaseRepository<TinyERP.Course.Entities.Course>, ICourseRepository
     {   
         public CourseRepository(CourseContext context, ContextMode contextMode = ContextMode.Write): base(context, contextMode)
         {

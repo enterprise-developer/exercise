@@ -2,7 +2,7 @@
 
 namespace TinyERP.UserManagement.Entities
 {
-    public class User : BaseEntity<int>
+    public class User : BaseEntity
     {
         public string UserName { get; set; }
 

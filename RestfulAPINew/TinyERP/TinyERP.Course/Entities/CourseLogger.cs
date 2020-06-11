@@ -4,7 +4,7 @@ using TinyERP.Common.Entities;
 
 namespace TinyERP.Course.Entities
 {
-    public class CourseLogger: BaseEntity<int>
+    public class CourseLogger: BaseEntity
     {
         public int CourseId { get; set; }
         public string Message { get; set; }
