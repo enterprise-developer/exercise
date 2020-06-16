@@ -31,7 +31,8 @@
             if (context != null)
             {
                 Castle.MicroKernel.Arguments arg = new Castle.MicroKernel.Arguments();
-                arg.AddTyped(context.GetType(), context);
+                arg.AddTyped(typeof(IBaseContext), context);
+                arg.AddTyped(typeof(ContextMode), ContextMode.Write);
                 return this.container.Resolve<IInterface>(arg);
             }
             return this.container.Resolve<IInterface>();

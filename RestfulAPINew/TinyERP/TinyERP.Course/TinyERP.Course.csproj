@@ -129,6 +129,7 @@
   <ItemGroup>
     <Compile Include="Api\CoursesController.cs" />
     <Compile Include="Const\CourseValidationRules.cs" />
+    <Compile Include="Context\Course1DbContext.cs" />
     <Compile Include="Context\CourseContext.cs" />
     <Compile Include="Dtos\CourseDetail.cs" />
     <Compile Include="Dtos\CreateCourseDto.cs" />

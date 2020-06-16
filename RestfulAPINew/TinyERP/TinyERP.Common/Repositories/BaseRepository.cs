@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using TinyERP.Common.Contexts;
 using TinyERP.Common.Entities;
 
 namespace TinyERP.Common.Repositories
@@ -20,7 +21,7 @@ namespace TinyERP.Common.Repositories
             }
         }
 
-        public BaseRepository(DbContext context, ContextMode mode)
+        public BaseRepository(IBaseContext context, ContextMode mode)
         {
             this.dbSet = context.Set<TEntity>();
             this.mode = mode;

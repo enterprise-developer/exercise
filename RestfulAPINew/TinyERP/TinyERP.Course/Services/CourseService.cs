@@ -20,7 +20,7 @@ namespace TinyERP.Course.Services
     {
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
-            this.Validate(createCourse);
+            //this.Validate(createCourse);
             Entities.Course course = new Entities.Course()
             {
                 Name = createCourse.Name,
@@ -30,7 +30,7 @@ namespace TinyERP.Course.Services
             int authorId = userFacade.CreateIfNotExist(createCourse.Author).Result;
             course.AuthorId = authorId;
             Entities.Course itemAdded;
-            using (IUnitOfWork uow = new UnitOfWork<CourseContext>())
+            using (IUnitOfWork uow = new UnitOfWork<Course1DbContext>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
                 itemAdded = repository.Create(course);
