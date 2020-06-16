@@ -17,7 +17,7 @@ namespace TinyERP.LoggerManagement.Service
                 CreatedDate = DateTime.Now,
                 Message = JsonConvert.SerializeObject(ex)
             };
-            using (IUnitOfWork uow = new UnitOfWork<LogDbContext>())
+            using (IUnitOfWork uow = new UnitOfWork<Log>())
             {
                 ILoggerRepository repository = IoC.Resolve<ILoggerRepository>();
                 repository.Create(log);

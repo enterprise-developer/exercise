@@ -17,7 +17,7 @@ namespace TinyERP.UserManagement.Services
         public int Create(CreateAuthorDto request)
         {
             this.Validate(request);
-            using (IUnitOfWork uow = new UnitOfWork<UserDbContext>())
+            using (IUnitOfWork uow = new UnitOfWork<User>())
             {
                 IUserRepository repo = IoC.Resolve<IUserRepository>(uow.Context);
                 User user = repo.GetByUserName(request.UserName);

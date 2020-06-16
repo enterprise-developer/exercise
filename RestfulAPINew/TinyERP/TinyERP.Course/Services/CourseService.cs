@@ -7,7 +7,6 @@ using TinyERP.Common.Helpers;
 using TinyERP.Common.UnitOfWork;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
-using TinyERP.Course.Context;
 using TinyERP.Course.Dtos;
 using TinyERP.Course.Entities;
 using TinyERP.Course.Reponsitories;
@@ -20,7 +19,7 @@ namespace TinyERP.Course.Services
     {
         public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
         {
-            //this.Validate(createCourse);
+            this.Validate(createCourse);
             Entities.Course course = new Entities.Course()
             {
                 Name = createCourse.Name,
@@ -30,7 +29,7 @@ namespace TinyERP.Course.Services
             int authorId = userFacade.CreateIfNotExist(createCourse.Author).Result;
             course.AuthorId = authorId;
             Entities.Course itemAdded;
-            using (IUnitOfWork uow = new UnitOfWork<Course1DbContext>())
+            using (IUnitOfWork uow = new UnitOfWork<Entities.Course>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
                 itemAdded = repository.Create(course);
@@ -65,7 +64,7 @@ namespace TinyERP.Course.Services
         {
             this.Validate(updateCourseDto);
             Entities.Course itemExisted;
-            using (IUnitOfWork uow = new UnitOfWork<CourseContext>())
+            using (IUnitOfWork uow = new UnitOfWork<Entities.Course>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
                 itemExisted = repository.GetById(updateCourseDto.Id);

@@ -118,6 +118,7 @@
     <Compile Include="Applications\Application.cs" />
     <Compile Include="Applications\IApplication.cs" />
     <Compile Include="Attributes\BaseAttribute.cs" />
+    <Compile Include="Attributes\DbContextAttribute.cs" />
     <Compile Include="Attributes\MaxLength.cs" />
     <Compile Include="Attributes\MinLength.cs" />
     <Compile Include="Attributes\Required.cs" />

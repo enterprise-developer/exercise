@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using TinyERP.Common.Attributes;
 using TinyERP.Common.Tasks;
 
 namespace TinyERP.Common.Helpers
@@ -21,6 +23,13 @@ namespace TinyERP.Common.Helpers
 
         }
 
+        public static Type GetDbContextType<TEntity>()
+        {
+            Type contextType = null;
+            DbContextAttribute attr = typeof(TEntity).GetCustomAttribute<DbContextAttribute>();
+            contextType = attr?.Use;
+            return contextType;
+        }
         private static IList<Type> GetTypes<IInterface>()
         {
             IList<Type> types = new List<Type>();
