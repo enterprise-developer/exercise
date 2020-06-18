@@ -9,7 +9,7 @@ namespace TinyERP.Course.Reponsitories
         public CourseLoggerRepository(CourseContext context, ContextMode mode = ContextMode.Write) : base(context, mode)
         {
         }
-        public CourseLoggerRepository() : base(new CourseContext(), ContextMode.Read)
+        public CourseLoggerRepository() : base()
         {
         }
     }

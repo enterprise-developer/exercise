@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using TinyERP.Common;
 using TinyERP.Common.Repositories;
 using TinyERP.UserManagement.Context;
@@ -13,8 +12,9 @@ namespace TinyERP.UserManagement.Repositories
         {
         }
 
-        public UserRepository() : base(new UserDbContext(), ContextMode.Read)
+        public UserRepository(): base()
         {
+
         }
 
         public User GetByUserName(string userName)

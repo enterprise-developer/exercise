@@ -11,7 +11,7 @@ namespace TinyERP.LoggerManagement.Repositories
         {
         }
 
-        public LoggerRepository() : base(new LogDbContext(), ContextMode.Read)
+        public LoggerRepository() : base()
         {
         }
     }

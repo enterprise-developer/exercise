@@ -1,9 +1,7 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using TinyERP.Common;
 using TinyERP.Common.Contexts;
 using TinyERP.Common.Repositories;
-using TinyERP.Course.Context;
 
 namespace TinyERP.Course.Reponsitories
 {
@@ -13,7 +11,7 @@ namespace TinyERP.Course.Reponsitories
         {
         }
 
-        public CourseRepository() : base(new CourseContext(), ContextMode.Read)
+        public CourseRepository() : base()
         {
         }
 

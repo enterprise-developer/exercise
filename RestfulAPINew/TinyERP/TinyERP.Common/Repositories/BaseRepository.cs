@@ -1,7 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using TinyERP.Common.Contexts;
 using TinyERP.Common.Entities;
+using TinyERP.Common.Helpers;
 
 namespace TinyERP.Common.Repositories
 {
@@ -25,6 +27,14 @@ namespace TinyERP.Common.Repositories
         {
             this.dbSet = context.Set<TEntity>();
             this.mode = mode;
+        }
+
+        public BaseRepository()
+        {
+            this.mode = ContextMode.Read;
+            Type type = AssemblyHelper.GetDbContextType<TEntity>();
+            IBaseContext baseContext = (IBaseContext)Activator.CreateInstance(type);
+            this.dbSet = baseContext?.Set<TEntity>();
         }
 
         public TEntity Create(TEntity value)
