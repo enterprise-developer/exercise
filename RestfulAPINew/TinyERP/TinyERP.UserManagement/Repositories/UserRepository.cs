@@ -12,14 +12,14 @@ namespace TinyERP.UserManagement.Repositories
         {
         }
 
-        public UserRepository(): base()
+        public UserRepository() : base()
         {
 
         }
 
         public User GetByUserName(string userName)
         {
-            return this.AsQueryable.FirstOrDefault(item => item.UserName.Equals(userName));
+            return this.dbSet.AsQueryable.FirstOrDefault(item => item.UserName.Equals(userName));
         }
     }
 }

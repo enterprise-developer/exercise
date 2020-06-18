@@ -132,6 +132,8 @@
     <Compile Include="Connector\IConnector.cs" />
     <Compile Include="Connector\JsonConnector.cs" />
     <Compile Include="Contexts\IBaseContext.cs" />
+    <Compile Include="Databases\DbFactory.cs" />
+    <Compile Include="Databases\TinyDbSet.cs" />
     <Compile Include="DI\ContainerFactory.cs" />
     <Compile Include="DI\WindsorContainer.cs" />
     <Compile Include="DI\BaseUnityContainer.cs" />

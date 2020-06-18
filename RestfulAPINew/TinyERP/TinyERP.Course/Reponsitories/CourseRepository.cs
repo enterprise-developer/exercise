@@ -17,12 +17,12 @@ namespace TinyERP.Course.Reponsitories
 
         public TinyERP.Course.Entities.Course GetByName(string name)
         {
-            return this.AsQueryable.FirstOrDefault(item => item.Name == name);
+            return this.dbSet.AsQueryable.FirstOrDefault(item => item.Name == name);
         }
 
         public bool IsExistName(string name, int excludedId)
         {
-            return this.AsQueryable.Any(item => item.Name.Equals(name) && item.Id != excludedId);
+            return this.dbSet.AsQueryable.Any(item => item.Name.Equals(name) && item.Id != excludedId);
         }
     }
 }

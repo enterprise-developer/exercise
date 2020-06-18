@@ -1,9 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using TinyERP.Common.Attributes;
 using TinyERP.Common.Entities;
+using TinyERP.Course.Context;
 
 namespace TinyERP.Course.Entities
 {
+    [DbContext(Use = typeof(CourseContext))]
     public class CourseLogger: BaseEntity
     {
         public int CourseId { get; set; }
