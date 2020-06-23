@@ -38,7 +38,7 @@
             return await service.GetCourseDetail(id);
         }
 
-        [Route("{courseId}/createSection")]
+        [Route("{courseId}/sections")]
         [HttpPost()]
         [ResponseWrapper()]
         public int CreateSection(int courseId, CreateSectionDto request)
@@ -47,7 +47,8 @@
             ICourseService service = IoC.Resolve<ICourseService>();
             return service.CreateSection(request);
         }
-        [Route("{courseId}/section/{sectionId}/createLecture")]
+
+        [Route("{courseId}/sections/{sectionId}/lectures")]
         [HttpPost()]
         [ResponseWrapper()]
         public int CreateLecture(int courseId, int sectionId, CreateLectureDto request)
