@@ -14,6 +14,7 @@ namespace TinyERP.Course.Context
 
         public DbSet<TinyERP.Course.Entities.Course> Courses { get; set; }
         public DbSet<CourseLogger> CourseLoggers { get; set; }
-
+        public DbSet<Entities.Section> Sections { get; set; }
+        public DbSet<Lecture> Lectures { get; set; }
     }
 }

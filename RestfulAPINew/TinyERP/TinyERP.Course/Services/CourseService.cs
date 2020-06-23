@@ -118,5 +118,81 @@ namespace TinyERP.Course.Services
             courseDetail.Author = author;
             return courseDetail;
         }
+
+        public int CreateSection(CreateSectionDto request)
+        {
+            this.Validate(request);
+            int id;
+            using (IUnitOfWork uow = new UnitOfWork<Entities.Section>())
+            {
+                ISectionRepository repo = IoC.Resolve<ISectionRepository>(uow.Context);
+                Section section = new Section()
+                {
+                    Name = request.SectionName,
+                    Index = request.Index,
+                    CourseId = request.CourseId
+                };
+                section = repo.Create(section);
+                uow.Commit();
+                id = section.Id;
+            }
+            return id;
+        }
+        private void Validate(CreateSectionDto request)
+        {
+            IList<Error> errors = ValidationHelper.Validate(request);
+            ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>();
+            Entities.Course course = courseRepo.GetById(request.CourseId);
+            if (course == null)
+            {
+                errors.Add(new Error("course.addSection.courseWasNotExisted"));
+            }
+            if (errors.Any())
+            {
+                throw new ValidationException(errors);
+            }
+        }
+
+        public int CreateLecture(CreateLectureDto request)
+        {
+            this.Validate(request);
+            int id;
+            using (IUnitOfWork uow = new UnitOfWork<Entities.Lecture>())
+            {
+                ILectureRepository repo = IoC.Resolve<ILectureRepository>(uow.Context);
+                Lecture lecture = new Lecture()
+                {
+                    CourseId = request.CourseId,
+                    SectionId = request.SectionId,
+                    Name = request.Name,
+                    Description = request.Description,
+                    VideoLink = request.VideoLink
+                };
+                lecture = repo.Create(lecture);
+                uow.Commit();
+                id = lecture.Id;
+            }
+            return id;
+        }
+        private void Validate(CreateLectureDto request)
+        {
+            IList<Error> errors = ValidationHelper.Validate(request);
+            ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>();
+            Entities.Course course = courseRepo.GetById(request.CourseId);
+            if (course == null)
+            {
+                errors.Add(new Error("course.addLecture.courseWasNotExisted"));
+            }
+            ISectionRepository sectionRepo = IoC.Resolve<ISectionRepository>();
+            Entities.Section section = sectionRepo.GetById(request.SectionId);
+            if (section == null)
+            {
+                errors.Add(new Error("course.addLecture.sectionWasNotExisted"));
+            }
+            if (errors.Any())
+            {
+                throw new ValidationException(errors);
+            }
+        }
     }
 }

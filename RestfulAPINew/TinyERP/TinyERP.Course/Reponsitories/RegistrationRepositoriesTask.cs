@@ -10,6 +10,8 @@ namespace TinyERP.Course.Repositories
         {
             IoC.RegisterTransient<ICourseRepository, CourseRepository>();
             IoC.RegisterTransient<ICourseLoggerRepository, CourseLoggerRepository>();
+            IoC.RegisterTransient<ISectionRepository, SectionRepository>();
+            IoC.RegisterTransient<ILectureRepository, LectureRepository>();
         }
     }
 }

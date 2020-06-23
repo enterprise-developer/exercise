@@ -37,5 +37,25 @@
             ICourseService service = IoC.Resolve<ICourseService>();
             return await service.GetCourseDetail(id);
         }
+
+        [Route("{courseId}/createSection")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public int CreateSection(int courseId, CreateSectionDto request)
+        {
+            request.CourseId = courseId;
+            ICourseService service = IoC.Resolve<ICourseService>();
+            return service.CreateSection(request);
+        }
+        [Route("{courseId}/section/{sectionId}/createLecture")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public int CreateLecture(int courseId, int sectionId, CreateLectureDto request)
+        {
+            request.CourseId = courseId;
+            request.SectionId = sectionId;
+            ICourseService service = IoC.Resolve<ICourseService>();
+            return service.CreateLecture(request);
+        }
     }
 }
