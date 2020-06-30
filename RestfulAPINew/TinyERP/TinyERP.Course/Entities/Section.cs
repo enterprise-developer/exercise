@@ -1,4 +1,5 @@
-﻿using TinyERP.Common.Attributes;
+﻿using System;
+using TinyERP.Common.Attributes;
 using TinyERP.Common.Entities;
 using TinyERP.Course.Context;
 
@@ -10,5 +11,7 @@ namespace TinyERP.Course.Entities
         public string Name { get; set; }
         public int Index { get; set; }
         public int CourseId { get; set; }
+        public string Description { get; set; }
+        public DateTime CreatedDate{ get; set; }
     }
 }

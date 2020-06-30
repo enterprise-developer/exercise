@@ -133,6 +133,7 @@
     <Compile Include="Connector\JsonConnector.cs" />
     <Compile Include="Contexts\IBaseContext.cs" />
     <Compile Include="Databases\DbFactory.cs" />
+    <Compile Include="Databases\IDbMigratorConfiguration.cs" />
     <Compile Include="Databases\TinyDbSet.cs" />
     <Compile Include="DI\ContainerFactory.cs" />
     <Compile Include="DI\WindsorContainer.cs" />
@@ -156,10 +157,12 @@
     <Compile Include="Responses\ResponseWrapper.cs" />
     <Compile Include="Tasks\ApplicationErrorTask.cs" />
     <Compile Include="Tasks\ConfigWebApiTask.cs" />
+    <Compile Include="Tasks\DatabaseMigrationTask.cs" />
     <Compile Include="Tasks\IApplicationErrorTask.cs" />
     <Compile Include="Tasks\IApplicationStartTask.cs" />
     <Compile Include="Tasks\IApplicationInitTask.cs" />
     <Compile Include="Tasks\IConfigWebApiTask.cs" />
+    <Compile Include="Tasks\IDatabaseMigrationTask.cs" />
     <Compile Include="Tasks\ITask.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

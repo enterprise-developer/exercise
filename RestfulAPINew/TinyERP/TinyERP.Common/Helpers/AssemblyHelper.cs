@@ -30,7 +30,7 @@ namespace TinyERP.Common.Helpers
             contextType = attr?.Use;
             return contextType;
         }
-        private static IList<Type> GetTypes<IInterface>()
+        public static IList<Type> GetTypes<IInterface>()
         {
             IList<Type> types = new List<Type>();
             IList<string> dlls = AssemblyHelper.GetApplicationDlls();

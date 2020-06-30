@@ -18,6 +18,7 @@ namespace TinyERP.Common.Applications
         public void OnStart()
         {
             AssemblyHelper.Execute<IApplicationStartTask>();
+            AssemblyHelper.Execute<IDatabaseMigrationTask>();
         }
 
         public void OnError(Exception ex)
