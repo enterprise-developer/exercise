@@ -5,7 +5,7 @@ using TinyERP.Common.Repositories;
 
 namespace TinyERP.Course.Reponsitories
 {
-    public class CourseRepository : BaseRepository<TinyERP.Course.Entities.Course>, ICourseRepository
+    public class CourseRepository : BaseRepository<TinyERP.Course.Entities.CourseAggregateRoot>, ICourseRepository
     {   
         public CourseRepository(IBaseContext context, ContextMode contextMode = ContextMode.Write): base(context, contextMode)
         {
@@ -15,7 +15,7 @@ namespace TinyERP.Course.Reponsitories
         {
         }
 
-        public TinyERP.Course.Entities.Course GetByName(string name)
+        public TinyERP.Course.Entities.CourseAggregateRoot GetByName(string name)
         {
             return this.dbSet.AsQueryable.FirstOrDefault(item => item.Name == name);
         }

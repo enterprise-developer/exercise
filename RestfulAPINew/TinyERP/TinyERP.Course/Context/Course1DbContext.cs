@@ -9,6 +9,6 @@ namespace TinyERP.Course.Context
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Course1DbContext>());
         }
-        public DbSet<Course.Entities.Course> Courses { get; set; }
+        public DbSet<Course.Entities.CourseAggregateRoot> Courses { get; set; }
     }
 }

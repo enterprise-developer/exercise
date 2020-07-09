@@ -13,16 +13,16 @@
         [Route("")]
         [HttpPost()]
         [ResponseWrapper()]
-        public TinyERP.Course.Entities.Course CreateCourse(CreateCourseDto createCouseDto)
+        public CreateCourseResponse CreateCourse(CreateCourseRequest request)
         {
             ICourseService service = IoC.Resolve<ICourseService>();
-            return service.Create(createCouseDto);
+            return service.Create(request);
         }
 
         [Route("{id}")]
         [HttpPut()]
         [ResponseWrapper()]
-        public Entities.Course Update(int id, UpdateCourseDto updateCourseDto)
+        public Entities.CourseAggregateRoot Update(int id, UpdateCourseDto updateCourseDto)
         {
             ICourseService service = IoC.Resolve<ICourseService>();
             updateCourseDto.Id = id;

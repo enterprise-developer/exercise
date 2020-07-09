@@ -17,54 +17,28 @@ namespace TinyERP.Course.Services
 {
     public class CourseService : ICourseService
     {
-        public TinyERP.Course.Entities.Course Create(CreateCourseDto createCourse)
+        public CreateCourseResponse Create(CreateCourseRequest createCourse)
         {
-            this.Validate(createCourse);
-            Entities.Course course = new Entities.Course()
+            CourseAggregateRoot createdCourse;
+            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
-                Name = createCourse.Name,
-                Description = createCourse.Description
-            };
-            IUserFacade userFacade = IoC.Resolve<IUserFacade>();
-            int authorId = userFacade.CreateIfNotExist(createCourse.Author).Result;
-            course.AuthorId = authorId;
-            Entities.Course itemAdded;
-            using (IUnitOfWork uow = new UnitOfWork<Entities.Course>())
-            {
-                ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
-                itemAdded = repository.Create(course);
-                ICourseLoggerRepository loggerRepository = IoC.Resolve<ICourseLoggerRepository>(uow.Context);
-                CourseLogger courseLogger = new CourseLogger()
-                {
-                    CourseId = itemAdded.Id,
-                    Message = "Course Create Success",
-                    CreatedDate = DateTime.Now
-                };
-                loggerRepository.Create(courseLogger);
+                createdCourse = new CourseAggregateRoot(createCourse);
+                ICourseRepository repo = IoC.Resolve<ICourseRepository>(uow.Context);
+                createdCourse = repo.Create(createdCourse);
                 uow.Commit();
             }
-            return itemAdded;
+            CreateCourseResponse courseResponse = new CreateCourseResponse() {
+                Id = createdCourse.Id,
+                Name = createdCourse.Name,
+                Description = createdCourse.Description
+            };
+            return courseResponse;
         }
-        private void Validate(CreateCourseDto request)
-        {
-            IList<Error> errors = ValidationHelper.Validate(request);
-            ICourseRepository repo = IoC.Resolve<ICourseRepository>();
-            Entities.Course course = repo.GetByName(request.Name);
-            if (course != null)
-            {
-                errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
-            }
-            if (errors.Any())
-            {
-                throw new ValidationException(errors);
-            }
-        }
-
-        public Entities.Course Update(UpdateCourseDto updateCourseDto)
+        public Entities.CourseAggregateRoot Update(UpdateCourseDto updateCourseDto)
         {
             this.Validate(updateCourseDto);
-            Entities.Course itemExisted;
-            using (IUnitOfWork uow = new UnitOfWork<Entities.Course>())
+            Entities.CourseAggregateRoot itemExisted;
+            using (IUnitOfWork uow = new UnitOfWork<Entities.CourseAggregateRoot>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
                 itemExisted = repository.GetById(updateCourseDto.Id);
@@ -79,7 +53,7 @@ namespace TinyERP.Course.Services
         {
             IList<Error> errors = ValidationHelper.Validate(request);
             ICourseRepository repository = IoC.Resolve<ICourseRepository>();
-            Entities.Course course = repository.GetById(request.Id);
+            Entities.CourseAggregateRoot course = repository.GetById(request.Id);
 
             if (course == null)
             {
@@ -102,7 +76,7 @@ namespace TinyERP.Course.Services
         public async Task<CourseDetail> GetCourseDetail(int id)
         {
             ICourseRepository repo = IoC.Resolve<ICourseRepository>();
-            Entities.Course course = repo.GetById(id);
+            Entities.CourseAggregateRoot course = repo.GetById(id);
             if (course == null)
             {
                 throw new ValidationException("course.courseDetail.courseNotExisted");
@@ -142,7 +116,7 @@ namespace TinyERP.Course.Services
         {
             IList<Error> errors = ValidationHelper.Validate(request);
             ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>();
-            Entities.Course course = courseRepo.GetById(request.CourseId);
+            Entities.CourseAggregateRoot course = courseRepo.GetById(request.CourseId);
             if (course == null)
             {
                 errors.Add(new Error("course.addSection.courseWasNotExisted"));
@@ -178,7 +152,7 @@ namespace TinyERP.Course.Services
         {
             IList<Error> errors = ValidationHelper.Validate(request);
             ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>();
-            Entities.Course course = courseRepo.GetById(request.CourseId);
+            Entities.CourseAggregateRoot course = courseRepo.GetById(request.CourseId);
             if (course == null)
             {
                 errors.Add(new Error("course.addLecture.courseWasNotExisted"));

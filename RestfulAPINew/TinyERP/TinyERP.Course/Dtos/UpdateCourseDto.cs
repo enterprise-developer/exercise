@@ -1,6 +1,6 @@
 ﻿namespace TinyERP.Course.Dtos
 {
-    public class UpdateCourseDto: CreateCourseDto
+    public class UpdateCourseDto: CreateCourseRequest
     {
         public int Id { get; set; }
     }

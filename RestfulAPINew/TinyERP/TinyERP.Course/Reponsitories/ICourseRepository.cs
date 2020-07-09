@@ -2,9 +2,9 @@
 
 namespace TinyERP.Course.Reponsitories
 {
-    public interface ICourseRepository : IBaseRepository<TinyERP.Course.Entities.Course>
+    public interface ICourseRepository : IBaseRepository<TinyERP.Course.Entities.CourseAggregateRoot>
     {
-        Entities.Course GetByName(string name);
+        Entities.CourseAggregateRoot GetByName(string name);
         bool IsExistName(string name, int excludedId);
     }
 }

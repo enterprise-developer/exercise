@@ -7,7 +7,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "TinyERP.Course.Context.CourseContext";
             MigrationsDirectory = @"Context\Migrations";
         }
