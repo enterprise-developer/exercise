@@ -27,50 +27,32 @@ namespace TinyERP.Course.Services
                 createdCourse = repo.Create(createdCourse);
                 uow.Commit();
             }
-            CreateCourseResponse courseResponse = new CreateCourseResponse() {
+            CreateCourseResponse courseResponse = new CreateCourseResponse()
+            {
                 Id = createdCourse.Id,
                 Name = createdCourse.Name,
                 Description = createdCourse.Description
             };
             return courseResponse;
         }
-        public Entities.CourseAggregateRoot Update(UpdateCourseDto updateCourseDto)
+        public UpdateCourseResponse Update(UpdateCourseRequest updateCourseDto)
         {
-            this.Validate(updateCourseDto);
-            Entities.CourseAggregateRoot itemExisted;
-            using (IUnitOfWork uow = new UnitOfWork<Entities.CourseAggregateRoot>())
+            CourseAggregateRoot updatedCourse;
+            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
-                itemExisted = repository.GetById(updateCourseDto.Id);
-                itemExisted.Name = updateCourseDto.Name;
-                itemExisted.Description = updateCourseDto.Description;
+                updatedCourse = repository.GetById(updateCourseDto.Id);
+                updatedCourse.Update(updateCourseDto);
+                repository.Update(updatedCourse);
                 uow.Commit();
             }
-            return itemExisted;
-        }
-
-        private void Validate(UpdateCourseDto request)
-        {
-            IList<Error> errors = ValidationHelper.Validate(request);
-            ICourseRepository repository = IoC.Resolve<ICourseRepository>();
-            Entities.CourseAggregateRoot course = repository.GetById(request.Id);
-
-            if (course == null)
+            UpdateCourseResponse updateCourseResponse = new UpdateCourseResponse()
             {
-                errors.Add(new Error("course.addOrUpdateCourse.courseNotExisted"));
-                throw new ValidationException(errors);
-            }
-
-            bool isExist = repository.IsExistName(request.Name, request.Id);
-            if (isExist)
-            {
-                errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
-            }
-
-            if (errors.Any())
-            {
-                throw new ValidationException(errors);
-            }
+                CourseId = updatedCourse.Id,
+                Name = updatedCourse.Name,
+                Description = updatedCourse.Description
+            };
+            return updateCourseResponse;
         }
 
         public async Task<CourseDetail> GetCourseDetail(int id)

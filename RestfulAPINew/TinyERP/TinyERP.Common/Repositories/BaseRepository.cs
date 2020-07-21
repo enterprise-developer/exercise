@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using TinyERP.Common.Contexts;
 using TinyERP.Common.Databases;
@@ -34,6 +33,10 @@ namespace TinyERP.Common.Repositories
         public TEntity GetById(int id)
         {
             return this.dbSet.AsQueryable.FirstOrDefault(item => item.Id.Equals(id));
+        }
+
+        public void Update(TEntity entity)
+        {
         }
     }
 }

@@ -4,5 +4,6 @@
     {
         TEntity Create(TEntity entity);
         TEntity GetById(int id);
+        void Update(TEntity entity);
     }
 }

@@ -14,6 +14,7 @@ namespace TinyERP.Common.Tasks
             foreach (Type type in types)
             {
                 DbMigrationsConfiguration configuration = (DbMigrationsConfiguration)Activator.CreateInstance(type);
+                //configuration.TargetDatabase = new DbConnectionInfo(@"Data Source=.\SQLEXPRESS; Initial Catalog= CourseDbContext; User=sa; Password=123456", "System.Data.SqlClient");
                 DbMigrator migrator = new DbMigrator(configuration);
                 migrator.Update();
             }

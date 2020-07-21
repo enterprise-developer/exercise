@@ -22,11 +22,11 @@
         [Route("{id}")]
         [HttpPut()]
         [ResponseWrapper()]
-        public Entities.CourseAggregateRoot Update(int id, UpdateCourseDto updateCourseDto)
+        public UpdateCourseResponse Update(int id, UpdateCourseRequest updateCourseRequest)
         {
             ICourseService service = IoC.Resolve<ICourseService>();
-            updateCourseDto.Id = id;
-            return service.Update(updateCourseDto);
+            updateCourseRequest.Id = id;
+            return service.Update(updateCourseRequest);
         }
 
         [Route("{id}")]

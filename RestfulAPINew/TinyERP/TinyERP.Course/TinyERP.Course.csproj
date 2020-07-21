@@ -143,7 +143,8 @@
     <Compile Include="Dtos\CreateCourseResponse.cs" />
     <Compile Include="Dtos\CreateLectureDto.cs" />
     <Compile Include="Dtos\CreateSectionDto.cs" />
-    <Compile Include="Dtos\UpdateCourseDto.cs" />
+    <Compile Include="Dtos\UpdateCourseRequest.cs" />
+    <Compile Include="Dtos\UpdateCourseResponse.cs" />
     <Compile Include="Entities\CourseAggregateRoot.cs" />
     <Compile Include="Entities\CourseLogger.cs" />
     <Compile Include="Entities\Lecture.cs" />
