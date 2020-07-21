@@ -41,7 +41,7 @@
         [Route("{courseId}/sections")]
         [HttpPost()]
         [ResponseWrapper()]
-        public int CreateSection(int courseId, CreateSectionDto request)
+        public CreateCourseSectionResponse CreateSection(int courseId, CreateCourseSectionRequest request)
         {
             request.CourseId = courseId;
             ICourseService service = IoC.Resolve<ICourseService>();

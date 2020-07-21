@@ -3,7 +3,7 @@ using TinyERP.Course.Const;
 
 namespace TinyERP.Course.Dtos
 {
-    public class CreateSectionDto
+    public class CreateCourseSectionRequest
     {
         public int CourseId { get; set; }
         [MinLength("courses.addSection.sectionNameWasUnderMinLength", CourseValidationRules.Section_Name_Min_Length)]

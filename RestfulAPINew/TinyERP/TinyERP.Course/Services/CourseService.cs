@@ -75,38 +75,22 @@ namespace TinyERP.Course.Services
             return courseDetail;
         }
 
-        public int CreateSection(CreateSectionDto request)
+        public CreateCourseSectionResponse CreateSection(CreateCourseSectionRequest request)
         {
-            this.Validate(request);
-            int id;
-            using (IUnitOfWork uow = new UnitOfWork<Entities.Section>())
+            CreateCourseSectionResponse courseSectionResponse;
+            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
-                ISectionRepository repo = IoC.Resolve<ISectionRepository>(uow.Context);
-                Section section = new Section()
+                ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
+                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId);
+                if (courseAggregate == null)
                 {
-                    Name = request.SectionName,
-                    Index = request.Index,
-                    CourseId = request.CourseId
-                };
-                section = repo.Create(section);
+                    throw new Exception("course.addSection.courseNotExisted");
+                }
+                courseSectionResponse = courseAggregate.AddSection(request);
+                courseRepository.Update(courseAggregate);
                 uow.Commit();
-                id = section.Id;
             }
-            return id;
-        }
-        private void Validate(CreateSectionDto request)
-        {
-            IList<Error> errors = ValidationHelper.Validate(request);
-            ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>();
-            Entities.CourseAggregateRoot course = courseRepo.GetById(request.CourseId);
-            if (course == null)
-            {
-                errors.Add(new Error("course.addSection.courseWasNotExisted"));
-            }
-            if (errors.Any())
-            {
-                throw new ValidationException(errors);
-            }
+            return courseSectionResponse;
         }
 
         public int CreateLecture(CreateLectureDto request)

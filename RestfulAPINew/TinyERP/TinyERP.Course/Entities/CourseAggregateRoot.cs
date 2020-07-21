@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using TinyERP.Common.Attributes;
@@ -20,17 +21,20 @@ namespace TinyERP.Course.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public int AuthorId { get; set; }
+       
+        public ICollection<Section> Sections { get; set; }
+
         public CourseAggregateRoot()
         {
-
+            this.Sections = new List<Section>();
         }
-        public CourseAggregateRoot(CreateCourseRequest request)
+        public CourseAggregateRoot(CreateCourseRequest request) : this()
         {
             this.Validate(request);
             this.Name = request.Name;
             this.Description = request.Description;
         }
-        
+
         private void Validate(CreateCourseRequest request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
@@ -70,6 +74,41 @@ namespace TinyERP.Course.Entities
             if (isExist)
             {
                 errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
+            }
+
+            if (errors.Any())
+            {
+                throw new ValidationException(errors);
+            }
+        }
+
+        public CreateCourseSectionResponse AddSection(CreateCourseSectionRequest request)
+        {
+            this.Validate(request);
+            Section section = new Section()
+            {
+                CourseId = request.CourseId,
+                CreatedDate = DateTime.Now,
+                Index = request.Index,
+                Name = request.SectionName
+            };
+            this.Sections.Add(section);
+            CreateCourseSectionResponse courseResponse = new CreateCourseSectionResponse()
+            {
+                CourseId = request.CourseId,
+                SectionName = request.SectionName,
+                Index = request.Index
+            };
+            return courseResponse;
+        }
+
+
+        private void Validate(CreateCourseSectionRequest request)
+        {
+            IList<Error> errors = ValidationHelper.Validate(request);
+            if (this.Sections.Any(item => item.Name == request.SectionName))
+            {
+                errors.Add(new Error("course.addSection.sectionNameWasExited"));
             }
 
             if (errors.Any())
