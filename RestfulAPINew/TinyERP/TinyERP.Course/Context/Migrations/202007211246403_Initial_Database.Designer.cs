@@ -7,13 +7,13 @@ namespace TinyERP.Course.Context.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Add_CreatedDate : IMigrationMetadata
+    public sealed partial class Initial_Database : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_CreatedDate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial_Database));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006301433087_Add_CreatedDate"; }
+            get { return "202007211246403_Initial_Database"; }
         }
         
         string IMigrationMetadata.Source

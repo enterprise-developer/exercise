@@ -3,13 +3,12 @@
     using System.Data.Entity.Migrations;
     using TinyERP.Common.Databases;
 
-    public class Configuration : DbMigrationsConfiguration<TinyERP.Course.Context.CourseContext>, IDbMigratorConfiguration
+    internal sealed class Configuration : DbMigrationsConfiguration<TinyERP.Course.Context.CourseContext>, IDbMigratorConfiguration
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "TinyERP.Course.Context.CourseContext";
-            MigrationsDirectory = @"Context\Migrations";
+            AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"Context\Migrations"; 
         }
 
         protected override void Seed(TinyERP.Course.Context.CourseContext context)

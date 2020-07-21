@@ -6,7 +6,7 @@ using TinyERP.Common.Helpers;
 
 namespace TinyERP.Common.Tasks
 {
-    public class DatabaseMigrationTask //: IDatabaseMigrationTask
+    public class DatabaseMigrationTask : IDatabaseMigrationTask
     {
         public void Execute(object arg = null)
         {

@@ -1,8 +1,9 @@
-﻿namespace TinyERP.Course.Migrations
+﻿namespace TinyERP.Course.Context.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial_Database : DbMigration
     {
         public override void Up()
         {
@@ -18,7 +19,7 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Courses",
+                "dbo.CourseAggregateRoots",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -38,6 +39,7 @@
                         Name = c.String(),
                         Description = c.String(),
                         VideoLink = c.String(),
+                        Test = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -49,6 +51,8 @@
                         Name = c.String(),
                         Index = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
+                        Description = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -58,7 +62,7 @@
         {
             DropTable("dbo.Sections");
             DropTable("dbo.Lectures");
-            DropTable("dbo.Courses");
+            DropTable("dbo.CourseAggregateRoots");
             DropTable("dbo.CourseLoggers");
         }
     }

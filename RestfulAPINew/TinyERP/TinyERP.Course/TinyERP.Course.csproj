@@ -130,31 +130,10 @@
     <Compile Include="Api\CoursesController.cs" />
     <Compile Include="Const\CourseValidationRules.cs" />
     <Compile Include="Context\CourseContext.cs" />
-    <Compile Include="Context\Migrations\202006301238236_InitialCreate.cs" />
-    <Compile Include="Context\Migrations\202006301238236_InitialCreate.Designer.cs">
-      <DependentUpon>202006301238236_InitialCreate.cs</DependentUpon>
+    <Compile Include="Context\Migrations\202007211246403_Initial_Database.cs" />
+    <Compile Include="Context\Migrations\202007211246403_Initial_Database.designer.cs">
+      <DependentUpon>202007211246403_Initial_Database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Context\Migrations\202006301309164_Update_Lecture.cs" />
-    <Compile Include="Context\Migrations\202006301309164_Update_Lecture.designer.cs">
-      <DependentUpon>202006301309164_Update_Lecture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Migrations\202006301312498_Remove_Test_Lecture.cs" />
-    <Compile Include="Context\Migrations\202006301312498_Remove_Test_Lecture.designer.cs">
-      <DependentUpon>202006301312498_Remove_Test_Lecture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Migrations\202006301355057_Update_Test_Field.cs" />
-    <Compile Include="Context\Migrations\202006301355057_Update_Test_Field.designer.cs">
-      <DependentUpon>202006301355057_Update_Test_Field.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Migrations\202006301416320_Update_Section.cs" />
-    <Compile Include="Context\Migrations\202006301416320_Update_Section.designer.cs">
-      <DependentUpon>202006301416320_Update_Section.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Migrations\202006301433087_Add_CreatedDate.cs" />
-    <Compile Include="Context\Migrations\202006301433087_Add_CreatedDate.designer.cs">
-      <DependentUpon>202006301433087_Add_CreatedDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Migrations\Configuration.cs" />
     <Compile Include="Dtos\CourseDetail.cs" />
     <Compile Include="Dtos\CreateCourseRequest.cs" />
     <Compile Include="Dtos\CreateCourseResponse.cs" />
@@ -165,6 +144,7 @@
     <Compile Include="Entities\CourseLogger.cs" />
     <Compile Include="Entities\Lecture.cs" />
     <Compile Include="Entities\Section.cs" />
+    <Compile Include="Context\Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reponsitories\CourseLoggerRepository.cs" />
     <Compile Include="Reponsitories\CourseRepository.cs" />
@@ -197,23 +177,8 @@
     <Folder Include="Tasks\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Context\Migrations\202006301238236_InitialCreate.resx">
-      <DependentUpon>202006301238236_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\Migrations\202006301309164_Update_Lecture.resx">
-      <DependentUpon>202006301309164_Update_Lecture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\Migrations\202006301312498_Remove_Test_Lecture.resx">
-      <DependentUpon>202006301312498_Remove_Test_Lecture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\Migrations\202006301355057_Update_Test_Field.resx">
-      <DependentUpon>202006301355057_Update_Test_Field.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\Migrations\202006301416320_Update_Section.resx">
-      <DependentUpon>202006301416320_Update_Section.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\Migrations\202006301433087_Add_CreatedDate.resx">
-      <DependentUpon>202006301433087_Add_CreatedDate.cs</DependentUpon>
+    <EmbeddedResource Include="Context\Migrations\202007211246403_Initial_Database.resx">
+      <DependentUpon>202007211246403_Initial_Database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
