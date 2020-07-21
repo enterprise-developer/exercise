@@ -134,6 +134,10 @@
     <Compile Include="Context\Migrations\202007211246403_Initial_Database.designer.cs">
       <DependentUpon>202007211246403_Initial_Database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Context\Migrations\202007211310016_Changing_TableName.cs" />
+    <Compile Include="Context\Migrations\202007211310016_Changing_TableName.designer.cs">
+      <DependentUpon>202007211310016_Changing_TableName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dtos\CourseDetail.cs" />
     <Compile Include="Dtos\CreateCourseRequest.cs" />
     <Compile Include="Dtos\CreateCourseResponse.cs" />
@@ -179,6 +183,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Context\Migrations\202007211246403_Initial_Database.resx">
       <DependentUpon>202007211246403_Initial_Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Context\Migrations\202007211310016_Changing_TableName.resx">
+      <DependentUpon>202007211310016_Changing_TableName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

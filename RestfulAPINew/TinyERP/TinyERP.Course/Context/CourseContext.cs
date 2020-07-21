@@ -12,9 +12,9 @@ namespace TinyERP.Course.Context
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CourseContext>());
         }
 
-        public DbSet<TinyERP.Course.Entities.CourseAggregateRoot> Courses { get; set; }
+        public DbSet<CourseAggregateRoot> Courses { get; set; }
         public DbSet<CourseLogger> CourseLoggers { get; set; }
-        public DbSet<Entities.Section> Sections { get; set; }
+        public DbSet<Section> Sections { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
     }
 }
