@@ -142,11 +142,16 @@
     <Compile Include="Context\Migrations\202007211601517_Add_ForeignKey_For_Section.designer.cs">
       <DependentUpon>202007211601517_Add_ForeignKey_For_Section.cs</DependentUpon>
     </Compile>
+    <Compile Include="Context\Migrations\202007231333434_Update_ForeignKey_For_Lecture.cs" />
+    <Compile Include="Context\Migrations\202007231333434_Update_ForeignKey_For_Lecture.designer.cs">
+      <DependentUpon>202007231333434_Update_ForeignKey_For_Lecture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dtos\CourseDetail.cs" />
+    <Compile Include="Dtos\CreateCourseLectureResponse.cs" />
     <Compile Include="Dtos\CreateCourseRequest.cs" />
     <Compile Include="Dtos\CreateCourseResponse.cs" />
     <Compile Include="Dtos\CreateCourseSectionResponse.cs" />
-    <Compile Include="Dtos\CreateLectureDto.cs" />
+    <Compile Include="Dtos\CreateLectureRequest.cs" />
     <Compile Include="Dtos\CreateCourseSectionRequest.cs" />
     <Compile Include="Dtos\UpdateCourseRequest.cs" />
     <Compile Include="Dtos\UpdateCourseResponse.cs" />
@@ -195,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Context\Migrations\202007211601517_Add_ForeignKey_For_Section.resx">
       <DependentUpon>202007211601517_Add_ForeignKey_For_Section.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Context\Migrations\202007231333434_Update_ForeignKey_For_Lecture.resx">
+      <DependentUpon>202007231333434_Update_ForeignKey_For_Lecture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

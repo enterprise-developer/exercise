@@ -51,7 +51,7 @@
         [Route("{courseId}/sections/{sectionId}/lectures")]
         [HttpPost()]
         [ResponseWrapper()]
-        public int CreateLecture(int courseId, int sectionId, CreateLectureDto request)
+        public CreateCourseLectureResponse CreateLecture(int courseId, int sectionId, CreateLectureRequest request)
         {
             request.CourseId = courseId;
             request.SectionId = sectionId;

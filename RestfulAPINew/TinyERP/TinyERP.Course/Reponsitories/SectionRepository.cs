@@ -1,4 +1,5 @@
-﻿using TinyERP.Common;
+﻿using System.Linq;
+using TinyERP.Common;
 using TinyERP.Common.Contexts;
 using TinyERP.Common.Repositories;
 
@@ -10,5 +11,10 @@ namespace TinyERP.Course.Reponsitories
         {
         }
         public SectionRepository() : base() { }
+
+        public bool IsExistSectionByName(string sectionName)
+        {
+            return this.dbSet.AsQueryable().Any(item => item.Name.Equals(sectionName));
+        }
     }
 }

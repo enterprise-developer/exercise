@@ -4,5 +4,6 @@ namespace TinyERP.Course.Reponsitories
 {
     public interface ISectionRepository : IBaseRepository<Entities.Section>
     {
+        bool IsExistSectionByName(string sectionName);
     }
 }

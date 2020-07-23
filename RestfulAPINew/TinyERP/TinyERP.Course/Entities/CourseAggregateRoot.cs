@@ -21,7 +21,7 @@ namespace TinyERP.Course.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public int AuthorId { get; set; }
-       
+
         public ICollection<Section> Sections { get; set; }
 
         public CourseAggregateRoot()
@@ -106,7 +106,9 @@ namespace TinyERP.Course.Entities
         private void Validate(CreateCourseSectionRequest request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
-            if (this.Sections.Any(item => item.Name == request.SectionName))
+            ISectionRepository sectionRepository = IoC.Resolve<ISectionRepository>();
+            bool isExist = sectionRepository.IsExistSectionByName(request.SectionName);
+            if (this.Sections.Any(item => item.Name == request.SectionName) || isExist)
             {
                 errors.Add(new Error("course.addSection.sectionNameWasExited"));
             }
@@ -117,5 +119,49 @@ namespace TinyERP.Course.Entities
             }
         }
 
+        public CreateCourseLectureResponse AddLecture(CreateLectureRequest request)
+        {
+            this.Validate(request);
+            Section section = this.Sections.FirstOrDefault(item => item.Id == request.SectionId);
+            Lecture lecture = new Lecture()
+            {
+                CourseId = request.CourseId,
+                SectionId = request.SectionId,
+                Name = request.Name,
+                Description = request.Description,
+                VideoLink = request.VideoLink,
+                Section = section
+            };            
+            section.Lectures.Add(lecture);
+            CreateCourseLectureResponse response = new CreateCourseLectureResponse()
+            {
+                CourseId = request.CourseId,
+                SectionId = request.SectionId,
+                Name = request.Name,
+                Description = request.Description,
+                VideoLink = request.VideoLink
+            };
+
+            return response;
+        }
+
+        private void Validate(CreateLectureRequest request)
+        {
+            IList<Error> errors = ValidationHelper.Validate(request);
+            if (!this.Sections.Any(item => item.Id == request.SectionId))
+            {
+                errors.Add(new Error("course.addLecture.sectionWasNotExisted"));
+            }
+            Section section = this.Sections.FirstOrDefault(item => item.Id == request.SectionId);
+            if (section != null && section.Lectures.Any(item => item.Name.Equals(request.Name)))
+            {
+                errors.Add(new Error("course.addLecture.nameWasExisted"));
+            }
+
+            if (errors.Any())
+            {
+                throw new ValidationException(errors);
+            }
+        }
     }
 }

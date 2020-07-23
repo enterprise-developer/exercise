@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace TinyERP.Common.Databases
@@ -18,16 +21,19 @@ namespace TinyERP.Common.Databases
             this.dbSet.Add(entity);
         }
 
-        public IQueryable<TEntity> AsQueryable
+        public IQueryable<TEntity> AsQueryable(string include = "")
         {
-            get
+            DbQuery<TEntity> dbQuery = this.mode == ContextMode.Read ? dbSet.AsNoTracking() : dbSet;
+
+            if (!string.IsNullOrWhiteSpace(include))
             {
-                if (this.mode == ContextMode.Read)
+                IList<string> includeNames = include.Split(',');
+                foreach (string includeName in includeNames)
                 {
-                    return dbSet.AsNoTracking();
+                    dbQuery = dbQuery.Include(includeName.Trim());
                 }
-                return dbSet;
             }
+            return dbQuery;
         }
     }
 }

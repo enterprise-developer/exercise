@@ -81,7 +81,7 @@ namespace TinyERP.Course.Services
             using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
                 ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
-                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId);
+                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId, "Sections");
                 if (courseAggregate == null)
                 {
                     throw new Exception("course.addSection.courseNotExisted");
@@ -93,46 +93,23 @@ namespace TinyERP.Course.Services
             return courseSectionResponse;
         }
 
-        public int CreateLecture(CreateLectureDto request)
+        public CreateCourseLectureResponse CreateLecture(CreateLectureRequest request)
         {
-            this.Validate(request);
-            int id;
-            using (IUnitOfWork uow = new UnitOfWork<Entities.Lecture>())
+            CreateCourseLectureResponse courseLectureResponse;
+            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
-                ILectureRepository repo = IoC.Resolve<ILectureRepository>(uow.Context);
-                Lecture lecture = new Lecture()
+                ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
+                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId, "Sections,Sections.Lectures");
+                if (courseAggregate == null)
                 {
-                    CourseId = request.CourseId,
-                    SectionId = request.SectionId,
-                    Name = request.Name,
-                    Description = request.Description,
-                    VideoLink = request.VideoLink
-                };
-                lecture = repo.Create(lecture);
+                    throw new Exception("course.addLecture.courseNotExisted");
+                }
+                courseLectureResponse = courseAggregate.AddLecture(request);
+                courseRepository.Update(courseAggregate);
                 uow.Commit();
-                id = lecture.Id;
             }
-            return id;
-        }
-        private void Validate(CreateLectureDto request)
-        {
-            IList<Error> errors = ValidationHelper.Validate(request);
-            ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>();
-            Entities.CourseAggregateRoot course = courseRepo.GetById(request.CourseId);
-            if (course == null)
-            {
-                errors.Add(new Error("course.addLecture.courseWasNotExisted"));
-            }
-            ISectionRepository sectionRepo = IoC.Resolve<ISectionRepository>();
-            Entities.Section section = sectionRepo.GetById(request.SectionId);
-            if (section == null)
-            {
-                errors.Add(new Error("course.addLecture.sectionWasNotExisted"));
-            }
-            if (errors.Any())
-            {
-                throw new ValidationException(errors);
-            }
+
+            return courseLectureResponse;
         }
     }
 }

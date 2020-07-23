@@ -19,7 +19,7 @@ namespace TinyERP.UserManagement.Repositories
 
         public User GetByUserName(string userName)
         {
-            return this.dbSet.AsQueryable.FirstOrDefault(item => item.UserName.Equals(userName));
+            return this.dbSet.AsQueryable().FirstOrDefault(item => item.UserName.Equals(userName));
         }
     }
 }

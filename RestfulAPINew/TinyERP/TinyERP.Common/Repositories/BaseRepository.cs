@@ -30,9 +30,9 @@ namespace TinyERP.Common.Repositories
         }
 
 
-        public TEntity GetById(int id)
+        public TEntity GetById(int id, string include = "")
         {
-            return this.dbSet.AsQueryable.FirstOrDefault(item => item.Id.Equals(id));
+            return this.dbSet.AsQueryable(include).FirstOrDefault(item => item.Id.Equals(id));
         }
 
         public void Update(TEntity entity)
