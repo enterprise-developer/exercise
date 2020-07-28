@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
+using TinyERP.Common.Mappers;
 using TinyERP.Common.UnitOfWork;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
@@ -27,12 +28,7 @@ namespace TinyERP.Course.Services
                 createdCourse = repo.Create(createdCourse);
                 uow.Commit();
             }
-            CreateCourseResponse courseResponse = new CreateCourseResponse()
-            {
-                Id = createdCourse.Id,
-                Name = createdCourse.Name,
-                Description = createdCourse.Description
-            };
+            CreateCourseResponse courseResponse = ObjectMapper.Map<CreateCourseResponse>(createdCourse);
             return courseResponse;
         }
         public UpdateCourseResponse Update(UpdateCourseRequest updateCourseDto)
@@ -46,12 +42,9 @@ namespace TinyERP.Course.Services
                 repository.Update(updatedCourse);
                 uow.Commit();
             }
-            UpdateCourseResponse updateCourseResponse = new UpdateCourseResponse()
-            {
-                CourseId = updatedCourse.Id,
-                Name = updatedCourse.Name,
-                Description = updatedCourse.Description
-            };
+            UpdateCourseResponse updateCourseResponse = ObjectMapper.Map<UpdateCourseResponse>(updatedCourse);
+            updateCourseResponse.CourseId = updatedCourse.Id;
+
             return updateCourseResponse;
         }
 
@@ -64,10 +57,7 @@ namespace TinyERP.Course.Services
             IUserFacade userFacade = IoC.Resolve<IUserFacade>();
             AuthorInfo author = await userFacade.GetAuthor(course.AuthorId);
 
-            CourseDetail courseDetail = new CourseDetail();
-            courseDetail.Id = course.Id;
-            courseDetail.Name = course.Name;
-            courseDetail.Description = course.Description;
+            CourseDetail courseDetail = ObjectMapper.Map<CourseDetail>(course);
             courseDetail.Author = author;
             return courseDetail;
         }

@@ -150,6 +150,7 @@
     <Compile Include="Logs\RegistrationLoggerTask.cs" />
     <Compile Include="Logs\ILogger.cs" />
     <Compile Include="Logs\RestApiLogger.cs" />
+    <Compile Include="Mappers\ObjectMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
