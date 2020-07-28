@@ -5,6 +5,7 @@
     using System.Reflection;
     using TinyERP.Common.Attributes;
     using TinyERP.Common.Vadations;
+    using TinyERP.Common.Validations;
 
     public static class ValidationHelper
     {
@@ -25,6 +26,14 @@
                 }
             }
             return errors;
+        }
+
+        public static void ThrowIfNull(object model, string message)
+        {
+            if (model == null)
+            {
+                throw new ValidationException(message);
+            }
         }
     }
 }

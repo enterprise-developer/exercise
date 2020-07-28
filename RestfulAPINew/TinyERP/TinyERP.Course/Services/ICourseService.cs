@@ -10,5 +10,6 @@ namespace TinyERP.Course.Services
         Task<CourseDetail> GetCourseDetail(int id);
         CreateCourseSectionResponse CreateSection(CreateCourseSectionRequest request);
         CreateCourseLectureResponse CreateLecture(CreateLectureRequest request);
+        void MoveSectionUp(MoveCourseSectionUpRequest request);
     }
 }

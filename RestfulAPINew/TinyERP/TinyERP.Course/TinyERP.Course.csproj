@@ -153,6 +153,7 @@
     <Compile Include="Dtos\CreateCourseSectionResponse.cs" />
     <Compile Include="Dtos\CreateLectureRequest.cs" />
     <Compile Include="Dtos\CreateCourseSectionRequest.cs" />
+    <Compile Include="Dtos\MoveCourseSectionUpRequest.cs" />
     <Compile Include="Dtos\UpdateCourseRequest.cs" />
     <Compile Include="Dtos\UpdateCourseResponse.cs" />
     <Compile Include="Entities\CourseAggregateRoot.cs" />

@@ -57,7 +57,6 @@ namespace TinyERP.Course.Entities
             this.Description = updateCourseRequest.Description;
         }
 
-
         private void Validate(UpdateCourseRequest request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
@@ -81,7 +80,7 @@ namespace TinyERP.Course.Entities
                 throw new ValidationException(errors);
             }
         }
-
+        #region Section
         public CreateCourseSectionResponse AddSection(CreateCourseSectionRequest request)
         {
             this.Validate(request);
@@ -102,7 +101,6 @@ namespace TinyERP.Course.Entities
             return courseResponse;
         }
 
-
         private void Validate(CreateCourseSectionRequest request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
@@ -119,6 +117,35 @@ namespace TinyERP.Course.Entities
             }
         }
 
+        public void MoveSectionUp(int sectionId)
+        {
+            this.Validate(sectionId);
+            Section section = this.Sections.FirstOrDefault(x => x.Id == sectionId);
+            int newIndex = section.Index - 1;
+            Section oldSection = this.Sections.FirstOrDefault(x => x.Index == newIndex);
+
+            section.Index = section.Index - 1;
+            oldSection.Index = oldSection.Index + 1;
+        }
+
+        private void Validate(int sectionId)
+        {
+            ISectionRepository sectionRepo = IoC.Resolve<ISectionRepository>();
+            Section currentSection = sectionRepo.GetById(sectionId);
+            if (currentSection == null)
+            {
+                throw new ValidationException("course.moveSectionUp.sectionNotExisted");
+            }
+
+            Section oldSection = this.Sections.FirstOrDefault(x => x.Index == (currentSection.Index - 1));
+            if (oldSection == null)
+            {
+                throw new ValidationException("course.moveSectionUp.canNotMoveSectionUp");
+            }
+        }
+        #endregion
+
+        #region Lecture
         public CreateCourseLectureResponse AddLecture(CreateLectureRequest request)
         {
             this.Validate(request);
@@ -131,7 +158,7 @@ namespace TinyERP.Course.Entities
                 Description = request.Description,
                 VideoLink = request.VideoLink,
                 Section = section
-            };            
+            };
             section.Lectures.Add(lecture);
             CreateCourseLectureResponse response = new CreateCourseLectureResponse()
             {
@@ -163,5 +190,7 @@ namespace TinyERP.Course.Entities
                 throw new ValidationException(errors);
             }
         }
+
+        #endregion
     }
 }

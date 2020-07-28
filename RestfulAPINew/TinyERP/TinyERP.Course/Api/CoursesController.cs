@@ -58,5 +58,19 @@
             ICourseService service = IoC.Resolve<ICourseService>();
             return service.CreateLecture(request);
         }
+
+        [Route("{courseId}/sections/{sectionId}/moveUp")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public void MoveSectionUp(int courseId, int sectionId)
+        {
+            MoveCourseSectionUpRequest request = new MoveCourseSectionUpRequest()
+            {
+                CourseId = courseId,
+                SectionId = sectionId
+            };
+            ICourseService service = IoC.Resolve<ICourseService>();
+            service.MoveSectionUp(request);
+        }
     }
 }

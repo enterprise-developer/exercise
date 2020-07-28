@@ -59,10 +59,7 @@ namespace TinyERP.Course.Services
         {
             ICourseRepository repo = IoC.Resolve<ICourseRepository>();
             Entities.CourseAggregateRoot course = repo.GetById(id);
-            if (course == null)
-            {
-                throw new ValidationException("course.courseDetail.courseNotExisted");
-            }
+            ValidationHelper.ThrowIfNull(course, "course.courseDetail.courseNotExisted");
 
             IUserFacade userFacade = IoC.Resolve<IUserFacade>();
             AuthorInfo author = await userFacade.GetAuthor(course.AuthorId);
@@ -82,10 +79,7 @@ namespace TinyERP.Course.Services
             {
                 ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
                 CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId, "Sections");
-                if (courseAggregate == null)
-                {
-                    throw new Exception("course.addSection.courseNotExisted");
-                }
+                ValidationHelper.ThrowIfNull(courseAggregate, "course.addSection.courseNotExisted");
                 courseSectionResponse = courseAggregate.AddSection(request);
                 courseRepository.Update(courseAggregate);
                 uow.Commit();
@@ -100,16 +94,28 @@ namespace TinyERP.Course.Services
             {
                 ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
                 CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId, "Sections,Sections.Lectures");
-                if (courseAggregate == null)
-                {
-                    throw new Exception("course.addLecture.courseNotExisted");
-                }
+                ValidationHelper.ThrowIfNull(courseAggregate, "course.addLecture.courseNotExisted");
                 courseLectureResponse = courseAggregate.AddLecture(request);
                 courseRepository.Update(courseAggregate);
                 uow.Commit();
             }
 
             return courseLectureResponse;
+        }
+
+        public void MoveSectionUp(MoveCourseSectionUpRequest request)
+        {
+            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
+            {
+                ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>(uow.Context);
+                CourseAggregateRoot aggregate = courseRepo.GetById(request.CourseId, "Sections");
+
+                ValidationHelper.ThrowIfNull(aggregate, "course.moveSectionUp.courseNotExisted");
+
+                aggregate.MoveSectionUp(request.SectionId);
+                courseRepo.Update(aggregate);
+                uow.Commit();
+            }
         }
     }
 }
