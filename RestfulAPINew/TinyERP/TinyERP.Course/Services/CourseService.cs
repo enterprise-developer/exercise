@@ -28,7 +28,7 @@ namespace TinyERP.Course.Services
                 createdCourse = repo.Create(createdCourse);
                 uow.Commit();
             }
-            CreateCourseResponse courseResponse = ObjectMapper.Map<CreateCourseResponse>(createdCourse);
+            CreateCourseResponse courseResponse = ObjectMapper.Map<CourseAggregateRoot, CreateCourseResponse>(createdCourse);
             return courseResponse;
         }
         public UpdateCourseResponse Update(UpdateCourseRequest updateCourseDto)
@@ -42,7 +42,11 @@ namespace TinyERP.Course.Services
                 repository.Update(updatedCourse);
                 uow.Commit();
             }
-            UpdateCourseResponse updateCourseResponse = ObjectMapper.Map<UpdateCourseResponse>(updatedCourse);
+            UpdateCourseResponse updateCourseResponse = ObjectMapper.Map(updatedCourse,
+                (UpdateCourseResponse updateCourse, CourseAggregateRoot course) =>
+                {
+                    updateCourse.CourseId = course.Id;
+                });
             updateCourseResponse.CourseId = updatedCourse.Id;
 
             return updateCourseResponse;
@@ -57,7 +61,7 @@ namespace TinyERP.Course.Services
             IUserFacade userFacade = IoC.Resolve<IUserFacade>();
             AuthorInfo author = await userFacade.GetAuthor(course.AuthorId);
 
-            CourseDetail courseDetail = ObjectMapper.Map<CourseDetail>(course);
+            CourseDetail courseDetail = ObjectMapper.Map<CourseAggregateRoot, CourseDetail>(course);
             courseDetail.Author = author;
             return courseDetail;
         }
