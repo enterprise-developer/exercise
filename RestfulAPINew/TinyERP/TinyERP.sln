@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.LoggerManagement.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.LoggerManagement", "TinyERP.LoggerManagement\TinyERP.LoggerManagement.csproj", "{F7D72EC8-863D-49D4-84F4-27740D4F68C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.AuthorManagement.Api", "TinyERP.AuthorManagement.Api\TinyERP.AuthorManagement.Api.csproj", "{40EE5A1F-F250-458A-86D9-135AD3894533}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyERP.AuthorManagement", "TinyERP.AuthorManagement\TinyERP.AuthorManagement.csproj", "{CA9A0815-1293-49FC-9294-0B751EFC251D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{F7D72EC8-863D-49D4-84F4-27740D4F68C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7D72EC8-863D-49D4-84F4-27740D4F68C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7D72EC8-863D-49D4-84F4-27740D4F68C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EE5A1F-F250-458A-86D9-135AD3894533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EE5A1F-F250-458A-86D9-135AD3894533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EE5A1F-F250-458A-86D9-135AD3894533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EE5A1F-F250-458A-86D9-135AD3894533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9A0815-1293-49FC-9294-0B751EFC251D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9A0815-1293-49FC-9294-0B751EFC251D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9A0815-1293-49FC-9294-0B751EFC251D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9A0815-1293-49FC-9294-0B751EFC251D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

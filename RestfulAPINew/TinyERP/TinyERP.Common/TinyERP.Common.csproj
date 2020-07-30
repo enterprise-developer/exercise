@@ -184,7 +184,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /S /Y /r "$(ProjectDir)Configurations\Configuration.config" "$(SolutionDir)TinyERP.Course.Api\Config\" 
-xcopy /S /Y /r "$(ProjectDir)Configurations\Configuration.config" "$(SolutionDir)TinyERP.UserManagement.Api\Config\"</PostBuildEvent>
+xcopy /S /Y /r "$(ProjectDir)Configurations\Configuration.config" "$(SolutionDir)TinyERP.UserManagement.Api\Config\"
+xcopy /S /Y /r "$(ProjectDir)Configurations\Configuration.config" "$(SolutionDir)TinyERP.AuthorManagement.Api\Config\"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
