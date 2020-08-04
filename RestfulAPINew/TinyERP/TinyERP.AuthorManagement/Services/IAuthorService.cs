@@ -6,5 +6,6 @@ namespace TinyERP.AuthorManagement.Services
     {
         CreateAuthorResponse CreateAuthor(CreateAuthorRequest authorRequest);
         UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailRequest authorEmailRequest);
+        void ActiveAuthor(ActiveAuthorRequest request);
     }
 }

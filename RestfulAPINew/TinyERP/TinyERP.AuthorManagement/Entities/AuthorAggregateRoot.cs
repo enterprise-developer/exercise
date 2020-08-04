@@ -15,11 +15,12 @@ namespace TinyERP.AuthorManagement.Entities
 {
     [DbContext(Use = typeof(AuthorDbContext))]
     [Table("Authors")]
-    public class AuthorAggregateRoot: BaseEntity
+    public class AuthorAggregateRoot : BaseEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public bool IsActive { get; set; }
         public void CreateAuthor(CreateAuthorRequest authorRequest)
         {
             this.Validate(authorRequest);
@@ -50,6 +51,19 @@ namespace TinyERP.AuthorManagement.Entities
             if (isExisted)
             {
                 throw new ValidationException("author.updateEmail.emailWasExisted");
+            }
+        }
+
+        public void Active()
+        {
+            this.ValidateActiveAuthor();
+            this.IsActive = true;
+        }
+        private void ValidateActiveAuthor()
+        {
+            if (this.IsActive == true)
+            {
+                throw new ValidationException("author.activeAuthor.authorWasActived");
             }
         }
     }

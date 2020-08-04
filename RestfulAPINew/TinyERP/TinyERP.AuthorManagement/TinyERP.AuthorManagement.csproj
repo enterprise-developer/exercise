@@ -66,6 +66,11 @@
     <Compile Include="Context\Migrations\202007301408015_Init_Author_Project.designer.cs">
       <DependentUpon>202007301408015_Init_Author_Project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Context\Migrations\202008041320470_Add_IsActive_Author.cs" />
+    <Compile Include="Context\Migrations\202008041320470_Add_IsActive_Author.designer.cs">
+      <DependentUpon>202008041320470_Add_IsActive_Author.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dtos\ActiveAuthorRequest.cs" />
     <Compile Include="Dtos\CreateAuthorRequest.cs" />
     <Compile Include="Dtos\CreateAuthorResponse.cs" />
     <Compile Include="Dtos\UpdateAuthorEmailRequest.cs" />
@@ -93,6 +98,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Context\Migrations\202007301408015_Init_Author_Project.resx">
       <DependentUpon>202007301408015_Init_Author_Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Context\Migrations\202008041320470_Add_IsActive_Author.resx">
+      <DependentUpon>202008041320470_Add_IsActive_Author.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

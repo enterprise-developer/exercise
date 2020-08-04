@@ -30,7 +30,7 @@ namespace TinyERP.AuthorManagement.Services
             {
                 IAuthorRepository repository = IoC.Resolve<IAuthorRepository>(uow.Context);
                 AuthorAggregateRoot authorAggregate = repository.GetById(authorEmailRequest.AuthorId);
-                ValidationHelper.ThrowIfNull(authorAggregate,"author.updateEmail.authorIsNotExisted");
+                ValidationHelper.ThrowIfNull(authorAggregate, "author.updateEmail.authorIsNotExisted");
                 authorAggregate.UpdateEmail(authorEmailRequest);
                 repository.Update(authorAggregate);
                 uow.Commit();
@@ -40,6 +40,19 @@ namespace TinyERP.AuthorManagement.Services
                     IsSuccess = true
                 };
                 return response;
+            }
+        }
+
+        public void ActiveAuthor(ActiveAuthorRequest request)
+        {
+            using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
+            {
+                IAuthorRepository repo = IoC.Resolve<IAuthorRepository>(uow.Context);
+                AuthorAggregateRoot aggregate = repo.GetById(request.AuthorId);
+                ValidationHelper.ThrowIfNull(aggregate, "author.activeAuthor.authorWasNotExisted");
+                aggregate.Active();
+                repo.Update(aggregate);
+                uow.Commit();
             }
         }
     }

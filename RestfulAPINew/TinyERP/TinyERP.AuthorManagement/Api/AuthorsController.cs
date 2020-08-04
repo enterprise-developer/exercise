@@ -7,7 +7,7 @@ using TinyERP.Common.Responses;
 namespace TinyERP.AuthorManagement.Api
 {
     [RoutePrefix("api/authors")]
-    public class AuthorsController: ApiController
+    public class AuthorsController : ApiController
     {
         [Route("")]
         [HttpPost()]
@@ -21,13 +21,26 @@ namespace TinyERP.AuthorManagement.Api
         [Route("{authorId}/updateEmail")]
         [HttpPut()]
         [ResponseWrapper()]
-        public UpdateAuthorEmailResponse UpdateEmail(int authorId, [FromBody]string email)
+        public UpdateAuthorEmailResponse UpdateEmail(int authorId, [FromBody] string email)
         {
             UpdateAuthorEmailRequest updateAuthorEmail = new UpdateAuthorEmailRequest();
             updateAuthorEmail.AuthorId = authorId;
             updateAuthorEmail.Email = email;
             IAuthorService authorService = IoC.Resolve<IAuthorService>();
             return authorService.UpdateEmail(updateAuthorEmail);
+        }
+
+        [Route("{authorId}/active")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public void ActiveAuthor(int authorId)
+        {
+            ActiveAuthorRequest request = new ActiveAuthorRequest()
+            {
+                AuthorId = authorId
+            };
+            IAuthorService service = IoC.Resolve<IAuthorService>();
+            service.ActiveAuthor(request);
         }
     }
 }
