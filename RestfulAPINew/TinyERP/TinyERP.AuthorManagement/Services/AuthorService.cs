@@ -1,4 +1,5 @@
-﻿using TinyERP.AuthorManagement.Dtos;
+﻿using TinyERP.AuthorManagement.Commands;
+using TinyERP.AuthorManagement.Dtos;
 using TinyERP.AuthorManagement.Entities;
 using TinyERP.AuthorManagement.Repositories;
 using TinyERP.Common.DI;
@@ -24,7 +25,7 @@ namespace TinyERP.AuthorManagement.Services
             }
         }
 
-        public UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailRequest authorEmailRequest)
+        public UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailCommand authorEmailRequest)
         {
             using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
             {

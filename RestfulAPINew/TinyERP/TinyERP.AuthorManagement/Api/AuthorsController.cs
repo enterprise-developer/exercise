@@ -1,6 +1,8 @@
 ﻿using System.Web.Http;
+using TinyERP.AuthorManagement.Commands;
 using TinyERP.AuthorManagement.Dtos;
 using TinyERP.AuthorManagement.Services;
+using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
 using TinyERP.Common.Responses;
 
@@ -21,13 +23,13 @@ namespace TinyERP.AuthorManagement.Api
         [Route("{authorId}/updateEmail")]
         [HttpPut()]
         [ResponseWrapper()]
-        public UpdateAuthorEmailResponse UpdateEmail(int authorId, [FromBody] string email)
+        public void UpdateEmail(int authorId, [FromBody] string email)
         {
-            UpdateAuthorEmailRequest updateAuthorEmail = new UpdateAuthorEmailRequest();
+            UpdateAuthorEmailCommand updateAuthorEmail = new UpdateAuthorEmailCommand();
             updateAuthorEmail.AuthorId = authorId;
             updateAuthorEmail.Email = email;
-            IAuthorService authorService = IoC.Resolve<IAuthorService>();
-            return authorService.UpdateEmail(updateAuthorEmail);
+            ICommandHandler<UpdateAuthorEmailCommand> command = IoC.Resolve<ICommandHandler<UpdateAuthorEmailCommand>>();
+            command.Handle(updateAuthorEmail);
         }
 
         [Route("{authorId}/active")]

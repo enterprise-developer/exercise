@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using TinyERP.AuthorManagement.Commands;
 using TinyERP.AuthorManagement.Context;
 using TinyERP.AuthorManagement.Dtos;
 using TinyERP.AuthorManagement.Repositories;
@@ -38,13 +39,13 @@ namespace TinyERP.AuthorManagement.Entities
             }
         }
 
-        public void UpdateEmail(UpdateAuthorEmailRequest updateAuthorEmail)
+        public void UpdateEmail(UpdateAuthorEmailCommand updateAuthorEmail)
         {
             this.Validate(updateAuthorEmail);
             this.Email = updateAuthorEmail.Email;
         }
 
-        private void Validate(UpdateAuthorEmailRequest updateAuthorEmail)
+        private void Validate(UpdateAuthorEmailCommand updateAuthorEmail)
         {
             IAuthorRepository repository = IoC.Resolve<IAuthorRepository>();
             bool isExisted = repository.CheckExistedByEmail(updateAuthorEmail.Email, updateAuthorEmail.AuthorId);

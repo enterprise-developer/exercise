@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AuthorsController.cs" />
+    <Compile Include="CommandHandlers\AuthorCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RegisterCommandHandlersTask.cs" />
     <Compile Include="Context\AuthorDbContext.cs" />
     <Compile Include="Context\Migrations\202007301408015_Init_Author_Project.cs" />
     <Compile Include="Context\Migrations\202007301408015_Init_Author_Project.designer.cs">
@@ -73,7 +75,7 @@
     <Compile Include="Dtos\ActiveAuthorRequest.cs" />
     <Compile Include="Dtos\CreateAuthorRequest.cs" />
     <Compile Include="Dtos\CreateAuthorResponse.cs" />
-    <Compile Include="Dtos\UpdateAuthorEmailRequest.cs" />
+    <Compile Include="Commands\UpdateAuthorEmailCommand.cs" />
     <Compile Include="Dtos\UpdateAuthorEmailResponse.cs" />
     <Compile Include="Entities\AuthorAggregateRoot.cs" />
     <Compile Include="Context\Migrations\Configuration.cs" />
