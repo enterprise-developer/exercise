@@ -5,8 +5,8 @@ namespace TinyERP.AuthorManagement.Services
 {
     public interface IAuthorService
     {
-        CreateAuthorResponse CreateAuthor(CreateAuthorRequest authorRequest);
-        UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailCommand authorEmailRequest);
-        void ActiveAuthor(ActiveAuthorRequest request);
+       // CreateAuthorResponse CreateAuthor(CreateAuthorCommand authorRequest);
+        //UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailCommand authorEmailRequest);
+        //void ActiveAuthor(ActiveAuthorCommand request);
     }
 }

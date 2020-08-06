@@ -9,7 +9,10 @@ namespace TinyERP.AuthorManagement.CommandHandlers
     {
         public void Execute(object arg = null)
         {
-            IoC.RegisterSingleton<ICommandHandler<UpdateAuthorEmailCommand>, AuthorCommandHandler>();
+            IoC.RegisterSingleton<ICommandHandler<CreateAuthorCommand>, AuthorCommandHandler>("Author.CreateAuthor");
+            IoC.RegisterSingleton<ICommandHandler<UpdateAuthorEmailCommand>, AuthorCommandHandler>("Author.UpdateAuthorEmail");
+            IoC.RegisterSingleton<ICommandHandler<ActiveAuthorCommand>, AuthorCommandHandler>("Author.ActiveAuthor");
+            IoC.RegisterSingleton<ICommandHandler<UpdateAuthorCommand>, AuthorCommandHandler>("Author.UpdateAuthor");
         }
     }
 }

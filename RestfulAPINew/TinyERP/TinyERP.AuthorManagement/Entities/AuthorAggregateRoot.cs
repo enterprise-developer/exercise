@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using TinyERP.AuthorManagement.Commands;
 using TinyERP.AuthorManagement.Context;
-using TinyERP.AuthorManagement.Dtos;
 using TinyERP.AuthorManagement.Repositories;
 using TinyERP.Common.Attributes;
 using TinyERP.Common.DI;
@@ -22,15 +21,21 @@ namespace TinyERP.AuthorManagement.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
         public bool IsActive { get; set; }
-        public void CreateAuthor(CreateAuthorRequest authorRequest)
+
+        public AuthorAggregateRoot()
         {
-            this.Validate(authorRequest);
-            this.FirstName = authorRequest.FirstName;
-            this.LastName = authorRequest.LastName;
-            this.Email = authorRequest.Email;
+
         }
 
-        public void Validate(CreateAuthorRequest authorRequest)
+        public AuthorAggregateRoot(CreateAuthorCommand command)
+        {
+            this.Validate(command);
+            this.FirstName = command.FirstName;
+            this.LastName = command.LastName;
+            this.Email = command.Email;
+        }
+
+        public void Validate(CreateAuthorCommand authorRequest)
         {
             IList<Error> errors = ValidationHelper.Validate(authorRequest);
             if (errors.Any())
@@ -48,7 +53,7 @@ namespace TinyERP.AuthorManagement.Entities
         private void Validate(UpdateAuthorEmailCommand updateAuthorEmail)
         {
             IAuthorRepository repository = IoC.Resolve<IAuthorRepository>();
-            bool isExisted = repository.CheckExistedByEmail(updateAuthorEmail.Email, updateAuthorEmail.AuthorId);
+            bool isExisted = repository.CheckExistedByEmail(updateAuthorEmail.Email, updateAuthorEmail.AggregateId);
             if (isExisted)
             {
                 throw new ValidationException("author.updateEmail.emailWasExisted");
@@ -65,6 +70,23 @@ namespace TinyERP.AuthorManagement.Entities
             if (this.IsActive == true)
             {
                 throw new ValidationException("author.activeAuthor.authorWasActived");
+            }
+        }
+
+        public void UpdateBasicInfor(UpdateAuthorCommand command)
+        {
+            this.Validate(command);
+            this.FirstName = command.FirstName;
+            this.LastName = command.LastName;
+            this.Email = command.Email;
+        }
+
+        private void Validate(UpdateAuthorCommand command)
+        {
+            IList<Error> errors = ValidationHelper.Validate(command);
+            if (errors.Any())
+            {
+                throw new ValidationException(errors);
             }
         }
     }

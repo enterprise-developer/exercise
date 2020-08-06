@@ -11,50 +11,50 @@ namespace TinyERP.AuthorManagement.Services
 {
     public class AuthorService : IAuthorService
     {
-        public CreateAuthorResponse CreateAuthor(CreateAuthorRequest authorRequest)
-        {
-            using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
-            {
-                IAuthorRepository repository = IoC.Resolve<IAuthorRepository>(uow.Context);
-                AuthorAggregateRoot authorAggregate = new AuthorAggregateRoot();
-                authorAggregate.CreateAuthor(authorRequest);
-                repository.Create(authorAggregate);
-                uow.Commit();
-                CreateAuthorResponse response = ObjectMapper.Map<AuthorAggregateRoot, CreateAuthorResponse>(authorAggregate);
-                return response;
-            }
-        }
+        //public CreateAuthorResponse CreateAuthor(CreateAuthorCommand authorRequest)
+        //{
+        //    using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
+        //    {
+        //        IAuthorRepository repository = IoC.Resolve<IAuthorRepository>(uow.Context);
+        //        AuthorAggregateRoot authorAggregate = new AuthorAggregateRoot();
+        //        //authorAggregate.CreateAuthor(authorRequest);
+        //        repository.Create(authorAggregate);
+        //        uow.Commit();
+        //        CreateAuthorResponse response = ObjectMapper.Map<AuthorAggregateRoot, CreateAuthorResponse>(authorAggregate);
+        //        return response;
+        //    }
+        //}
 
-        public UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailCommand authorEmailRequest)
-        {
-            using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
-            {
-                IAuthorRepository repository = IoC.Resolve<IAuthorRepository>(uow.Context);
-                AuthorAggregateRoot authorAggregate = repository.GetById(authorEmailRequest.AuthorId);
-                ValidationHelper.ThrowIfNull(authorAggregate, "author.updateEmail.authorIsNotExisted");
-                authorAggregate.UpdateEmail(authorEmailRequest);
-                repository.Update(authorAggregate);
-                uow.Commit();
-                UpdateAuthorEmailResponse response = new UpdateAuthorEmailResponse()
-                {
-                    Email = authorAggregate.Email,
-                    IsSuccess = true
-                };
-                return response;
-            }
-        }
+        //public UpdateAuthorEmailResponse UpdateEmail(UpdateAuthorEmailCommand authorEmailRequest)
+        //{
+        //    using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
+        //    {
+        //        IAuthorRepository repository = IoC.Resolve<IAuthorRepository>(uow.Context);
+        //        AuthorAggregateRoot authorAggregate = repository.GetById(authorEmailRequest.AggregateId);
+        //        ValidationHelper.ThrowIfNull(authorAggregate, "author.updateEmail.authorIsNotExisted");
+        //        authorAggregate.UpdateEmail(authorEmailRequest);
+        //        repository.Update(authorAggregate);
+        //        uow.Commit();
+        //        UpdateAuthorEmailResponse response = new UpdateAuthorEmailResponse()
+        //        {
+        //            Email = authorAggregate.Email,
+        //            IsSuccess = true
+        //        };
+        //        return response;
+        //    }
+        //}
 
-        public void ActiveAuthor(ActiveAuthorRequest request)
-        {
-            using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
-            {
-                IAuthorRepository repo = IoC.Resolve<IAuthorRepository>(uow.Context);
-                AuthorAggregateRoot aggregate = repo.GetById(request.AuthorId);
-                ValidationHelper.ThrowIfNull(aggregate, "author.activeAuthor.authorWasNotExisted");
-                aggregate.Active();
-                repo.Update(aggregate);
-                uow.Commit();
-            }
-        }
+        //public void ActiveAuthor(ActiveAuthorCommand request)
+        //{
+        //    using (IUnitOfWork uow = new UnitOfWork<AuthorAggregateRoot>())
+        //    {
+        //        IAuthorRepository repo = IoC.Resolve<IAuthorRepository>(uow.Context);
+        //        AuthorAggregateRoot aggregate = repo.GetById(request.AggregateId);
+        //        ValidationHelper.ThrowIfNull(aggregate, "author.activeAuthor.authorWasNotExisted");
+        //        aggregate.Active();
+        //        repo.Update(aggregate);
+        //        uow.Commit();
+        //    }
+        //}
     }
 }

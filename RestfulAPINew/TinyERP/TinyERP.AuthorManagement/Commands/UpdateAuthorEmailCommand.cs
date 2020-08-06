@@ -2,9 +2,12 @@
 
 namespace TinyERP.AuthorManagement.Commands
 {
-    public class UpdateAuthorEmailCommand : IBaseCommand
+    public class UpdateAuthorEmailCommand : BaseCommand
     {
-        public int AuthorId { get; set; }
         public string Email { get; set; }
+        public UpdateAuthorEmailCommand(int authorId): base(authorId)
+        {
+
+        }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System.Web.Http;
 using TinyERP.AuthorManagement.Commands;
-using TinyERP.AuthorManagement.Dtos;
-using TinyERP.AuthorManagement.Services;
 using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
 using TinyERP.Common.Responses;
@@ -14,10 +12,10 @@ namespace TinyERP.AuthorManagement.Api
         [Route("")]
         [HttpPost()]
         [ResponseWrapper()]
-        public CreateAuthorResponse Create(CreateAuthorRequest authorRequest)
+        public void Create(CreateAuthorCommand authorCommand)
         {
-            IAuthorService authorService = IoC.Resolve<IAuthorService>();
-            return authorService.CreateAuthor(authorRequest);
+            ICommandHandler<CreateAuthorCommand> command = IoC.Resolve<ICommandHandler<CreateAuthorCommand>>();
+            command.Handle(authorCommand);            
         }
 
         [Route("{authorId}/updateEmail")]
@@ -25,8 +23,7 @@ namespace TinyERP.AuthorManagement.Api
         [ResponseWrapper()]
         public void UpdateEmail(int authorId, [FromBody] string email)
         {
-            UpdateAuthorEmailCommand updateAuthorEmail = new UpdateAuthorEmailCommand();
-            updateAuthorEmail.AuthorId = authorId;
+            UpdateAuthorEmailCommand updateAuthorEmail = new UpdateAuthorEmailCommand(authorId);            
             updateAuthorEmail.Email = email;
             ICommandHandler<UpdateAuthorEmailCommand> command = IoC.Resolve<ICommandHandler<UpdateAuthorEmailCommand>>();
             command.Handle(updateAuthorEmail);
@@ -37,12 +34,19 @@ namespace TinyERP.AuthorManagement.Api
         [ResponseWrapper()]
         public void ActiveAuthor(int authorId)
         {
-            ActiveAuthorRequest request = new ActiveAuthorRequest()
-            {
-                AuthorId = authorId
-            };
-            IAuthorService service = IoC.Resolve<IAuthorService>();
-            service.ActiveAuthor(request);
+            ActiveAuthorCommand request = new ActiveAuthorCommand(authorId);
+            ICommandHandler<ActiveAuthorCommand> command = IoC.Resolve<ICommandHandler<ActiveAuthorCommand>>();
+            command.Handle(request);
+        }
+
+        [Route("{authorId}")]
+        [HttpPut()]
+        [ResponseWrapper()]
+        public void Update(int authorId, [FromBody] UpdateAuthorCommand command)
+        {
+            command.SetAggregateId(authorId);
+            ICommandHandler<UpdateAuthorCommand> commandHandler = IoC.Resolve<ICommandHandler<UpdateAuthorCommand>>();
+            commandHandler.Handle(command);
         }
     }
 }

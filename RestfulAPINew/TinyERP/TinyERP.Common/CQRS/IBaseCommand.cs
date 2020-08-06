@@ -2,5 +2,6 @@
 {
     public interface IBaseCommand
     {
+        int AggregateId { get; }
     }
 }

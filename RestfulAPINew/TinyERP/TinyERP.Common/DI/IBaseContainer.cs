@@ -6,6 +6,6 @@ namespace TinyERP.Common.DI
     {
         IInterface Resolve<IInterface>(IBaseContext context = null) where IInterface : class;
         void RegisterTransient<IInterface, IImpl>() where IInterface : class where IImpl : IInterface;
-        void RegisterSingleton<IInterface, IImpl>() where IInterface : class where IImpl : IInterface;
+        void RegisterSingleton<IInterface, IImpl>(string name = "") where IInterface : class where IImpl : IInterface;
     }
 }

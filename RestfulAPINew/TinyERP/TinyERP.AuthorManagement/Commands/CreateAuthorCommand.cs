@@ -1,8 +1,9 @@
 ﻿using TinyERP.Common.Attributes;
+using TinyERP.Common.CQRS;
 
-namespace TinyERP.AuthorManagement.Dtos
+namespace TinyERP.AuthorManagement.Commands
 {
-    public class CreateAuthorRequest
+    public class CreateAuthorCommand: BaseCommand
     {
         [Required("author.createAuthor.firstNameWasRequired")]
         public string FirstName { get; set; }

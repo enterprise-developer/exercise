@@ -12,11 +12,18 @@
             this.container = new Castle.Windsor.WindsorContainer();
         }
 
-        public void RegisterSingleton<IInterface, IImpl>()
+        public void RegisterSingleton<IInterface, IImpl>(string name = "")
             where IInterface : class
             where IImpl : IInterface
         {
-            this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleSingleton());
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleSingleton());
+            }
+            else
+            {
+                this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleSingleton().Named(name));
+            }
         }
 
         public void RegisterTransient<IInterface, IImpl>()

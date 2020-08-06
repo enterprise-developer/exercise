@@ -63,6 +63,7 @@
     <Compile Include="Api\AuthorsController.cs" />
     <Compile Include="CommandHandlers\AuthorCommandHandler.cs" />
     <Compile Include="CommandHandlers\RegisterCommandHandlersTask.cs" />
+    <Compile Include="Commands\UpdateAuthorCommand.cs" />
     <Compile Include="Context\AuthorDbContext.cs" />
     <Compile Include="Context\Migrations\202007301408015_Init_Author_Project.cs" />
     <Compile Include="Context\Migrations\202007301408015_Init_Author_Project.designer.cs">
@@ -72,8 +73,8 @@
     <Compile Include="Context\Migrations\202008041320470_Add_IsActive_Author.designer.cs">
       <DependentUpon>202008041320470_Add_IsActive_Author.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dtos\ActiveAuthorRequest.cs" />
-    <Compile Include="Dtos\CreateAuthorRequest.cs" />
+    <Compile Include="Commands\ActiveAuthorCommand.cs" />
+    <Compile Include="Commands\CreateAuthorCommand.cs" />
     <Compile Include="Dtos\CreateAuthorResponse.cs" />
     <Compile Include="Commands\UpdateAuthorEmailCommand.cs" />
     <Compile Include="Dtos\UpdateAuthorEmailResponse.cs" />

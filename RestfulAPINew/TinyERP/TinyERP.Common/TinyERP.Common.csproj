@@ -132,7 +132,7 @@
     <Compile Include="Connector\IConnector.cs" />
     <Compile Include="Connector\JsonConnector.cs" />
     <Compile Include="Contexts\IBaseContext.cs" />
-    <Compile Include="CQRS\BaseCommandHandler.cs" />
+    <Compile Include="CQRS\BaseCommand.cs" />
     <Compile Include="CQRS\IBaseCommand.cs" />
     <Compile Include="CQRS\ICommandHandler.cs" />
     <Compile Include="Databases\DbFactory.cs" />
