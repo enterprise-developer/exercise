@@ -18,39 +18,39 @@ namespace TinyERP.Course.Services
 {
     public class CourseService : ICourseService
     {
-        public CreateCourseResponse Create(CreateCourseRequest createCourse)
-        {
-            CourseAggregateRoot createdCourse;
-            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
-            {
-                createdCourse = new CourseAggregateRoot(createCourse);
-                ICourseRepository repo = IoC.Resolve<ICourseRepository>(uow.Context);
-                createdCourse = repo.Create(createdCourse);
-                uow.Commit();
-            }
-            CreateCourseResponse courseResponse = ObjectMapper.Map<CourseAggregateRoot, CreateCourseResponse>(createdCourse);
-            return courseResponse;
-        }
-        public UpdateCourseResponse Update(UpdateCourseRequest updateCourseDto)
-        {
-            CourseAggregateRoot updatedCourse;
-            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
-            {
-                ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
-                updatedCourse = repository.GetById(updateCourseDto.Id);
-                updatedCourse.Update(updateCourseDto);
-                repository.Update(updatedCourse);
-                uow.Commit();
-            }
-            UpdateCourseResponse updateCourseResponse = ObjectMapper.Map(updatedCourse,
-                (UpdateCourseResponse updateCourse, CourseAggregateRoot course) =>
-                {
-                    updateCourse.CourseId = course.Id;
-                });
-            updateCourseResponse.CourseId = updatedCourse.Id;
+        //public CreateCourseResponse Create(CreateCourseCommand createCourse)
+        //{
+        //    CourseAggregateRoot createdCourse;
+        //    using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
+        //    {
+        //        createdCourse = new CourseAggregateRoot(createCourse);
+        //        ICourseRepository repo = IoC.Resolve<ICourseRepository>(uow.Context);
+        //        createdCourse = repo.Create(createdCourse);
+        //        uow.Commit();
+        //    }
+        //    CreateCourseResponse courseResponse = ObjectMapper.Map<CourseAggregateRoot, CreateCourseResponse>(createdCourse);
+        //    return courseResponse;
+        //}
+        //public UpdateCourseResponse Update(UpdateCourseCommand updateCourseDto)
+        //{
+        //    CourseAggregateRoot updatedCourse;
+        //    using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
+        //    {
+        //        ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
+        //        updatedCourse = repository.GetById(updateCourseDto.Id);
+        //        updatedCourse.Update(updateCourseDto);
+        //        repository.Update(updatedCourse);
+        //        uow.Commit();
+        //    }
+        //    UpdateCourseResponse updateCourseResponse = ObjectMapper.Map(updatedCourse,
+        //        (UpdateCourseResponse updateCourse, CourseAggregateRoot course) =>
+        //        {
+        //            updateCourse.CourseId = course.Id;
+        //        });
+        //    updateCourseResponse.CourseId = updatedCourse.Id;
 
-            return updateCourseResponse;
-        }
+        //    return updateCourseResponse;
+        //}
 
         public async Task<CourseDetail> GetCourseDetail(int id)
         {

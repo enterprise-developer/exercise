@@ -5,8 +5,8 @@ namespace TinyERP.Course.Services
 {
     public interface ICourseService
     {
-        CreateCourseResponse Create(CreateCourseRequest request);
-        UpdateCourseResponse Update(UpdateCourseRequest request);
+        // CreateCourseResponse Create(CreateCourseCommand request);
+        //UpdateCourseResponse Update(UpdateCourseCommand request);
         Task<CourseDetail> GetCourseDetail(int id);
         CreateCourseSectionResponse CreateSection(CreateCourseSectionRequest request);
         CreateCourseLectureResponse CreateLecture(CreateLectureRequest request);

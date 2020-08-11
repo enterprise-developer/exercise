@@ -8,6 +8,7 @@ using TinyERP.Common.Entities;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
+using TinyERP.Course.Commands;
 using TinyERP.Course.Context;
 using TinyERP.Course.Dtos;
 using TinyERP.Course.Reponsitories;
@@ -28,18 +29,25 @@ namespace TinyERP.Course.Entities
         {
             this.Sections = new List<Section>();
         }
-        public CourseAggregateRoot(CreateCourseRequest request) : this()
+        //public CourseAggregateRoot(CreateCourseCommand request) : this()
+        //{
+        //    this.Validate(request);
+        //    this.Name = request.Name;
+        //    this.Description = request.Description;
+        //}
+
+        public CourseAggregateRoot(CreateCourseCommand command) : this()
         {
-            this.Validate(request);
-            this.Name = request.Name;
-            this.Description = request.Description;
+            this.Validate(command);
+            this.Name = command.Name;
+            this.Description = command.Description;
         }
 
-        private void Validate(CreateCourseRequest request)
+        private void Validate(CreateCourseCommand command)
         {
-            IList<Error> errors = ValidationHelper.Validate(request);
+            IList<Error> errors = ValidationHelper.Validate(command);
             ICourseRepository repo = IoC.Resolve<ICourseRepository>();
-            CourseAggregateRoot course = repo.GetByName(request.Name);
+            CourseAggregateRoot course = repo.GetByName(command.Name);
             if (course != null)
             {
                 errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
@@ -50,18 +58,33 @@ namespace TinyERP.Course.Entities
             }
         }
 
-        public void Update(UpdateCourseRequest updateCourseRequest)
+        //private void Validate(CreateCourseCommand request)
+        //{
+        //    IList<Error> errors = ValidationHelper.Validate(request);
+        //    ICourseRepository repo = IoC.Resolve<ICourseRepository>();
+        //    CourseAggregateRoot course = repo.GetByName(request.Name);
+        //    if (course != null)
+        //    {
+        //        errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
+        //    }
+        //    if (errors.Any())
+        //    {
+        //        throw new ValidationException(errors);
+        //    }
+        //}
+
+        public void Update(UpdateCourseCommand command)
         {
-            this.Validate(updateCourseRequest);
-            this.Name = updateCourseRequest.Name;
-            this.Description = updateCourseRequest.Description;
+            this.Validate(command);
+            this.Name = command.Name;
+            this.Description = command.Description;
         }
 
-        private void Validate(UpdateCourseRequest request)
+        private void Validate(UpdateCourseCommand command)
         {
-            IList<Error> errors = ValidationHelper.Validate(request);
+            IList<Error> errors = ValidationHelper.Validate(command);
             ICourseRepository repository = IoC.Resolve<ICourseRepository>();
-            CourseAggregateRoot course = repository.GetById(request.Id);
+            CourseAggregateRoot course = repository.GetById(command.AggregateId);
 
             if (course == null)
             {
@@ -69,7 +92,7 @@ namespace TinyERP.Course.Entities
                 throw new ValidationException(errors);
             }
 
-            bool isExist = repository.IsExistName(request.Name, request.Id);
+            bool isExist = repository.IsExistName(command.Name, command.AggregateId);
             if (isExist)
             {
                 errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));

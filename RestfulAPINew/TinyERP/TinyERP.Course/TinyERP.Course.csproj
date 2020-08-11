@@ -128,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CoursesController.cs" />
+    <Compile Include="CommandHandlers\CourseCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RegisterCommandHandler.cs" />
     <Compile Include="Const\CourseValidationRules.cs" />
     <Compile Include="Context\CourseContext.cs" />
     <Compile Include="Context\Migrations\202007211246403_Initial_Database.cs" />
@@ -148,13 +150,13 @@
     </Compile>
     <Compile Include="Dtos\CourseDetail.cs" />
     <Compile Include="Dtos\CreateCourseLectureResponse.cs" />
-    <Compile Include="Dtos\CreateCourseRequest.cs" />
+    <Compile Include="Commands\CreateCourseCommand.cs" />
     <Compile Include="Dtos\CreateCourseResponse.cs" />
     <Compile Include="Dtos\CreateCourseSectionResponse.cs" />
     <Compile Include="Dtos\CreateLectureRequest.cs" />
     <Compile Include="Dtos\CreateCourseSectionRequest.cs" />
     <Compile Include="Dtos\MoveCourseSectionUpRequest.cs" />
-    <Compile Include="Dtos\UpdateCourseRequest.cs" />
+    <Compile Include="Commands\UpdateCourseCommand.cs" />
     <Compile Include="Dtos\UpdateCourseResponse.cs" />
     <Compile Include="Entities\CourseAggregateRoot.cs" />
     <Compile Include="Entities\CourseLogger.cs" />

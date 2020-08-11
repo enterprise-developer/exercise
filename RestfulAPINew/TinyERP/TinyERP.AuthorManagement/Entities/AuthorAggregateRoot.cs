@@ -24,7 +24,6 @@ namespace TinyERP.AuthorManagement.Entities
 
         public AuthorAggregateRoot()
         {
-
         }
 
         public AuthorAggregateRoot(CreateAuthorCommand command)

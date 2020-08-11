@@ -2,8 +2,10 @@
 {
     using System.Threading.Tasks;
     using System.Web.Http;
+    using TinyERP.Common.CQRS;
     using TinyERP.Common.DI;
     using TinyERP.Common.Responses;
+    using TinyERP.Course.Commands;
     using TinyERP.Course.Dtos;
     using TinyERP.Course.Services;
 
@@ -13,20 +15,20 @@
         [Route("")]
         [HttpPost()]
         [ResponseWrapper()]
-        public CreateCourseResponse CreateCourse(CreateCourseRequest request)
+        public void CreateCourse(CreateCourseCommand command)
         {
-            ICourseService service = IoC.Resolve<ICourseService>();
-            return service.Create(request);
+            ICommandHandler<CreateCourseCommand> commandHandler = IoC.Resolve<ICommandHandler<CreateCourseCommand>>();
+            commandHandler.Handle(command);
         }
 
         [Route("{id}")]
         [HttpPut()]
         [ResponseWrapper()]
-        public UpdateCourseResponse Update(int id, UpdateCourseRequest updateCourseRequest)
+        public void Update(int id, UpdateCourseCommand command)
         {
-            ICourseService service = IoC.Resolve<ICourseService>();
-            updateCourseRequest.Id = id;
-            return service.Update(updateCourseRequest);
+            ICommandHandler<UpdateCourseCommand> commandHandler = IoC.Resolve<ICommandHandler<UpdateCourseCommand>>();
+            command.SetAggregateId(id);
+            commandHandler.Handle(command);
         }
 
         [Route("{id}")]

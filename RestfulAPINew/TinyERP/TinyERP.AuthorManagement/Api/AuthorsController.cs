@@ -15,7 +15,7 @@ namespace TinyERP.AuthorManagement.Api
         public void Create(CreateAuthorCommand authorCommand)
         {
             ICommandHandler<CreateAuthorCommand> command = IoC.Resolve<ICommandHandler<CreateAuthorCommand>>();
-            command.Handle(authorCommand);            
+            command.Handle(authorCommand);
         }
 
         [Route("{authorId}/updateEmail")]
@@ -23,7 +23,7 @@ namespace TinyERP.AuthorManagement.Api
         [ResponseWrapper()]
         public void UpdateEmail(int authorId, [FromBody] string email)
         {
-            UpdateAuthorEmailCommand updateAuthorEmail = new UpdateAuthorEmailCommand(authorId);            
+            UpdateAuthorEmailCommand updateAuthorEmail = new UpdateAuthorEmailCommand(authorId);
             updateAuthorEmail.Email = email;
             ICommandHandler<UpdateAuthorEmailCommand> command = IoC.Resolve<ICommandHandler<UpdateAuthorEmailCommand>>();
             command.Handle(updateAuthorEmail);
