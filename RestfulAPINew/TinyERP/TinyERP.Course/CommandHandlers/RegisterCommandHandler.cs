@@ -11,6 +11,7 @@ namespace TinyERP.Course.CommandHandlers
         {
             IoC.RegisterSingleton<ICommandHandler<CreateCourseCommand>, CourseCommandHandler>("Course.CreateCommand");
             IoC.RegisterSingleton<ICommandHandler<UpdateCourseCommand>, CourseCommandHandler>("Course.UpdateCommand");
+            IoC.RegisterSingleton<ICommandHandler<MoveCourseSectionUpCommand>, CourseCommandHandler>("Course.MoveUpSectionCommand");
         }
     }
 }

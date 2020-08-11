@@ -97,19 +97,19 @@ namespace TinyERP.Course.Services
             return courseLectureResponse;
         }
 
-        public void MoveSectionUp(MoveCourseSectionUpRequest request)
-        {
-            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
-            {
-                ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>(uow.Context);
-                CourseAggregateRoot aggregate = courseRepo.GetById(request.CourseId, "Sections");
+        //public void MoveSectionUp(MoveCourseSectionUpCommand request)
+        //{
+        //    using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
+        //    {
+        //        ICourseRepository courseRepo = IoC.Resolve<ICourseRepository>(uow.Context);
+        //        CourseAggregateRoot aggregate = courseRepo.GetById(request.CourseId, "Sections");
 
-                ValidationHelper.ThrowIfNull(aggregate, "course.moveSectionUp.courseNotExisted");
+        //        ValidationHelper.ThrowIfNull(aggregate, "course.moveSectionUp.courseNotExisted");
 
-                aggregate.MoveSectionUp(request.SectionId);
-                courseRepo.Update(aggregate);
-                uow.Commit();
-            }
-        }
+        //        aggregate.MoveSectionUp(request.SectionId);
+        //        courseRepo.Update(aggregate);
+        //        uow.Commit();
+        //    }
+        //}
     }
 }

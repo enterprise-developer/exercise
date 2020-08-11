@@ -66,13 +66,9 @@
         [ResponseWrapper()]
         public void MoveSectionUp(int courseId, int sectionId)
         {
-            MoveCourseSectionUpRequest request = new MoveCourseSectionUpRequest()
-            {
-                CourseId = courseId,
-                SectionId = sectionId
-            };
-            ICourseService service = IoC.Resolve<ICourseService>();
-            service.MoveSectionUp(request);
+            MoveCourseSectionUpCommand command = new MoveCourseSectionUpCommand(courseId, sectionId);
+            ICommandHandler<MoveCourseSectionUpCommand> commandHandler = IoC.Resolve<ICommandHandler<MoveCourseSectionUpCommand>>();
+            commandHandler.Handle(command);
         }
     }
 }
