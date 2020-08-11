@@ -1,6 +1,8 @@
-﻿namespace TinyERP.Course.Dtos
+﻿using TinyERP.Common.CQRS;
+
+namespace TinyERP.Course.Dtos
 {
-    public class CreateCourseResponse
+    public class CreateCourseResponse : IBaseResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }

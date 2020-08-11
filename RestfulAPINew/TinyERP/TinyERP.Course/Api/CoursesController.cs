@@ -15,10 +15,10 @@
         [Route("")]
         [HttpPost()]
         [ResponseWrapper()]
-        public void CreateCourse(CreateCourseCommand command)
+        public CreateCourseResponse CreateCourse(CreateCourseCommand command)
         {
-            ICommandHandler<CreateCourseCommand> commandHandler = IoC.Resolve<ICommandHandler<CreateCourseCommand>>();
-            commandHandler.Handle(command);
+            ICommandHandler<CreateCourseCommand, CreateCourseResponse> commandHandler = IoC.Resolve<ICommandHandler<CreateCourseCommand, CreateCourseResponse>>();
+            return commandHandler.Handle(command);
         }
 
         [Route("{id}")]

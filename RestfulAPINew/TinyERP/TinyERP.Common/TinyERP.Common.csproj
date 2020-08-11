@@ -134,6 +134,7 @@
     <Compile Include="Contexts\IBaseContext.cs" />
     <Compile Include="CQRS\BaseCommand.cs" />
     <Compile Include="CQRS\IBaseCommand.cs" />
+    <Compile Include="CQRS\IBaseResponse.cs" />
     <Compile Include="CQRS\ICommandHandler.cs" />
     <Compile Include="Databases\DbFactory.cs" />
     <Compile Include="Databases\IDbMigratorConfiguration.cs" />
