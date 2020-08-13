@@ -1,6 +1,5 @@
 ﻿namespace TinyERP.Course.Api
 {
-    using System.Threading.Tasks;
     using System.Web.Http;
     using TinyERP.Common.CQRS;
     using TinyERP.Common.DI;
@@ -31,13 +30,22 @@
             commandHandler.Handle(command);
         }
 
+        //[Route("{id}")]
+        //[HttpGet()]
+        //[ResponseWrapper()]
+        //public async Task<CourseDetail> GetCourseDetail(int id)
+        //{
+        //    ICourseService service = IoC.Resolve<ICourseService>();
+        //    return await service.GetCourseDetail(id);
+        //}
+
         [Route("{id}")]
         [HttpGet()]
         [ResponseWrapper()]
-        public async Task<CourseDetail> GetCourseDetail(int id)
+        public Query.Dtos.CourseDetailResponse GetCourseDetail(int id)
         {
-            ICourseService service = IoC.Resolve<ICourseService>();
-            return await service.GetCourseDetail(id);
+            Query.Services.ICourseQueryService service = IoC.Resolve<Query.Services.ICourseQueryService>();
+            return service.GetCourseDetail(id);
         }
 
         [Route("{courseId}/sections")]
@@ -70,5 +78,7 @@
             ICommandHandler<MoveCourseSectionUpCommand> commandHandler = IoC.Resolve<ICommandHandler<MoveCourseSectionUpCommand>>();
             commandHandler.Handle(command);
         }
+
+
     }
 }

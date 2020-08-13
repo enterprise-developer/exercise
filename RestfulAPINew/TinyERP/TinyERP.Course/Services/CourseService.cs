@@ -52,19 +52,19 @@ namespace TinyERP.Course.Services
         //    return updateCourseResponse;
         //}
 
-        public async Task<CourseDetail> GetCourseDetail(int id)
-        {
-            ICourseRepository repo = IoC.Resolve<ICourseRepository>();
-            Entities.CourseAggregateRoot course = repo.GetById(id);
-            ValidationHelper.ThrowIfNull(course, "course.courseDetail.courseNotExisted");
+        //public async Task<CourseDetail> GetCourseDetail(int id)
+        //{
+        //    ICourseRepository repo = IoC.Resolve<ICourseRepository>();
+        //    Entities.CourseAggregateRoot course = repo.GetById(id);
+        //    ValidationHelper.ThrowIfNull(course, "course.courseDetail.courseNotExisted");
 
-            IUserFacade userFacade = IoC.Resolve<IUserFacade>();
-            AuthorInfo author = await userFacade.GetAuthor(course.AuthorId);
+        //    IUserFacade userFacade = IoC.Resolve<IUserFacade>();
+        //    AuthorInfo author = await userFacade.GetAuthor(course.AuthorId);
 
-            CourseDetail courseDetail = ObjectMapper.Map<CourseAggregateRoot, CourseDetail>(course);
-            courseDetail.Author = author;
-            return courseDetail;
-        }
+        //    CourseDetail courseDetail = ObjectMapper.Map<CourseAggregateRoot, CourseDetail>(course);
+        //    courseDetail.Author = author;
+        //    return courseDetail;
+        //}
 
         public CreateCourseSectionResponse CreateSection(CreateCourseSectionRequest request)
         {
@@ -111,5 +111,6 @@ namespace TinyERP.Course.Services
         //        uow.Commit();
         //    }
         //}
+
     }
 }

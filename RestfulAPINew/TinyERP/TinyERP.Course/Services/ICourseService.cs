@@ -7,9 +7,9 @@ namespace TinyERP.Course.Services
     {
         // CreateCourseResponse Create(CreateCourseCommand request);
         //UpdateCourseResponse Update(UpdateCourseCommand request);
-        Task<CourseDetail> GetCourseDetail(int id);
+        //Task<CourseDetail> GetCourseDetail(int id);
         CreateCourseSectionResponse CreateSection(CreateCourseSectionRequest request);
         CreateCourseLectureResponse CreateLecture(CreateLectureRequest request);
-       // void MoveSectionUp(MoveCourseSectionUpCommand request);
+        // void MoveSectionUp(MoveCourseSectionUpCommand request);
     }
 }
