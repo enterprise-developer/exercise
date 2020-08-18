@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using TinyERP.Common.DI;
 using TinyERP.Common.Responses;
 using TinyERP.UserManagement.Services;
@@ -12,7 +13,7 @@ namespace TinyERP.UserManagement.Api
         [Route("")]
         [HttpPost()]
         [ResponseWrapper()]
-        public int CreateAuthor(CreateAuthorDto request)
+        public Guid CreateAuthor(CreateAuthorDto request)
         {
             IUserService service = IoC.Resolve<IUserService>();
             return service.Create(request);
@@ -21,7 +22,7 @@ namespace TinyERP.UserManagement.Api
         [Route("{id}/authorInfo")]
         [HttpGet()]
         [ResponseWrapper()]
-        public AuthorInfo GetAuthorInfo(int id)
+        public AuthorInfo GetAuthorInfo(Guid id)
         {
             IUserService service = IoC.Resolve<IUserService>();
             return service.GetAuthorInfo(id);

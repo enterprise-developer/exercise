@@ -1,5 +1,6 @@
 ﻿namespace TinyERP.Course.Api
 {
+    using System;
     using System.Web.Http;
     using TinyERP.Common.CQRS;
     using TinyERP.Common.DI;
@@ -23,7 +24,7 @@
         [Route("{id}")]
         [HttpPut()]
         [ResponseWrapper()]
-        public void Update(int id, UpdateCourseCommand command)
+        public void Update(Guid id, UpdateCourseCommand command)
         {
             ICommandHandler<UpdateCourseCommand> commandHandler = IoC.Resolve<ICommandHandler<UpdateCourseCommand>>();
             command.SetAggregateId(id);
@@ -33,7 +34,7 @@
         [Route("{id}")]
         [HttpGet()]
         [ResponseWrapper()]
-        public Query.Dtos.CourseDetailResponse GetCourseDetail(int id)
+        public Query.Dtos.CourseDetailResponse GetCourseDetail(Guid id)
         {
             Query.Services.ICourseQueryService service = IoC.Resolve<Query.Services.ICourseQueryService>();
             return service.GetCourseDetail(id);
@@ -42,7 +43,7 @@
         [Route("{courseId}/sections")]
         [HttpPost()]
         [ResponseWrapper()]
-        public CreateCourseSectionResponse CreateSection(int courseId, CreateCourseSectionRequest request)
+        public CreateCourseSectionResponse CreateSection(Guid courseId, CreateCourseSectionRequest request)
         {
             request.CourseId = courseId;
             ICourseService service = IoC.Resolve<ICourseService>();
@@ -52,7 +53,7 @@
         [Route("{courseId}/sections/{sectionId}/lectures")]
         [HttpPost()]
         [ResponseWrapper()]
-        public CreateCourseLectureResponse CreateLecture(int courseId, int sectionId, CreateLectureRequest request)
+        public CreateCourseLectureResponse CreateLecture(Guid courseId, Guid sectionId, CreateLectureRequest request)
         {
             request.CourseId = courseId;
             request.SectionId = sectionId;
@@ -63,7 +64,7 @@
         [Route("{courseId}/sections/{sectionId}/moveUp")]
         [HttpPost()]
         [ResponseWrapper()]
-        public void MoveSectionUp(int courseId, int sectionId)
+        public void MoveSectionUp(Guid courseId, Guid sectionId)
         {
             MoveCourseSectionUpCommand command = new MoveCourseSectionUpCommand(courseId, sectionId);
             ICommandHandler<MoveCourseSectionUpCommand> commandHandler = IoC.Resolve<ICommandHandler<MoveCourseSectionUpCommand>>();

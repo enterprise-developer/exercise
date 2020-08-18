@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TinyERP.Common;
 using TinyERP.Common.Contexts;
 using TinyERP.Common.Repositories;
@@ -20,7 +21,7 @@ namespace TinyERP.Course.Reponsitories
             return this.dbSet.AsQueryable().FirstOrDefault(item => item.Name == name);
         }
 
-        public bool IsExistName(string name, int excludedId)
+        public bool IsExistName(string name, Guid excludedId)
         {
             return this.dbSet.AsQueryable().Any(item => item.Name.Equals(name) && item.Id != excludedId);
         }

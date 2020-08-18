@@ -1,10 +1,11 @@
-﻿using TinyERP.UserManagement.Share.Dtos;
+﻿using System;
+using TinyERP.UserManagement.Share.Dtos;
 
 namespace TinyERP.UserManagement.Services
 {
     public interface IUserService
     {
-        int Create(CreateAuthorDto request);
-        AuthorInfo GetAuthorInfo(int id);
+        Guid Create(CreateAuthorDto request);
+        AuthorInfo GetAuthorInfo(Guid id);
     }
 }

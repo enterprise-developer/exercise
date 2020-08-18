@@ -1,14 +1,15 @@
-﻿using TinyERP.Common.CQRS;
+﻿using System;
+using TinyERP.Common.CQRS;
 
 namespace TinyERP.Course.Commands
 {
     public class MoveCourseSectionUpCommand : BaseCommand
     {
-        public MoveCourseSectionUpCommand(int courseId, int sectionId): base(courseId)
+        public MoveCourseSectionUpCommand(Guid courseId, Guid sectionId): base(courseId)
         {
             this.SectionId = sectionId;
         }
         //public int CourseId { get; set; }
-        public int SectionId { get; set; }
+        public Guid SectionId { get; set; }
     }
 }

@@ -1,14 +1,20 @@
-﻿namespace TinyERP.Common.CQRS
+﻿using System;
+
+namespace TinyERP.Common.CQRS
 {
     public class BaseCommand : IBaseCommand
     {
-        public int AggregateId { get; private set; }
-        public BaseCommand(int aggregateId = 0)
+        public Guid AggregateId { get; private set; }
+        public BaseCommand()
+        {
+            this.AggregateId = Guid.Empty;
+        }
+        public BaseCommand(Guid aggregateId)
         {
             this.AggregateId = aggregateId;
         }
 
-        public void SetAggregateId(int aggregateId)
+        public void SetAggregateId(Guid aggregateId)
         {
             this.AggregateId = aggregateId;
         }

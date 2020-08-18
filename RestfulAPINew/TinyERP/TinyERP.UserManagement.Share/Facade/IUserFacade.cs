@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using TinyERP.UserManagement.Share.Dtos;
 
 namespace TinyERP.UserManagement.Share.Facade
 {
     public interface IUserFacade
     {
-        Task<int> CreateIfNotExist(CreateAuthorDto createAuthor);
-        Task<AuthorInfo> GetAuthor(int id);
+        Task<Guid> CreateIfNotExist(CreateAuthorDto createAuthor);
+        Task<AuthorInfo> GetAuthor(Guid id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using TinyERP.Common.DI;
+﻿using System;
+using TinyERP.Common.DI;
 using TinyERP.Common.Mappers;
 using TinyERP.Course.Query.Dtos;
 using TinyERP.Course.Query.Entities;
@@ -8,7 +9,7 @@ namespace TinyERP.Course.Query.Services
 {
     public class CourseQueryService : ICourseQueryService
     {
-        public CourseDetailResponse GetCourseDetail(int id)
+        public CourseDetailResponse GetCourseDetail(Guid id)
         {
             ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>();
             CourseDetail courseDetail = repository.GetById(id);

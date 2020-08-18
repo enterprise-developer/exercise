@@ -13,7 +13,7 @@ namespace TinyERP.Course.Entities
         public string Name { get; set; }
         public int Index { get; set; }
         [ForeignKey("Course")] // consider for other framework
-        public int CourseId { get; set; }
+        public Guid CourseId { get; set; }
         public CourseAggregateRoot Course { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }

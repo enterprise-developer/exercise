@@ -75,6 +75,10 @@
     </Compile>
     <Compile Include="Commands\ActiveAuthorCommand.cs" />
     <Compile Include="Commands\CreateAuthorCommand.cs" />
+    <Compile Include="Context\Migrations\202008181422069_UpdateEntityIdToGuid.cs" />
+    <Compile Include="Context\Migrations\202008181422069_UpdateEntityIdToGuid.designer.cs">
+      <DependentUpon>202008181422069_UpdateEntityIdToGuid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dtos\CreateAuthorResponse.cs" />
     <Compile Include="Commands\UpdateAuthorEmailCommand.cs" />
     <Compile Include="Dtos\UpdateAuthorEmailResponse.cs" />
@@ -104,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Context\Migrations\202008041320470_Add_IsActive_Author.resx">
       <DependentUpon>202008041320470_Add_IsActive_Author.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Context\Migrations\202008181422069_UpdateEntityIdToGuid.resx">
+      <DependentUpon>202008181422069_UpdateEntityIdToGuid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

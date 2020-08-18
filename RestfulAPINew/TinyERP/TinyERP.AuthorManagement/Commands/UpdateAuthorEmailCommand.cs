@@ -1,11 +1,12 @@
-﻿using TinyERP.Common.CQRS;
+﻿using System;
+using TinyERP.Common.CQRS;
 
 namespace TinyERP.AuthorManagement.Commands
 {
     public class UpdateAuthorEmailCommand : BaseCommand
     {
         public string Email { get; set; }
-        public UpdateAuthorEmailCommand(int authorId): base(authorId)
+        public UpdateAuthorEmailCommand(Guid authorId): base(authorId)
         {
 
         }

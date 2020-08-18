@@ -62,9 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\UsersController.cs" />
+    <Compile Include="Context\Migrations\202008181432414_UpdateEntityIdToGuid.cs" />
+    <Compile Include="Context\Migrations\202008181432414_UpdateEntityIdToGuid.designer.cs">
+      <DependentUpon>202008181432414_UpdateEntityIdToGuid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Context\UserDbContext.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Facade\UserFacade.cs" />
+    <Compile Include="Context\Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -87,6 +92,11 @@
       <Project>{68DEDB19-CA71-414E-A212-E6CBF314EA59}</Project>
       <Name>TinyERP.UserManagement.Share</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Migrations\202008181432414_UpdateEntityIdToGuid.resx">
+      <DependentUpon>202008181432414_UpdateEntityIdToGuid.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -23,7 +23,7 @@ namespace TinyERP.Course.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
 
         public ICollection<Section> Sections { get; set; }
 
@@ -149,7 +149,7 @@ namespace TinyERP.Course.Entities
             }
         }
 
-        public void MoveSectionUp(int sectionId)
+        public void MoveSectionUp(Guid sectionId)
         {
             this.Validate(sectionId);
             Section section = this.Sections.FirstOrDefault(x => x.Id == sectionId);
@@ -160,7 +160,7 @@ namespace TinyERP.Course.Entities
             oldSection.Index = oldSection.Index + 1;
         }
 
-        private void Validate(int sectionId)
+        private void Validate(Guid sectionId)
         {
             ISectionRepository sectionRepo = IoC.Resolve<ISectionRepository>();
             Section currentSection = sectionRepo.GetById(sectionId);

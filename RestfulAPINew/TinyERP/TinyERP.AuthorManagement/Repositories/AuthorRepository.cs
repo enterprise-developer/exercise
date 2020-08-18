@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TinyERP.AuthorManagement.Dtos;
 using TinyERP.AuthorManagement.Entities;
 using TinyERP.Common;
@@ -19,7 +20,7 @@ namespace TinyERP.AuthorManagement.Repositories
 
         }
 
-        public bool CheckExistedByEmail(string email, int excludeId)
+        public bool CheckExistedByEmail(string email, Guid excludeId)
         {
             return this.dbSet.AsQueryable().Any(item => item.Email == email && item.Id != excludeId);
         }

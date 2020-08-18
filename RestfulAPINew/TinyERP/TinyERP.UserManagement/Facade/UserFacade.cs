@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TinyERP.Common.DI;
@@ -15,7 +16,7 @@ namespace TinyERP.UserManagement.Facade
 {
     internal class UserFacade : IUserFacade
     {
-        public async Task<int> CreateIfNotExist(CreateAuthorDto createAuthor)
+        public async Task<Guid> CreateIfNotExist(CreateAuthorDto createAuthor)
         {
             this.Validate(createAuthor);
             IUserRepository repository = IoC.Resolve<IUserRepository>();
@@ -43,7 +44,7 @@ namespace TinyERP.UserManagement.Facade
             }
         }
 
-        public async Task<AuthorInfo> GetAuthor(int id)
+        public async Task<AuthorInfo> GetAuthor(Guid id)
         {
             IUserService service = IoC.Resolve<IUserService>();
             return service.GetAuthorInfo(id);

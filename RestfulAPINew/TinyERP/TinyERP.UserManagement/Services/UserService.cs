@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
@@ -14,7 +15,7 @@ namespace TinyERP.UserManagement.Services
 {
     internal class UserService : IUserService
     {
-        public int Create(CreateAuthorDto request)
+        public Guid Create(CreateAuthorDto request)
         {
             this.Validate(request);
             using (IUnitOfWork uow = new UnitOfWork<User>())
@@ -45,7 +46,7 @@ namespace TinyERP.UserManagement.Services
                 throw new ValidationException(errors);
             }
         }
-        public AuthorInfo GetAuthorInfo(int id)
+        public AuthorInfo GetAuthorInfo(Guid id)
         {
             IUserRepository repo = IoC.Resolve<IUserRepository>();
             User user = repo.GetById(id);

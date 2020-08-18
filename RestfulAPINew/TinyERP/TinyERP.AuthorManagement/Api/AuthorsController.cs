@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using TinyERP.AuthorManagement.Commands;
 using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
@@ -21,7 +22,7 @@ namespace TinyERP.AuthorManagement.Api
         [Route("{authorId}/updateEmail")]
         [HttpPut()]
         [ResponseWrapper()]
-        public void UpdateEmail(int authorId, [FromBody] string email)
+        public void UpdateEmail(Guid authorId, [FromBody] string email)
         {
             UpdateAuthorEmailCommand updateAuthorEmail = new UpdateAuthorEmailCommand(authorId);
             updateAuthorEmail.Email = email;
@@ -32,7 +33,7 @@ namespace TinyERP.AuthorManagement.Api
         [Route("{authorId}/active")]
         [HttpPost()]
         [ResponseWrapper()]
-        public void ActiveAuthor(int authorId)
+        public void ActiveAuthor(Guid authorId)
         {
             ActiveAuthorCommand request = new ActiveAuthorCommand(authorId);
             ICommandHandler<ActiveAuthorCommand> command = IoC.Resolve<ICommandHandler<ActiveAuthorCommand>>();
@@ -42,7 +43,7 @@ namespace TinyERP.AuthorManagement.Api
         [Route("{authorId}")]
         [HttpPut()]
         [ResponseWrapper()]
-        public void Update(int authorId, [FromBody] UpdateAuthorCommand command)
+        public void Update(Guid authorId, [FromBody] UpdateAuthorCommand command)
         {
             command.SetAggregateId(authorId);
             ICommandHandler<UpdateAuthorCommand> commandHandler = IoC.Resolve<ICommandHandler<UpdateAuthorCommand>>();

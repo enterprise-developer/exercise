@@ -53,14 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\CourseQueryDbContext.cs" />
-    <Compile Include="Context\Migrations\202008131443501_Add_CourseQuery.cs" />
-    <Compile Include="Context\Migrations\202008131443501_Add_CourseQuery.designer.cs">
-      <DependentUpon>202008131443501_Add_CourseQuery.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Migrations\202008181336489_AddCourseIdColumn.cs" />
-    <Compile Include="Context\Migrations\202008181336489_AddCourseIdColumn.designer.cs">
-      <DependentUpon>202008181336489_AddCourseIdColumn.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dtos\CourseDetailResponse.cs" />
     <Compile Include="Entities\CourseDetail.cs" />
     <Compile Include="Context\Migrations\Configuration.cs" />
@@ -81,14 +73,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Context\Migrations\202008131443501_Add_CourseQuery.resx">
-      <DependentUpon>202008131443501_Add_CourseQuery.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Context\Migrations\202008181336489_AddCourseIdColumn.resx">
-      <DependentUpon>202008181336489_AddCourseIdColumn.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
