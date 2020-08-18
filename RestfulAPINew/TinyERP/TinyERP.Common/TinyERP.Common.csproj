@@ -136,6 +136,8 @@
     <Compile Include="CQRS\IBaseCommand.cs" />
     <Compile Include="CQRS\IBaseResponse.cs" />
     <Compile Include="CQRS\ICommandHandler.cs" />
+    <Compile Include="CQRS\IEvent.cs" />
+    <Compile Include="CQRS\IEventHandler.cs" />
     <Compile Include="Databases\DbFactory.cs" />
     <Compile Include="Databases\IDbMigratorConfiguration.cs" />
     <Compile Include="Databases\TinyDbSet.cs" />

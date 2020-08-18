@@ -30,15 +30,6 @@
             commandHandler.Handle(command);
         }
 
-        //[Route("{id}")]
-        //[HttpGet()]
-        //[ResponseWrapper()]
-        //public async Task<CourseDetail> GetCourseDetail(int id)
-        //{
-        //    ICourseService service = IoC.Resolve<ICourseService>();
-        //    return await service.GetCourseDetail(id);
-        //}
-
         [Route("{id}")]
         [HttpGet()]
         [ResponseWrapper()]

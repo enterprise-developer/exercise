@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using TinyERP.Common.Attributes;
+using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
 using TinyERP.Common.Entities;
 using TinyERP.Common.Helpers;
@@ -11,6 +12,7 @@ using TinyERP.Common.Validations;
 using TinyERP.Course.Commands;
 using TinyERP.Course.Context;
 using TinyERP.Course.Dtos;
+using TinyERP.Course.Events;
 using TinyERP.Course.Reponsitories;
 
 namespace TinyERP.Course.Entities
@@ -41,6 +43,13 @@ namespace TinyERP.Course.Entities
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
+            OnCourseCreated courseEvent = new OnCourseCreated() {
+                CourseId = this.Id,
+                Name = this.Name,
+                Description = this.Description
+            };
+            IEventHandler<OnCourseCreated> eventHandler = IoC.Resolve<IEventHandler<OnCourseCreated>>();
+            eventHandler.Handle(courseEvent);
         }
 
         private void Validate(CreateCourseCommand command)
