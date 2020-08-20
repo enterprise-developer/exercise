@@ -6,6 +6,6 @@ namespace TinyERP.Common.Repositories
     {
         TEntity Create(TEntity entity);
         TEntity GetById(Guid id, string include = "");
-        void Update(TEntity entity);
+        void Update(TEntity entity);        
     }
 }

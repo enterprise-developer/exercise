@@ -38,5 +38,6 @@ namespace TinyERP.Common.Repositories
         public void Update(TEntity entity)
         {
         }
+
     }
 }

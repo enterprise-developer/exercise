@@ -151,6 +151,7 @@
     <Compile Include="EventHandlers\CourseEventHandler.cs" />
     <Compile Include="EventHandlers\RegisterEventTask.cs" />
     <Compile Include="Events\OnCourseCreated.cs" />
+    <Compile Include="Events\OnCourseUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reponsitories\CourseLoggerRepository.cs" />
     <Compile Include="Reponsitories\CourseRepository.cs" />

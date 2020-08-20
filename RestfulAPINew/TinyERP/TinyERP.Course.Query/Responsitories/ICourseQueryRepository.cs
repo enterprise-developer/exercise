@@ -3,7 +3,7 @@ using TinyERP.Course.Query.Entities;
 
 namespace TinyERP.Course.Query.Reponsitories
 {
-    public interface ICourseQueryRepository: IBaseRepository<CourseDetail>
-    {
+    public interface ICourseQueryRepository: IBaseQueryRepository<CourseDetail>
+    {     
     }
 }

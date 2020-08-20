@@ -53,6 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\CourseQueryDbContext.cs" />
+    <Compile Include="Context\Migrations\202008201354488_Add_DenormalizedId_For_CourseDetail.cs" />
+    <Compile Include="Context\Migrations\202008201354488_Add_DenormalizedId_For_CourseDetail.designer.cs">
+      <DependentUpon>202008201354488_Add_DenormalizedId_For_CourseDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dtos\CourseDetailResponse.cs" />
     <Compile Include="Entities\CourseDetail.cs" />
     <Compile Include="Context\Migrations\Configuration.cs" />
@@ -73,6 +77,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Migrations\202008201354488_Add_DenormalizedId_For_CourseDetail.resx">
+      <DependentUpon>202008201354488_Add_DenormalizedId_For_CourseDetail.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

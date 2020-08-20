@@ -1,13 +1,12 @@
 ﻿namespace TinyERP.Course.Query.Context.Migrations
 {
     using System.Data.Entity.Migrations;
-    using TinyERP.Common.Databases;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TinyERP.Course.Query.Context.CourseQueryDbContext>//, IDbMigratorConfiguration
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             MigrationsDirectory = @"Context\Migrations";
         }
 

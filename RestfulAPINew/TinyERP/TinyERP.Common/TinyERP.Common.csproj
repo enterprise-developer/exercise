@@ -147,6 +147,7 @@
     <Compile Include="DI\IBaseContainer.cs" />
     <Compile Include="DI\IoC.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\DenormalizedEntity.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Helpers\AssemblyHelper.cs" />
@@ -158,7 +159,9 @@
     <Compile Include="Logs\RestApiLogger.cs" />
     <Compile Include="Mappers\ObjectMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BaseQueryRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\IBaseQueryRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Responses\ResponseWrapper.cs" />

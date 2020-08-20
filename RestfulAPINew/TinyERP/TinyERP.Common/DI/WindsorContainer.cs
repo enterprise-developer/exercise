@@ -26,11 +26,18 @@
             }
         }
 
-        public void RegisterTransient<IInterface, IImpl>()
+        public void RegisterTransient<IInterface, IImpl>(string name = "")
             where IInterface : class
             where IImpl : IInterface
         {
-            this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleTransient());
+            if (string.IsNullOrEmpty(name))
+            {
+                this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleTransient());
+            }
+            else
+            {
+                this.container.Register(Component.For<IInterface>().ImplementedBy<IImpl>().LifestyleTransient().Named(name));
+            }
         }
 
         public IInterface Resolve<IInterface>(IBaseContext context = null) where IInterface : class

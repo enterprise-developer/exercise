@@ -1,9 +1,11 @@
-﻿using TinyERP.Common.DI;
+﻿using TinyERP.Common.CQRS;
+using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.UnitOfWork;
 using TinyERP.Course.Commands;
 using TinyERP.Course.Dtos;
 using TinyERP.Course.Entities;
+using TinyERP.Course.Events;
 using TinyERP.Course.Reponsitories;
 
 namespace TinyERP.Course.CommandHandlers
@@ -19,8 +21,11 @@ namespace TinyERP.Course.CommandHandlers
                 ICourseRepository repo = IoC.Resolve<ICourseRepository>(uow.Context);
                 createdCourse = repo.Create(createdCourse);
                 uow.Commit();
+                IEventHandler<OnCourseCreated> eventHandler = IoC.Resolve<IEventHandler<OnCourseCreated>>();
+                eventHandler.Handle(createdCourse.CourseEvent);
             }
-            CreateCourseResponse response = new CreateCourseResponse(){
+            CreateCourseResponse response = new CreateCourseResponse()
+            {
                 Id = createdCourse.Id
             };
             return response;
@@ -31,10 +36,12 @@ namespace TinyERP.Course.CommandHandlers
             using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
                 ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
-                updatedCourse = repository.GetById(command.AggregateId);
+                updatedCourse = repository.GetById(command.AggregateId);                
                 updatedCourse.Update(command);
                 repository.Update(updatedCourse);
                 uow.Commit();
+                IEventHandler<OnCourseUpdated> eventHandler = IoC.Resolve<IEventHandler<OnCourseUpdated>>();
+                eventHandler.Handle(updatedCourse.UpdateCourseEvent);
             }
         }
 

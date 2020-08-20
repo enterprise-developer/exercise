@@ -7,6 +7,7 @@ using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
 using TinyERP.Common.Entities;
 using TinyERP.Common.Helpers;
+using TinyERP.Common.Mappers;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
 using TinyERP.Course.Commands;
@@ -26,30 +27,25 @@ namespace TinyERP.Course.Entities
         public Guid AuthorId { get; set; }
 
         public ICollection<Section> Sections { get; set; }
+        public OnCourseCreated CourseEvent;
+        public OnCourseUpdated UpdateCourseEvent;
 
         public CourseAggregateRoot()
         {
             this.Sections = new List<Section>();
         }
-        //public CourseAggregateRoot(CreateCourseCommand request) : this()
-        //{
-        //    this.Validate(request);
-        //    this.Name = request.Name;
-        //    this.Description = request.Description;
-        //}
 
         public CourseAggregateRoot(CreateCourseCommand command) : this()
         {
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
-            OnCourseCreated courseEvent = new OnCourseCreated() {
+            this.CourseEvent = new OnCourseCreated()
+            {
                 CourseId = this.Id,
                 Name = this.Name,
                 Description = this.Description
             };
-            IEventHandler<OnCourseCreated> eventHandler = IoC.Resolve<IEventHandler<OnCourseCreated>>();
-            eventHandler.Handle(courseEvent);
         }
 
         private void Validate(CreateCourseCommand command)
@@ -67,26 +63,13 @@ namespace TinyERP.Course.Entities
             }
         }
 
-        //private void Validate(CreateCourseCommand request)
-        //{
-        //    IList<Error> errors = ValidationHelper.Validate(request);
-        //    ICourseRepository repo = IoC.Resolve<ICourseRepository>();
-        //    CourseAggregateRoot course = repo.GetByName(request.Name);
-        //    if (course != null)
-        //    {
-        //        errors.Add(new Error("course.addOrUpdateCourse.nameWasExisted"));
-        //    }
-        //    if (errors.Any())
-        //    {
-        //        throw new ValidationException(errors);
-        //    }
-        //}
-
         public void Update(UpdateCourseCommand command)
         {
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
+            this.UpdateCourseEvent = ObjectMapper.Map<CourseAggregateRoot, OnCourseUpdated>(this);
+            this.UpdateCourseEvent.CourseId = this.Id;
         }
 
         private void Validate(UpdateCourseCommand command)

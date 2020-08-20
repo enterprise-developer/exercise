@@ -14,9 +14,9 @@ namespace TinyERP.Common.DI
         {
             return IoC.container.Resolve<IInterface>(context);
         }
-        public static void RegisterTransient<IInterface, IImpl>() where IInterface : class where IImpl : IInterface
+        public static void RegisterTransient<IInterface, IImpl>(string name = "") where IInterface : class where IImpl : IInterface
         {
-            IoC.container.RegisterTransient<IInterface, IImpl>();
+            IoC.container.RegisterTransient<IInterface, IImpl>(name);
         }
 
         public static void RegisterSingleton<IInterface, IImpl>(string name = "") where IInterface : class where IImpl : IInterface
