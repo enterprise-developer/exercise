@@ -1,4 +1,5 @@
-﻿using TinyERP.Common.CQRS;
+﻿using System.Linq;
+using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
 using TinyERP.Common.Helpers;
 using TinyERP.Common.UnitOfWork;
@@ -22,7 +23,7 @@ namespace TinyERP.Course.CommandHandlers
                 createdCourse = repo.Create(createdCourse);
                 uow.Commit();
                 IEventHandler<OnCourseCreated> eventHandler = IoC.Resolve<IEventHandler<OnCourseCreated>>();
-                eventHandler.Handle(createdCourse.CourseEvent);
+                eventHandler.Handle((OnCourseCreated)createdCourse.Events.FirstOrDefault());
             }
             CreateCourseResponse response = new CreateCourseResponse()
             {
@@ -41,7 +42,7 @@ namespace TinyERP.Course.CommandHandlers
                 repository.Update(updatedCourse);
                 uow.Commit();
                 IEventHandler<OnCourseUpdated> eventHandler = IoC.Resolve<IEventHandler<OnCourseUpdated>>();
-                eventHandler.Handle(updatedCourse.UpdateCourseEvent);
+                eventHandler.Handle((OnCourseUpdated)updatedCourse.Events.FirstOrDefault());
             }
         }
 

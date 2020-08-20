@@ -1,7 +1,5 @@
-﻿using System;
-using TinyERP.Common.CQRS;
+﻿using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
-using TinyERP.Common.Mappers;
 using TinyERP.Common.UnitOfWork;
 using TinyERP.Course.Events;
 using TinyERP.Course.Query.Entities;

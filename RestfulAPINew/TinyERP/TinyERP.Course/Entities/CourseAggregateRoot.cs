@@ -27,12 +27,13 @@ namespace TinyERP.Course.Entities
         public Guid AuthorId { get; set; }
 
         public ICollection<Section> Sections { get; set; }
-        public OnCourseCreated CourseEvent;
-        public OnCourseUpdated UpdateCourseEvent;
-
+        //public OnCourseCreated CourseEvent;
+        //public OnCourseUpdated UpdateCourseEvent;
+        public IList<IEvent> Events { get; set; }
         public CourseAggregateRoot()
         {
             this.Sections = new List<Section>();
+            this.Events = new List<IEvent>();
         }
 
         public CourseAggregateRoot(CreateCourseCommand command) : this()
@@ -40,12 +41,12 @@ namespace TinyERP.Course.Entities
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
-            this.CourseEvent = new OnCourseCreated()
+            this.Events.Add(new OnCourseCreated()
             {
                 CourseId = this.Id,
                 Name = this.Name,
                 Description = this.Description
-            };
+            });
         }
 
         private void Validate(CreateCourseCommand command)
@@ -68,8 +69,9 @@ namespace TinyERP.Course.Entities
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
-            this.UpdateCourseEvent = ObjectMapper.Cast<CourseAggregateRoot, OnCourseUpdated>(this);
-            this.UpdateCourseEvent.CourseId = this.Id;
+            OnCourseUpdated onCourseUpdated = ObjectMapper.Cast<CourseAggregateRoot, OnCourseUpdated>(this);
+            onCourseUpdated.CourseId = this.Id;
+            this.Events.Add(onCourseUpdated);
         }
 
         private void Validate(UpdateCourseCommand command)
