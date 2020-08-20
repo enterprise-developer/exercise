@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using TinyERP.Common.Contexts;
 using TinyERP.Common.Databases;
@@ -10,17 +11,19 @@ namespace TinyERP.Common.Repositories
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         public TinyDbSet<TEntity> dbSet;
+        private IBaseContext baseContext;
 
         public BaseRepository(IBaseContext context, ContextMode mode)
         {
             this.dbSet = new TinyDbSet<TEntity>(context.Set<TEntity>(), mode);
+            this.baseContext = context;
         }
 
         public BaseRepository()
         {
             Type type = AssemblyHelper.GetDbContextType<TEntity>();
-            IBaseContext baseContext = (IBaseContext)Activator.CreateInstance(type);
-            this.dbSet = new TinyDbSet<TEntity>(baseContext.Set<TEntity>(), ContextMode.Read);
+            this.baseContext = (IBaseContext)Activator.CreateInstance(type);
+            this.dbSet = new TinyDbSet<TEntity>(this.baseContext.Set<TEntity>(), ContextMode.Read);
         }
 
         public TEntity Create(TEntity value)
@@ -37,6 +40,7 @@ namespace TinyERP.Common.Repositories
 
         public void Update(TEntity entity)
         {
+            this.baseContext.Entry(entity).State = EntityState.Modified;
         }
 
     }

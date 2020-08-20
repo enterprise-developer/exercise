@@ -68,7 +68,7 @@ namespace TinyERP.Course.Entities
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
-            this.UpdateCourseEvent = ObjectMapper.Map<CourseAggregateRoot, OnCourseUpdated>(this);
+            this.UpdateCourseEvent = ObjectMapper.Cast<CourseAggregateRoot, OnCourseUpdated>(this);
             this.UpdateCourseEvent.CourseId = this.Id;
         }
 

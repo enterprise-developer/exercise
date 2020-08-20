@@ -6,7 +6,7 @@ namespace TinyERP.Common.Mappers
     public delegate void CustomMapper<TObject, TSource>(TObject tObject, TSource tSource);
     public class ObjectMapper
     {
-        public static TObject Map<TSource, TObject>(TSource sourceObject, CustomMapper<TObject, TSource> callback = null)
+        public static TObject Cast<TSource, TObject>(TSource sourceObject, CustomMapper<TObject, TSource> callback = null)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {

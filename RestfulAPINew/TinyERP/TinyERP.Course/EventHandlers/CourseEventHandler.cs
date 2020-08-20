@@ -34,9 +34,8 @@ namespace TinyERP.Course.EventHandlers
             {
                 ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>(uow.Context);
                 CourseDetail courseDetail = repository.GetByAggregateId(courseUpdated.CourseId);
-                Guid id = courseDetail.Id;
-                courseDetail = ObjectMapper.Map<OnCourseUpdated, CourseDetail>(courseUpdated);
-                courseDetail.Id = id;
+                courseDetail.Name = courseUpdated.Name;
+                courseDetail.Description = courseUpdated.Description;
                 repository.Update(courseDetail);
                 uow.Commit();
             }

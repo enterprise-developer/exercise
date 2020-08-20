@@ -13,7 +13,7 @@ namespace TinyERP.Course.Query.Services
         {
             ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>();
             CourseDetail courseDetail = repository.GetById(id);
-            CourseDetailResponse courseDetailResponse = ObjectMapper.Map<CourseDetail, CourseDetailResponse>(courseDetail);
+            CourseDetailResponse courseDetailResponse = ObjectMapper.Cast<CourseDetail, CourseDetailResponse>(courseDetail);
             return courseDetailResponse;
         }
     }
