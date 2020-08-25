@@ -1,4 +1,5 @@
-﻿using TinyERP.Common.Contexts;
+﻿using System;
+using TinyERP.Common.Contexts;
 
 namespace TinyERP.Common.DI
 {
@@ -14,6 +15,12 @@ namespace TinyERP.Common.DI
         {
             return IoC.container.Resolve<IInterface>(context);
         }
+
+        public static object Resolve(Type type)
+        {
+            return IoC.container.Resolve(type);
+        }
+
         public static void RegisterTransient<IInterface, IImpl>(string name = "") where IInterface : class where IImpl : IInterface
         {
             IoC.container.RegisterTransient<IInterface, IImpl>(name);

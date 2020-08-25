@@ -2,6 +2,7 @@
 {
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
+    using System;
     using TinyERP.Common.Contexts;
 
     internal class WindsorContainer : IBaseContainer
@@ -50,6 +51,11 @@
                 return this.container.Resolve<IInterface>(arg);
             }
             return this.container.Resolve<IInterface>();
+        }
+
+        public object Resolve(Type type)
+        {
+            return this.container.Resolve(type);
         }
     }
 }

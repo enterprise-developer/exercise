@@ -133,6 +133,7 @@
     <Compile Include="Connector\JsonConnector.cs" />
     <Compile Include="Contexts\IBaseContext.cs" />
     <Compile Include="CQRS\BaseCommand.cs" />
+    <Compile Include="CQRS\BaseEvent.cs" />
     <Compile Include="CQRS\IBaseCommand.cs" />
     <Compile Include="CQRS\IBaseResponse.cs" />
     <Compile Include="CQRS\ICommandHandler.cs" />
@@ -146,12 +147,14 @@
     <Compile Include="DI\BaseUnityContainer.cs" />
     <Compile Include="DI\IBaseContainer.cs" />
     <Compile Include="DI\IoC.cs" />
+    <Compile Include="Entities\BaseAggregateRoot.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\DenormalizedEntity.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Helpers\AssemblyHelper.cs" />
     <Compile Include="Helpers\DatabaseConnectionHelper.cs" />
+    <Compile Include="Helpers\EventHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Logs\FileLogger.cs" />
     <Compile Include="Logs\RegistrationLoggerTask.cs" />

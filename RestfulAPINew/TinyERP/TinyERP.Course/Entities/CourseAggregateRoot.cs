@@ -20,16 +20,14 @@ namespace TinyERP.Course.Entities
 {
     [DbContext(Use = typeof(CourseContext))]
     [Table("Courses")]
-    public class CourseAggregateRoot : BaseEntity
+    public class CourseAggregateRoot : BaseAggregateRoot
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public Guid AuthorId { get; set; }
 
         public ICollection<Section> Sections { get; set; }
-        //public OnCourseCreated CourseEvent;
-        //public OnCourseUpdated UpdateCourseEvent;
-        public IList<IEvent> Events { get; set; }
+        
         public CourseAggregateRoot()
         {
             this.Sections = new List<Section>();
