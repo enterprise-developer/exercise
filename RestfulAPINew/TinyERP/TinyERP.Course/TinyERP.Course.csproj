@@ -139,7 +139,7 @@
     <Compile Include="Dtos\CreateCourseResponse.cs" />
     <Compile Include="Dtos\CreateCourseSectionResponse.cs" />
     <Compile Include="Dtos\CreateLectureRequest.cs" />
-    <Compile Include="Dtos\CreateCourseSectionRequest.cs" />
+    <Compile Include="Commands\CreateCourseSectionCommand.cs" />
     <Compile Include="Commands\MoveCourseSectionUpCommand.cs" />
     <Compile Include="Commands\UpdateCourseCommand.cs" />
     <Compile Include="Dtos\UpdateCourseResponse.cs" />
@@ -150,6 +150,7 @@
     <Compile Include="Context\Migrations\Configuration.cs" />
     <Compile Include="EventHandlers\CourseEmailEventHandler.cs" />
     <Compile Include="EventHandlers\CourseEventHandler.cs" />
+    <Compile Include="Events\OnCourseSectionCreated.cs" />
     <Compile Include="Events\OnLogCourseCreated.cs" />
     <Compile Include="EventHandlers\RegisterEventTask.cs" />
     <Compile Include="Events\OnCourseCreated.cs" />

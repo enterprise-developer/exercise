@@ -13,6 +13,7 @@ namespace TinyERP.Course.CommandHandlers
             IoC.RegisterSingleton<ICommandHandler<CreateCourseCommand, CreateCourseResponse>, CourseCommandHandler>("Course.CreateCommand");
             IoC.RegisterSingleton<ICommandHandler<UpdateCourseCommand>, CourseCommandHandler>("Course.UpdateCommand");
             IoC.RegisterSingleton<ICommandHandler<MoveCourseSectionUpCommand>, CourseCommandHandler>("Course.MoveUpSectionCommand");
+            IoC.RegisterSingleton<ICommandHandler<CreateCourseSectionCommand, CreateCourseSectionResponse>, CourseCommandHandler>("Course.CreateCourseSectionCommand");
         }
     }
 }

@@ -56,5 +56,19 @@ namespace TinyERP.Course.CommandHandlers
                 uow.Commit();
             }
         }
+
+        public CreateCourseSectionResponse Handle(CreateCourseSectionCommand command)
+        {
+            using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
+            {
+                ICourseRepository repository = IoC.Resolve<ICourseRepository>(uow.Context);
+                CourseAggregateRoot aggregateRoot = repository.GetById(command.AggregateId, "Sections");
+                CreateCourseSectionResponse response = aggregateRoot.AddSection(command);
+                repository.Update(aggregateRoot);
+                uow.Commit();
+                aggregateRoot.PublishEvents();
+                return response;
+            }
+        }
     }
 }

@@ -50,7 +50,7 @@ namespace TinyERP.Course.Entities
                 Name = this.Name,
                 Description = this.Description
             });
-        
+
         }
 
         private void Validate(CreateCourseCommand command)
@@ -102,27 +102,33 @@ namespace TinyERP.Course.Entities
             }
         }
         #region Section
-        public CreateCourseSectionResponse AddSection(CreateCourseSectionRequest request)
+        public CreateCourseSectionResponse AddSection(CreateCourseSectionCommand request)
         {
             this.Validate(request);
             Section section = new Section()
             {
-                CourseId = request.CourseId,
+                CourseId = request.AggregateId,
                 CreatedDate = DateTime.Now,
                 Index = request.Index,
                 Name = request.SectionName
             };
             this.Sections.Add(section);
+
+            this.Events.Add(new OnCourseSectionCreated
+            {
+                CourseId = this.Id
+            });
+
             CreateCourseSectionResponse courseResponse = new CreateCourseSectionResponse()
             {
-                CourseId = request.CourseId,
+                CourseId = request.AggregateId,
                 SectionName = request.SectionName,
                 Index = request.Index
             };
             return courseResponse;
         }
 
-        private void Validate(CreateCourseSectionRequest request)
+        private void Validate(CreateCourseSectionCommand request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
             ISectionRepository sectionRepository = IoC.Resolve<ISectionRepository>();

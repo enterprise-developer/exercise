@@ -8,7 +8,8 @@ using TinyERP.Course.Query.Reponsitories;
 
 namespace TinyERP.Course.EventHandlers
 {
-    public class CourseEventHandler : IEventHandler<OnCourseCreated>, IEventHandler<OnCourseUpdated>, IEventHandler<OnLogCourseCreated>
+    public class CourseEventHandler : IEventHandler<OnCourseCreated>, IEventHandler<OnCourseUpdated>, IEventHandler<OnLogCourseCreated>,
+        IEventHandler<OnCourseSectionCreated>
     {
         public void Handle(OnCourseCreated ev)
         {
@@ -21,7 +22,7 @@ namespace TinyERP.Course.EventHandlers
                     Description = ev.Description
                 };
                 ICourseQueryRepository courseQueryRepository = IoC.Resolve<ICourseQueryRepository>(uow.Context);
-                
+
                 courseQueryRepository.Create(courseDetail);
                 uow.Commit();
             }
@@ -44,6 +45,19 @@ namespace TinyERP.Course.EventHandlers
         {
             ILogger logger = IoC.Resolve<ILogger>();
             logger.Error(new System.Exception("Test priority Event"));
+
+        }
+
+        public void Handle(OnCourseSectionCreated ev)
+        {
+            using (IUnitOfWork uow = new UnitOfWork<CourseDetail>())
+            {
+                ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>(uow.Context);
+                CourseDetail courseDetail = repository.GetByAggregateId(ev.CourseId);
+                courseDetail.SectionCount += 1;
+                repository.Update(courseDetail);
+                uow.Commit();
+            }
 
         }
     }

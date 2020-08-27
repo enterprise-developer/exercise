@@ -13,6 +13,7 @@ namespace TinyERP.Course.EventHandlers
             IoC.RegisterTransient<IEventHandler<OnCourseCreated>, CourseEmailEventHandler>("Course.Email.OnCourseCreated");
             IoC.RegisterTransient<IEventHandler<OnLogCourseCreated>, CourseEventHandler>("Course.Log.OnCourseCreated");
             IoC.RegisterTransient<IEventHandler<OnCourseUpdated>, CourseEventHandler>("Course.OnCourseUpdated");
+            IoC.RegisterTransient<IEventHandler<OnCourseSectionCreated>, CourseEventHandler>("Course.OnCourseSectionCreated");
         }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using TinyERP.Common.Attributes;
-using TinyERP.Course.Const;
+﻿using TinyERP.Common.Attributes;
+using TinyERP.Common.CQRS;
 
-namespace TinyERP.Course.Dtos
+namespace TinyERP.Course.Commands
 {
-    public class CreateCourseSectionRequest
-    {
-        public Guid CourseId { get; set; }
+    public class CreateCourseSectionCommand : BaseCommand
+    {      
         [Required("courses.addSection.nameIsRequired")]
         //[MinLength("courses.addSection.sectionNameWasUnderMinLength", CourseValidationRules.Section_Name_Min_Length)]
         //[MaxLength("courses.addSection.sectionNameWasExceedMaxLength", CourseValidationRules.Section_Name_Max_Length)]

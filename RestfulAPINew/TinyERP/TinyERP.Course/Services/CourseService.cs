@@ -8,6 +8,7 @@ using TinyERP.Common.Mappers;
 using TinyERP.Common.UnitOfWork;
 using TinyERP.Common.Vadations;
 using TinyERP.Common.Validations;
+using TinyERP.Course.Commands;
 using TinyERP.Course.Dtos;
 using TinyERP.Course.Entities;
 using TinyERP.Course.Reponsitories;
@@ -66,13 +67,13 @@ namespace TinyERP.Course.Services
         //    return courseDetail;
         //}
 
-        public CreateCourseSectionResponse CreateSection(CreateCourseSectionRequest request)
+        public CreateCourseSectionResponse CreateSection(CreateCourseSectionCommand request)
         {
             CreateCourseSectionResponse courseSectionResponse;
             using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
                 ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
-                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId, "Sections");
+                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.AggregateId, "Sections");
                 ValidationHelper.ThrowIfNull(courseAggregate, "course.addSection.courseNotExisted");
                 courseSectionResponse = courseAggregate.AddSection(request);
                 courseRepository.Update(courseAggregate);

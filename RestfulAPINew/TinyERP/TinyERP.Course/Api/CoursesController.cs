@@ -43,23 +43,23 @@
         [Route("{courseId}/sections")]
         [HttpPost()]
         [ResponseWrapper()]
-        public CreateCourseSectionResponse CreateSection(Guid courseId, CreateCourseSectionRequest request)
+        public CreateCourseSectionResponse CreateSection(Guid courseId, CreateCourseSectionCommand command)
         {
-            request.CourseId = courseId;
-            ICourseService service = IoC.Resolve<ICourseService>();
-            return service.CreateSection(request);
+            ICommandHandler<CreateCourseSectionCommand, CreateCourseSectionResponse> commandHandler = IoC.Resolve<ICommandHandler<CreateCourseSectionCommand, CreateCourseSectionResponse>>();
+            command.SetAggregateId(courseId);
+            return commandHandler.Handle(command);
         }
 
-        [Route("{courseId}/sections/{sectionId}/lectures")]
-        [HttpPost()]
-        [ResponseWrapper()]
-        public CreateCourseLectureResponse CreateLecture(Guid courseId, Guid sectionId, CreateLectureRequest request)
-        {
-            request.CourseId = courseId;
-            request.SectionId = sectionId;
-            ICourseService service = IoC.Resolve<ICourseService>();
-            return service.CreateLecture(request);
-        }
+        //[Route("{courseId}/sections/{sectionId}/lectures")]
+        //[HttpPost()]
+        //[ResponseWrapper()]
+        //public CreateCourseLectureResponse CreateLecture(Guid courseId, Guid sectionId, CreateLectureRequest request)
+        //{
+        //    request.CourseId = courseId;
+        //    request.SectionId = sectionId;
+        //    ICourseService service = IoC.Resolve<ICourseService>();
+        //    return service.CreateLecture(request);
+        //}
 
         [Route("{courseId}/sections/{sectionId}/moveUp")]
         [HttpPost()]
