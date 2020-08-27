@@ -27,4 +27,11 @@
         Write = 1,
         Read = 2
     }
+
+    public enum EventPriority
+    {
+        Low = 10,
+        Normal = 50,
+        High = 100
+    }
 }

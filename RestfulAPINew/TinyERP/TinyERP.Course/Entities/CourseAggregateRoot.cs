@@ -13,6 +13,7 @@ using TinyERP.Common.Validations;
 using TinyERP.Course.Commands;
 using TinyERP.Course.Context;
 using TinyERP.Course.Dtos;
+using TinyERP.Course.EventHandlers;
 using TinyERP.Course.Events;
 using TinyERP.Course.Reponsitories;
 
@@ -27,7 +28,7 @@ namespace TinyERP.Course.Entities
         public Guid AuthorId { get; set; }
 
         public ICollection<Section> Sections { get; set; }
-        
+
         public CourseAggregateRoot()
         {
             this.Sections = new List<Section>();
@@ -39,12 +40,17 @@ namespace TinyERP.Course.Entities
             this.Validate(command);
             this.Name = command.Name;
             this.Description = command.Description;
+            this.Events.Add(new OnLogCourseCreated()
+            {
+                Message = "Test Priority OnLogCourseCreated"
+            });
             this.Events.Add(new OnCourseCreated()
             {
                 CourseId = this.Id,
                 Name = this.Name,
                 Description = this.Description
             });
+        
         }
 
         private void Validate(CreateCourseCommand command)

@@ -148,7 +148,9 @@
     <Compile Include="Entities\Lecture.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Context\Migrations\Configuration.cs" />
+    <Compile Include="EventHandlers\CourseEmailEventHandler.cs" />
     <Compile Include="EventHandlers\CourseEventHandler.cs" />
+    <Compile Include="Events\OnLogCourseCreated.cs" />
     <Compile Include="EventHandlers\RegisterEventTask.cs" />
     <Compile Include="Events\OnCourseCreated.cs" />
     <Compile Include="Events\OnCourseUpdated.cs" />

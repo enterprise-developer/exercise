@@ -3,6 +3,7 @@
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
     using System;
+    using System.Collections.Generic;
     using TinyERP.Common.Contexts;
 
     internal class WindsorContainer : IBaseContainer
@@ -56,6 +57,17 @@
         public object Resolve(Type type)
         {
             return this.container.Resolve(type);
+        }
+
+        public IList<object> ResolveAll(Type type)
+        {
+            IList<object> results = new List<object>();
+            Array items = this.container.ResolveAll(type);
+            foreach (object item in items)
+            {
+                results.Add(item);
+            }
+            return results;
         }
     }
 }

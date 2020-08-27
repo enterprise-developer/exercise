@@ -1,4 +1,5 @@
 ﻿using System;
+using TinyERP.Common;
 using TinyERP.Common.CQRS;
 
 namespace TinyERP.Course.Events
@@ -7,6 +8,9 @@ namespace TinyERP.Course.Events
     {
         public Guid CourseId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }        
+        public string Description { get; set; }
+        public OnCourseCreated() : base(EventPriority.High)
+        {
+        }
     }
 }
