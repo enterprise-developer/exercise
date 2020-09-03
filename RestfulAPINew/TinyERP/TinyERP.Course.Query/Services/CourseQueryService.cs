@@ -1,9 +1,10 @@
-﻿using System;
-using TinyERP.Common.DI;
+﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using System;
+using System.Linq;
 using TinyERP.Common.Mappers;
 using TinyERP.Course.Query.Dtos;
 using TinyERP.Course.Query.Entities;
-using TinyERP.Course.Query.Reponsitories;
 
 namespace TinyERP.Course.Query.Services
 {
@@ -11,10 +12,11 @@ namespace TinyERP.Course.Query.Services
     {
         public CourseDetailResponse GetCourseDetail(Guid id)
         {
-            ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>();
-            CourseDetail courseDetail = repository.GetById(id);
-            CourseDetailResponse courseDetailResponse = ObjectMapper.Cast<CourseDetail, CourseDetailResponse>(courseDetail);
-            return courseDetailResponse;
+            MongoDatabase database = new MongoClient("mongodb://localhost:27017").GetServer().GetDatabase("tinyerp");
+            MongoCollection collection = database.GetCollection<CourseDetail>("coursedetails");
+            CourseDetail result = collection.AsQueryable<CourseDetail>().FirstOrDefault(item => item.AggregateId == id);
+            CourseDetailResponse response = ObjectMapper.Cast<CourseDetail, CourseDetailResponse>(result);
+            return response;
         }
     }
 }

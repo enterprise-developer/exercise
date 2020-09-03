@@ -1,10 +1,11 @@
-﻿using TinyERP.Common.CQRS;
+﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using System.Linq;
+using TinyERP.Common.CQRS;
 using TinyERP.Common.DI;
 using TinyERP.Common.Logs;
-using TinyERP.Common.UnitOfWork;
 using TinyERP.Course.Events;
 using TinyERP.Course.Query.Entities;
-using TinyERP.Course.Query.Reponsitories;
 
 namespace TinyERP.Course.EventHandlers
 {
@@ -13,31 +14,27 @@ namespace TinyERP.Course.EventHandlers
     {
         public void Handle(OnCourseCreated ev)
         {
-            using (IUnitOfWork uow = new UnitOfWork<CourseDetail>())
+            MongoDatabase database = new MongoClient("mongodb://localhost:27017").GetServer().GetDatabase("tinyerp");
+            MongoCollection<CourseDetail> collection = database.GetCollection<CourseDetail>("coursedetails");
+            CourseDetail courseDetail = new CourseDetail()
             {
-                CourseDetail courseDetail = new CourseDetail()
-                {
-                    AggregateId = ev.CourseId,
-                    Name = ev.Name,
-                    Description = ev.Description
-                };
-                ICourseQueryRepository courseQueryRepository = IoC.Resolve<ICourseQueryRepository>(uow.Context);
-
-                courseQueryRepository.Create(courseDetail);
-                uow.Commit();
-            }
+                AggregateId = ev.CourseId,
+                Name = ev.Name,
+                Description = ev.Description
+            };
+            collection.Insert(courseDetail);
         }
 
         public void Handle(OnCourseUpdated courseUpdated)
         {
-            using (IUnitOfWork uow = new UnitOfWork<CourseDetail>())
+            MongoDatabase database = new MongoClient("mongodb://localhost:27017").GetServer().GetDatabase("tinyerp");
+            MongoCollection<CourseDetail> collection = database.GetCollection<CourseDetail>("coursedetails");
+            CourseDetail courseDetail = collection.AsQueryable<CourseDetail>().FirstOrDefault(item => item.AggregateId == courseUpdated.CourseId);
+            if (courseDetail != null)
             {
-                ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>(uow.Context);
-                CourseDetail courseDetail = repository.GetByAggregateId(courseUpdated.CourseId);
                 courseDetail.Name = courseUpdated.Name;
                 courseDetail.Description = courseUpdated.Description;
-                repository.Update(courseDetail);
-                uow.Commit();
+                collection.Save(courseDetail);
             }
         }
 
@@ -50,15 +47,11 @@ namespace TinyERP.Course.EventHandlers
 
         public void Handle(OnCourseSectionCreated ev)
         {
-            using (IUnitOfWork uow = new UnitOfWork<CourseDetail>())
-            {
-                ICourseQueryRepository repository = IoC.Resolve<ICourseQueryRepository>(uow.Context);
-                CourseDetail courseDetail = repository.GetByAggregateId(ev.CourseId);
-                courseDetail.SectionCount += 1;
-                repository.Update(courseDetail);
-                uow.Commit();
-            }
-
+            MongoDatabase database = new MongoClient("mongodb://localhost:27017").GetServer().GetDatabase("tinyerp");
+            MongoCollection<CourseDetail> collection = database.GetCollection<CourseDetail>("coursedetails");
+            CourseDetail courseDetail = collection.AsQueryable().FirstOrDefault(item => item.AggregateId == ev.CourseId);
+            courseDetail.SectionCount += 1;
+            collection.Save(courseDetail);
         }
     }
 }

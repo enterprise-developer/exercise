@@ -7,7 +7,7 @@ namespace TinyERP.Course.Query.Reponsitories
 {
     public class CourseQueryRepository : BaseQueryRepository<CourseDetail>, ICourseQueryRepository
     {
-        public CourseQueryRepository() : base() { }
-        public CourseQueryRepository(IBaseContext context, ContextMode mode = ContextMode.Write) : base(context, mode) { }
+        //public CourseQueryRepository() : base() { }
+        //public CourseQueryRepository(IBaseContext context, ContextMode mode = ContextMode.Write) : base(context, mode) { }
     }
 }
