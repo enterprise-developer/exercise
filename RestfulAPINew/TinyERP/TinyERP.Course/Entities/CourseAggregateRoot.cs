@@ -116,7 +116,14 @@ namespace TinyERP.Course.Entities
 
             this.Events.Add(new OnCourseSectionCreated
             {
-                CourseId = this.Id
+                CourseId = this.Id,
+                Section = new CourseSection()
+                {
+                    Id = section.Id,
+                    Name = section.Name,
+                    Index = section.Index
+                }
+
             });
 
             CreateCourseSectionResponse courseResponse = new CreateCourseSectionResponse()
@@ -173,13 +180,13 @@ namespace TinyERP.Course.Entities
         #endregion
 
         #region Lecture
-        public CreateCourseLectureResponse AddLecture(CreateLectureRequest request)
+        public CreateCourseLectureResponse AddLecture(CreateLectureCommand request)
         {
             this.Validate(request);
             Section section = this.Sections.FirstOrDefault(item => item.Id == request.SectionId);
             Lecture lecture = new Lecture()
             {
-                CourseId = request.CourseId,
+                CourseId = request.AggregateId,
                 SectionId = request.SectionId,
                 Name = request.Name,
                 Description = request.Description,
@@ -189,17 +196,25 @@ namespace TinyERP.Course.Entities
             section.Lectures.Add(lecture);
             CreateCourseLectureResponse response = new CreateCourseLectureResponse()
             {
-                CourseId = request.CourseId,
+                CourseId = request.AggregateId,
                 SectionId = request.SectionId,
                 Name = request.Name,
                 Description = request.Description,
                 VideoLink = request.VideoLink
             };
 
+            this.Events.Add(new OnCourseSectionLectureCreated()
+            {
+                CourseId = request.AggregateId,
+                SectionId = request.SectionId,
+                Name = request.Name,
+                VideoLink = request.VideoLink,
+                Description = request.Description
+            });
             return response;
         }
 
-        private void Validate(CreateLectureRequest request)
+        private void Validate(CreateLectureCommand request)
         {
             IList<Error> errors = ValidationHelper.Validate(request);
             if (!this.Sections.Any(item => item.Id == request.SectionId))

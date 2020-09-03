@@ -7,7 +7,8 @@ namespace TinyERP.Course.CommandHandlers
     public interface ICourseCommandHandler: ICommandHandler<CreateCourseCommand, CreateCourseResponse>,
         ICommandHandler<UpdateCourseCommand>,
         ICommandHandler<MoveCourseSectionUpCommand>,
-        ICommandHandler<CreateCourseSectionCommand, CreateCourseSectionResponse>
+        ICommandHandler<CreateCourseSectionCommand, CreateCourseSectionResponse>,
+        ICommandHandler<CreateLectureCommand, CreateCourseLectureResponse>
     {
     }
 }

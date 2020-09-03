@@ -122,6 +122,8 @@
     <Compile Include="Dtos\CourseDetailResponse.cs" />
     <Compile Include="Entities\CourseDetail.cs" />
     <Compile Include="Context\Migrations\Configuration.cs" />
+    <Compile Include="Entities\CourseSection.cs" />
+    <Compile Include="Entities\CourseSectionLecture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responsitories\CourseQueryRepository.cs" />
     <Compile Include="Responsitories\ICourseQueryRepository.cs" />

@@ -82,13 +82,13 @@ namespace TinyERP.Course.Services
             return courseSectionResponse;
         }
 
-        public CreateCourseLectureResponse CreateLecture(CreateLectureRequest request)
+        public CreateCourseLectureResponse CreateLecture(CreateLectureCommand request)
         {
             CreateCourseLectureResponse courseLectureResponse;
             using (IUnitOfWork uow = new UnitOfWork<CourseAggregateRoot>())
             {
                 ICourseRepository courseRepository = IoC.Resolve<ICourseRepository>(uow.Context);
-                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.CourseId, "Sections,Sections.Lectures");
+                CourseAggregateRoot courseAggregate = courseRepository.GetById(request.AggregateId, "Sections,Sections.Lectures");
                 ValidationHelper.ThrowIfNull(courseAggregate, "course.addLecture.courseNotExisted");
                 courseLectureResponse = courseAggregate.AddLecture(request);
                 courseRepository.Update(courseAggregate);

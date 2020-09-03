@@ -50,16 +50,16 @@
             return commandHandler.Handle(command);
         }
 
-        //[Route("{courseId}/sections/{sectionId}/lectures")]
-        //[HttpPost()]
-        //[ResponseWrapper()]
-        //public CreateCourseLectureResponse CreateLecture(Guid courseId, Guid sectionId, CreateLectureRequest request)
-        //{
-        //    request.CourseId = courseId;
-        //    request.SectionId = sectionId;
-        //    ICourseService service = IoC.Resolve<ICourseService>();
-        //    return service.CreateLecture(request);
-        //}
+        [Route("{courseId}/sections/{sectionId}/lectures")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public CreateCourseLectureResponse CreateLecture(Guid courseId, Guid sectionId, CreateLectureCommand command)
+        {
+            ICommandHandler<CreateLectureCommand, CreateCourseLectureResponse> commandHandler = IoC.Resolve<ICommandHandler<CreateLectureCommand, CreateCourseLectureResponse>>();
+            command.SetAggregateId(courseId);
+            command.SectionId = sectionId;
+            return commandHandler.Handle(command);
+        }
 
         [Route("{courseId}/sections/{sectionId}/moveUp")]
         [HttpPost()]

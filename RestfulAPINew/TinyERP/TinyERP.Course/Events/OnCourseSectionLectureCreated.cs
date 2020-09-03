@@ -1,11 +1,10 @@
 ﻿using System;
 using TinyERP.Common.CQRS;
 
-namespace TinyERP.Course.Dtos
+namespace TinyERP.Course.Events
 {
-    public class CreateCourseLectureResponse : IBaseResponse
+    public class OnCourseSectionLectureCreated : BaseEvent
     {
-        public int Id { get; set; }
         public Guid CourseId { get; set; }
         public Guid SectionId { get; set; }
         public string Name { get; set; }
